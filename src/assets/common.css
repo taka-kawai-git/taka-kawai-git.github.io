@@ -1,0 +1,23 @@
+/* Common */
+
+.rounded-30 {
+    border-radius: 30px;
+}
+
+.font-size-1-5-r {
+    font-size: 1.5rem;
+}
+
+.top-1-r {
+    top: 1rem;
+}
+
+/* Navbar.vue */
+
+.border-b-grey-l3 {
+    border-bottom: thin solid #eeeeee;
+}
+
+.text-theme {
+    color: #607d8b !important;
+}

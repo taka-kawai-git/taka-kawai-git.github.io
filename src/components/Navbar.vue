@@ -1,14 +1,14 @@
 <template>
     <div id="navbar">
-        <nav>
-            <div class="nav-wrapper green">
+        <nav class="z-depth-0">
+            <div class="nav-wrapper grey lighten-5">
                 <div class="container">
-                    <router-link to ="/" class="brand-logo">Employee Manager</router-link>
+                    <router-link to ="/" class="text-theme">Pigeon</router-link>
                     <ul class="right">
-                        <li v-if="isLogggedIn"><span class="email black-text">{{ currentUser }}</span></li>
-                        <li v-if="isLogggedIn"><router-link to="/">Dashboard</router-link></li>
-                        <li v-if="!isLogggedIn"><router-link to="/login">Login</router-link></li>
-                        <li v-if="!isLogggedIn"><router-link to="/register">Register</router-link></li>
+                        <li v-if="isLogggedIn"><span class="email text-theme">{{ currentUser }}</span></li>
+                        <li v-if="isLogggedIn"><router-link to="/" class="text-theme">Dashboard</router-link></li>
+                        <li v-if="!isLogggedIn"><router-link to="/login" class="text-theme">Login</router-link></li>
+                        <li v-if="!isLogggedIn"><router-link to="/register" class="text-theme">Register</router-link></li>
                         <li v-if="isLogggedIn"><button v-on:click="logout" class="btn black">Logout</button></li>
                     </ul>
                 </div>
@@ -45,6 +45,7 @@ export default {
 </script>
 
 <style scoped>
+@import "../assets/common.css";
 .email {
     padding-right: 10px;
 }

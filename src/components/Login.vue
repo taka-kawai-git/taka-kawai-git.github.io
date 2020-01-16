@@ -3,20 +3,20 @@
         <div class="container">
             <div class="row">
                 <div class="col s12 m8 offset-m2">
-                    <div class="login card-panel green white-text center">
-                        <h3>Login</h3>
+                    <div class="login center">
+                        <h4>Login</h4>
                         <form>
                             <div class="input-field">
-                                <i class="fas fa-envelope"></i>
+                                <i class="fas fa-envelope prefix font-size-1-5-r top-1-r"></i>
                                 <input type="text" id="email" v-model="email">
-                                <label class="white-text" for="email">Email</label>
+                                <label class="" for="email">Email</label>
                             </div>
                             <div class="input-field">
-                                <i class="fas fa-lock"></i></i>
+                                <i class="fas fa-lock prefix font-size-1-5-r top-1-r"></i></i>
                                 <input type="password" id="password" v-model="password">
-                                <label class="white-text" for="password">Password</label>
+                                <label class="" for="password">Password</label>
                             </div>
-                            <button v-on:click="login" class="btn btn-large greyy lighten-4 black-text">Login</button>
+                            <button v-on:click="login" class="btn btn-large rounded-30 blue-grey">Login</button>
                         </form>
                     </div>
                 </div>
@@ -54,3 +54,7 @@ export default {
     }
 };
 </script>
+
+<style scoped>
+    @import "../assets/common.css";
+</style>
