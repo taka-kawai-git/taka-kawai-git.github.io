@@ -6,7 +6,7 @@
                     <router-link to ="/" class="text-theme">Pigeon</router-link>
                     <ul class="right">
                         <li v-if="isLogggedIn"><span class="email text-theme">{{ currentUser }}</span></li>
-                        <li v-if="isLogggedIn"><router-link to="/" class="text-theme">Dashboard</router-link></li>
+                        <li v-if="isLogggedIn"><router-link to="/" class="text-theme">Home</router-link></li>
                         <li v-if="!isLogggedIn"><router-link to="/login" class="text-theme">Login</router-link></li>
                         <li v-if="!isLogggedIn"><router-link to="/register" class="text-theme">Register</router-link></li>
                         <li v-if="isLogggedIn"><button v-on:click="logout" class="btn black">Logout</button></li>

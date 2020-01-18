@@ -1,5 +1,5 @@
 <template>
-<div id="dashboard">
+<div id="home">
     <ul>
         <li><h4>Employees</h4></li>
         <li v-for="employee in employees" v-bind:key="employee.id" class="">
@@ -21,7 +21,7 @@
 <script>
 import db from './firebaseInit'
 export default {
-    name : 'dashboard',
+    name : 'home',
     data() {
         return {
             employees: []
