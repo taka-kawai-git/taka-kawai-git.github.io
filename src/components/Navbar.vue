@@ -1,7 +1,7 @@
 <template>
     <div id="navbar">
         <nav class="z-depth-0">
-            <div class="nav-wrapper grey lighten-5">
+            <div class="nav-wrapper grey lighten-5 border-b-grey-l3">
                 <div class="container">
                     <router-link to ="/" class="text-theme">Pigeon</router-link>
                     <ul class="right">
