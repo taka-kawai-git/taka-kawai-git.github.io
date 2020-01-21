@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from '@/components/Home';
-import NewEmployee from '@/components/NewEmployee';
-import ViewEmployee from '@/components/ViewEmployee';
-import EditEmployee from '@/components/EditEmployee';
+import NewThread from '@/components/NewThread';
+import ViewThread from '@/components/ViewThread';
+import NewComment from '@/components/NewComment';
 import Login from '@/components/Login';
 import Register from '@/components/Register';
 import firebase from 'firebase';
@@ -38,24 +38,24 @@ let router = new Router({
         },
         {
             path: '/new',
-            name: 'new-employee',
-            component: NewEmployee,
+            name: 'new-thread',
+            component: NewThread,
             meta: {
                 requiresAuth: true
             }
         },
         {
-            path: '/edit/:employee_id',
-            name: 'edit-employee',
-            component: EditEmployee,
+            path: '/:thread_id',
+            name: 'view-thread',
+            component: ViewThread,
             meta: {
                 requiresAuth: true
             }
         },
         {
-            path: '/:employee_id',
-            name: 'view-employee',
-            component: ViewEmployee,
+            path: '/:thread_id/new',
+            name: 'new-comment',
+            component: NewComment,
             meta: {
                 requiresAuth: true
             }

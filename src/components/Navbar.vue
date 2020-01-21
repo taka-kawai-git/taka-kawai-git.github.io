@@ -3,7 +3,7 @@
         <nav class="z-depth-0">
             <div class="nav-wrapper grey lighten-5 border-b-grey-l3">
                 <div class="container">
-                    <router-link to ="/" class="text-theme">Pigeon</router-link>
+                    <router-link to ="/" class="text-theme"><i class="fas fa-dove"></i></router-link>
                     <ul class="right">
                         <li v-if="isLogggedIn"><span class="email text-theme">{{ currentUser }}</span></li>
                         <li v-if="isLogggedIn"><router-link to="/" class="text-theme">Home</router-link></li>
