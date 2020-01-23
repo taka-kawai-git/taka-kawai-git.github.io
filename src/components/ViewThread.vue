@@ -1,13 +1,13 @@
 <template>
 <div id="view-thread">
-    <ul class="collection with-header">
-        <li class="collection-header"><h4>{{title}}</h4></li>
-        <li class="collection-item" v-for="(comment, index) in comments">
-            {{index+1}}. 名無しさん：{{comment.posted_at}}
-            {{comment.comment}}
+    <ul class="collection with-header m-t-0 border-0">
+        <li class="collection-header"><span class="fs-1-5">{{title}}</span></li>
+        <li class="collection-item p-l-20 border-0" v-for="(comment, index) in comments">
+            <span class="fs-0-8">{{index+1}}. 名無しさん：{{comment.posted_at.toDate().toDateString()}}</span>
+            </br>
+            <span class="fs-1-5">{{comment.comment}}</span>
         </li>
     </ul>
-    <router-link to="/" class="btn grey">Back</router-link>
     <!-- <button @click="deleteEmployee" class="btn red">Delete</button> -->
     <div class="fixed-action-btn">
         <router-link v-bind:to="{name: 'new-comment', params: {thread_id: thread_id}}"
@@ -69,3 +69,7 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+    @import "../assets/common.css";
+</style>

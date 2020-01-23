@@ -28,16 +28,31 @@ export default {
     },
     methods: {
         saveComment() {
-            var map = new Map();
-            map.set("comment", this.comment);
-            map.set("like", 0);
-            map.set("posted_at", firebase.firestore.FieldValue.serverTimestamp());
+            // var map = new Map();
+            // map.set("comment", this.comment);
+            // map.set("like", 0);
+            // map.set("posted_at", firebase.firestore.FieldValue.serverTimestamp());
+            
+            // db.collection('threads').where('thread_id', '==', this.$route.params.thread_id)
+            // .get().then(querySnapshot => {
+            //     querySnapshot.forEach(doc => {
+            //         this.title = doc.id
+            //     })
+            // })
 
-            db.collection('threads').where('thread_id', '==', this.$route.params.thread_id).get().update({
-                comments: firebase.firestore.FieldValue.arrayUnion(map)
+            db.collection('threads').where('thread_id', '==', this.$route.params.thread_id)
+            .get().then(querySnapshot => {
+                querySnapshot.forEach(doc => {
+                    db.collection("threads").doc(doc.id).update({
+                        comments: firebase.firestore.FieldValue.arrayUnion({
+                            comment: this.comment,
+                            like: 0,
+                            posted_at: new Date()
+                        })
+                    });
+                    this.$router.push('/')
+                })
             })
-            .then(docRef => this.$router.push('/'))
-            .catch(error => console.log(err))
         }
     }
 }

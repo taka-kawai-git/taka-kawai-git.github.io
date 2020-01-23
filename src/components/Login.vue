@@ -4,15 +4,15 @@
             <div class="row">
                 <div class="col s12 m8 offset-m2">
                     <div class="login center">
-                        <h4>Login</h4>
+                        <span class="fs-1-5">Login</span>
                         <form>
                             <div class="input-field">
-                                <i class="fas fa-envelope prefix font-size-1-5-r top-1-r"></i>
+                                <i class="fas fa-envelope prefix fs-1-5 top-1"></i>
                                 <input type="text" id="email" v-model="email">
                                 <label class="" for="email">Email</label>
                             </div>
                             <div class="input-field">
-                                <i class="fas fa-lock prefix font-size-1-5-r top-1-r"></i></i>
+                                <i class="fas fa-lock prefix fs-1-5 top-1"></i></i>
                                 <input type="password" id="password" v-model="password">
                                 <label class="" for="password">Password</label>
                             </div>
