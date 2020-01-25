@@ -27,7 +27,7 @@ export default {
         }
     },
     created () {
-        db.collection('threads').orderBy('time').get().then(querySnapshot => {
+        db.collection('threads').orderBy('created_at').get().then(querySnapshot => {
             querySnapshot.forEach(doc => {
                 const data = {
                     'id' : doc.id,

@@ -5,12 +5,6 @@
         <form @submit.prevent="saveThread" class="col s12">
             <div class="row">
                 <div class="input-field col s12">
-                    <input type="text" v-model="thread_id" required>
-                    <label>Thread #ID</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
                     <input type="text" v-model="title" required>
                     <label>タイトル</label>
                 </div>
@@ -39,7 +33,7 @@ export default {
         return {
             thread_id : null,
             title: null,
-            comment: null
+            comment : null
         }
     },
     created() {
@@ -47,10 +41,18 @@ export default {
     },
     methods: {
         saveThread() {
+            let posted_at = new Date();
             db.collection('threads').add({
                 thread_id: this.thread_id,
                 title: this.title,
-                comment: this.comment
+                comments:
+                    [{
+                        comment: this.comment,
+                        like: 0,
+                        posted_at: posted_at
+                    }],
+                created_at : posted_at
+                
             })
             .then(docRef => this.$router.push('/'))
             .catch(error => console.log(err))
