@@ -16,6 +16,14 @@ export default {
 </script>
 
 <style scoped>
+
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Exo:800&display=swap');
+
+#app {
+/* Google fontsで導入したいfontsからfont-familyを取ってくる */
+    font-family: 'Noto Sans JP', sans-serif;
+}
 /*.container {*/
 /*    margin: 0 auto;*/
 /*    max-width: 1280px;*/

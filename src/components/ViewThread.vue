@@ -1,11 +1,11 @@
 <template>
 <div id="view-thread" class="container">
-    <ul class="collection with-header m-t-0 border-0">
-        <li class="collection-header p-x-0 border-0"><span class="fs-1-5">{{title}}</span></li>
-        <li class="collection-item p-x-0 border-0" v-for="(comment, index) in comments">
-            <span class="fs-0-8">{{index+1}}. 名無しさん：{{comment.posted_at.toDate().toDateString()}}</span>
-            </br>
-            <span class="fs-1-5">{{comment.comment}}</span>
+    <!--<div class=""></div>-->
+    <ul class="collection with-header border-0 m-t-10px ">
+        <li class="collection-header bg-theme p-x-0 p-y-2 border-0 font-b"><span class="fs-1-5">{{title}}</span></li>
+        <li class="collection-item bg-theme p-x-0 border-0" v-for="(comment, index) in comments">
+            <div class="fs-0-8 m-b-1">{{index+1}}. 名無しさん：{{comment.posted_at.toDate().toDateString()}}</div>
+            <div class="fs-1-5">{{comment.comment}}</div>
         </li>
     </ul>
     <!-- <button @click="deleteEmployee" class="btn red">Delete</button> -->

@@ -1,9 +1,9 @@
 <template>
     <div id="navbar">
         <nav class="z-depth-0">
-            <div class="nav-wrapper grey lighten-4 border-b-grey-l3">
+            <div class="nav-wrapper bg-theme border-b-grey-l3">
                 <div class="container">
-                    <router-link to="/" class="text-theme"><i class="fas fa-dove"></i> Mabor</router-link>
+                    <router-link to="/" class="text-theme exo-800 fs-1-5">Mabor</router-link>
                     <ul class="right">
                         <li v-if="!isLogggedIn"><router-link to="/login" class="text-theme">Login</router-link></li>
                         <li v-if="!isLogggedIn"><router-link to="/register" class="text-theme">Register</router-link></li>
@@ -44,7 +44,4 @@ export default {
 
 <style scoped>
 @import "../assets/common.css";
-.email {
-    padding-right: 10px;
-}
 </style>
