@@ -1,7 +1,7 @@
 <template>
     <div id="navbar">
         <nav class="z-depth-0">
-            <div class="nav-wrapper grey lighten-5 border-b-grey-l3">
+            <div class="nav-wrapper grey lighten-4 border-b-grey-l3">
                 <div class="container">
                     <router-link to="/" class="text-theme"><i class="fas fa-dove"></i> Mabor</router-link>
                     <ul class="right">

@@ -1,6 +1,6 @@
 <template>
-<div id="new-comment">
-    <h3>New Comment</h3>
+<div id="new-comment" class="container">
+    <div class="fs-1-5 m-y-1">新しいコメントを作成</div>
     <div class="row">
         <form @submit.prevent="saveComment" class="col s12">
             <div class="row">
@@ -57,3 +57,7 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+    @import "../assets/common.css";
+</style>

@@ -16,6 +16,11 @@
     margin-top: 0px;
 }
 
+.m-y-1 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
 .top-1 {
     top: 1rem;
 }
@@ -25,7 +30,12 @@
 }
 
 .border-0 {
-    border-width: 0px;
+    border-width: 0px !important;
+}
+
+.p-x-0 {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
 }
 
 .p-l-20 {
@@ -39,5 +49,5 @@
 }
 
 .text-theme {
-    color: #607d8b !important;
+    color: #03a9f4 !important;
 }

@@ -1,5 +1,5 @@
 <template>
-<div id="home">
+<div id="home" class="container">
     <ul>
         <li><h4>Threads</h4></li>
         <li v-for="thread in threads" v-bind:key="thread.id" class="">
@@ -10,7 +10,7 @@
         </li>
     </ul>
     <div class="fixed-action-btn">
-        <router-link to="/new" class="btn-floating btn-large blue-grey z-depth-0">
+        <router-link to="/new" class="btn-floating btn-large light-blue z-depth-0">
             <i class="fa fa-plus"></i>
         </router-link>
     </div>

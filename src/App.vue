@@ -1,9 +1,7 @@
 <template>
     <div id="app">
         <Navbar />
-        <div class="container">
-            <router-view/>
-        </div>
+        <router-view/>
     </div>
 </template>
 
@@ -18,21 +16,21 @@ export default {
 </script>
 
 <style scoped>
-.container {
-    margin: 0 auto;
-    max-width: 1280px;
-    width: 100%;
-}
+/*.container {*/
+/*    margin: 0 auto;*/
+/*    max-width: 1280px;*/
+/*    width: 100%;*/
+/*}*/
 
-@media only screen and (min-width: 601px) {
-  .container {
-    width: 85%;
-  }
-}
+/*@media only screen and (min-width: 601px) {*/
+/*  .container {*/
+/*    width: 85%;*/
+/*  }*/
+/*}*/
 
-@media only screen and (min-width: 993px) {
-  .container {
-    width: 70%;
-  }
-}
+/*@media only screen and (min-width: 993px) {*/
+/*  .container {*/
+/*    width: 70%;*/
+/*  }*/
+/*}*/
 </style>

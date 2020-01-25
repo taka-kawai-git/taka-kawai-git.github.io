@@ -1,8 +1,8 @@
 <template>
-<div id="view-thread">
+<div id="view-thread" class="container">
     <ul class="collection with-header m-t-0 border-0">
-        <li class="collection-header"><span class="fs-1-5">{{title}}</span></li>
-        <li class="collection-item p-l-20 border-0" v-for="(comment, index) in comments">
+        <li class="collection-header p-x-0 border-0"><span class="fs-1-5">{{title}}</span></li>
+        <li class="collection-item p-x-0 border-0" v-for="(comment, index) in comments">
             <span class="fs-0-8">{{index+1}}. 名無しさん：{{comment.posted_at.toDate().toDateString()}}</span>
             </br>
             <span class="fs-1-5">{{comment.comment}}</span>
@@ -11,7 +11,7 @@
     <!-- <button @click="deleteEmployee" class="btn red">Delete</button> -->
     <div class="fixed-action-btn">
         <router-link v-bind:to="{name: 'new-comment', params: {thread_id: thread_id}}"
-        class="btn-floating btn-large blue-grey z-depth-0">
+        class="btn-floating btn-large light-blue z-depth-0">
             <i class="fas fa-comment"></i>
         </router-link>
     </div>
