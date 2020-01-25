@@ -7,8 +7,10 @@ import NewComment from '@/components/NewComment';
 import Login from '@/components/Login';
 import Register from '@/components/Register';
 import firebase from 'firebase';
-
-Vue.use(Router)
+import UUID from 'vue-uuid';
+ 
+Vue.use(Router);
+Vue.use(UUID);
 
 let router = new Router({
     routes: [

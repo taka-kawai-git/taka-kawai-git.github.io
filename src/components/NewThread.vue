@@ -1,6 +1,6 @@
 <template>
-<div id="new-thread">
-    <h3>New Thread</h3>
+<div id="new-thread" class="container">
+    <div class="fs-1-5 m-y-1">新しいスレッドの作成</div>
     <div class="row">
         <form @submit.prevent="saveThread" class="col s12">
             <div class="row">
@@ -31,6 +31,8 @@
 
 <script>
 import db from './firebaseInit'
+import {uuid} from 'vue-uuid'
+
 export default {
     name : 'new-thread',
     data() {
@@ -39,6 +41,9 @@ export default {
             title: null,
             comment: null
         }
+    },
+    created() {
+        this.thread_id = this.$uuid.v1();
     },
     methods: {
         saveThread() {
@@ -53,3 +58,7 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+    @import "../assets/common.css";
+</style>
