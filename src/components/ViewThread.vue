@@ -1,11 +1,10 @@
 <template>
 <div id="view-thread" class="container">
-    <!--<div class=""></div>-->
-    <ul class="collection with-header border-0 m-t-10px ">
-        <li class="collection-header bg-theme p-x-0 p-y-2 border-0 font-b"><span class="fs-1-5">{{title}}</span></li>
+    <div class="fs-1-5 fw-b m-t-1-125">{{title}}</div>
+    <ul class="collection border-0">
         <li class="collection-item bg-theme p-x-0 border-0" v-for="(comment, index) in comments">
             <div class="fs-0-8 m-b-1">{{index+1}}. 名無しさん：{{comment.posted_at.toDate().toDateString()}}</div>
-            <div class="fs-1-5">{{comment.comment}}</div>
+            <div class="fs-1-2">{{comment.comment}}</div>
         </li>
     </ul>
     <!-- <button @click="deleteEmployee" class="btn red">Delete</button> -->

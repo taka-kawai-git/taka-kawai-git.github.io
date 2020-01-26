@@ -3,10 +3,10 @@
         <nav class="z-depth-0">
             <div class="nav-wrapper bg-theme border-b-grey-l3">
                 <div class="container">
-                    <router-link to="/" class="text-theme exo-800 fs-1-5">Mabor</router-link>
+                    <router-link to="/" class="black-text exo-800 fs-1-5">Mabor</router-link>
                     <ul class="right">
-                        <li v-if="!isLogggedIn"><router-link to="/login" class="text-theme">Login</router-link></li>
-                        <li v-if="!isLogggedIn"><router-link to="/register" class="text-theme">Register</router-link></li>
+                        <li v-if="!isLogggedIn"><router-link to="/login" class="black-text">Login</router-link></li>
+                        <li v-if="!isLogggedIn"><router-link to="/register" class="black-text">Register</router-link></li>
                         <li v-if="isLogggedIn"><button v-on:click="logout" class="btn black">Logout</button></li>
                     </ul>
                 </div>

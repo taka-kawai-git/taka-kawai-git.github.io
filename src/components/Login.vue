@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col s12 m8 offset-m2">
                     <div class="login center">
-                        <span class="fs-1-5">Login</span>
+                        <div class="fs-1-5 fw-b m-t-1-125">Login</div>
                         <form>
                             <div class="input-field">
                                 <i class="fas fa-envelope prefix fs-1-5 top-1"></i>

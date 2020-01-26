@@ -67,15 +67,20 @@
 
 
 /*** ViewThread.vue ***/
-.font-b {
+.fw-b {
     font-weight: bold;
 }
 
-.p-y-2 {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+.m-t-1-125 {
+    margin-top: 1.125rem;
 }
 
-.m-t-10px {
-    margin-top: 10px;
+.fs-1-2 {
+    font-size: 1.2rem;
+}
+
+
+/*** Home.vue ***/
+.fs-1 {
+    font-size: 1rem;
 }
