@@ -5,6 +5,8 @@ import NewThread from '@/components/NewThread';
 import ViewThread from '@/components/ViewThread';
 import NewComment from '@/components/NewComment';
 import Login from '@/components/Login';
+import EmailVerified from '@/components/EmailVerified';
+import EmailSent from '@/components/EmailSent';
 import Register from '@/components/Register';
 import firebase from 'firebase';
 import UUID from 'vue-uuid';
@@ -36,6 +38,22 @@ let router = new Router({
             component: Register,
             meta: {
                 requiresGuest: true
+            }
+        },
+        {
+            path: '/email-verified',
+            name: 'email-verified',
+            component: EmailVerified,
+            // meta: {
+            //     requiresGuest: true
+            // }
+        },
+        {
+            path: '/email-sent',
+            name: 'email-sent',
+            component: EmailSent,
+            meta: {
+                requiresAuth: true
             }
         },
         {
