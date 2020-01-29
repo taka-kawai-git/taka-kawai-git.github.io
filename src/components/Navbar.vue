@@ -7,7 +7,7 @@
                     <ul class="right">
                         <li v-if="!isLogggedIn && !isEmailVerified"><router-link to="/login" class="black-text">Login</router-link></li>
                         <li v-if="!isLogggedIn && !isEmailVerified"><router-link to="/register" class="black-text">Register</router-link></li>
-                        <li v-if="isLogggedIn && isEmailVerified"><button v-on:click="logout" class="btn black">Logout</button></li>
+                        <li v-if="isLogggedIn"><button v-on:click="logout" class="btn black">Logout</button></li>
                     </ul>
                 </div>
             </div>
