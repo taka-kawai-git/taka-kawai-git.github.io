@@ -7,6 +7,7 @@ import NewComment from '@/components/NewComment';
 import Login from '@/components/Login';
 import EmailVerified from '@/components/EmailVerified';
 import EmailSent from '@/components/EmailSent';
+import VerifyEmail from '@/components/VerifyEmail';
 import Register from '@/components/Register';
 import firebase from 'firebase';
 import UUID from 'vue-uuid';
@@ -21,7 +22,7 @@ let router = new Router({
             name: 'home',
             component: Home,
             meta: {
-                requiresAuth: true
+                requiresEmailVerified: true
             }
         },
         {
@@ -49,6 +50,14 @@ let router = new Router({
             // }
         },
         {
+            path: '/verify-email',
+            name: 'verify-email',
+            component: VerifyEmail,
+            meta: {
+                requiresAuth: true
+            }
+        },
+        {
             path: '/email-sent',
             name: 'email-sent',
             component: EmailSent,
@@ -61,7 +70,7 @@ let router = new Router({
             name: 'new-thread',
             component: NewThread,
             meta: {
-                requiresAuth: true
+                requiresEmailVerified: true
             }
         },
         {
@@ -69,7 +78,7 @@ let router = new Router({
             name: 'view-thread',
             component: ViewThread,
             meta: {
-                requiresAuth: true
+                requiresEmailVerified: true
             }
         },
         {
@@ -77,7 +86,7 @@ let router = new Router({
             name: 'new-comment',
             component: NewComment,
             meta: {
-                requiresAuth: true
+                requiresEmailVerified: true
             }
         },
     ]
@@ -85,33 +94,69 @@ let router = new Router({
 
 // Nav Guards
 router.beforeEach((to, from, next) => {
-    // Check for requiresAuth
+    
     if(to.matched.some(record => record.meta.requiresAuth)) {
-        // Check if NOT logged in
+        // ログインしてなかったらログインへ
         if(!firebase.auth().currentUser){
-            // Go to Login
             next({
                 path: '/login',
                 query: {
                     redirect: to.fullpath
                 }
             });
-        }else{
-            next();
-        }
-    }else if(to.matched.some(record => record.meta.requiresGuest)){
-        // Check if logged in
-        if(firebase.auth().currentUser){
-            // Go to Login
+        // ログインしてて　かつ　メールも確認済だったらホームへ
+        }else if(firebase.auth().currentUser.emailVerified){
             next({
                 path: '/',
                 query: {
                     redirect: to.fullpath
                 }
             });
+        // それ以外は通す
         }else{
-            // Proceed to route
             next();
+        }
+    }else if(to.matched.some(record => record.meta.requiresEmailVerified)) {
+        // ログインしてなかったらログインへ
+        if(!firebase.auth().currentUser){
+            next({
+                path: '/login',
+                query: {
+                    redirect: to.fullpath
+                }
+            });
+        // ログインしてて　かつ　メール確認がまだだったらメール送信画面へ
+        }else if(!firebase.auth().currentUser.emailVerified){
+            next({
+                path: '/verify-email',
+                query: {
+                    redirect: to.fullpath
+                }
+            });
+        // それ以外は通す
+        }else{
+            next();
+        }
+    }else if(to.matched.some(record => record.meta.requiresGuest)){
+        // ログインしてなかったら通す
+        if(!firebase.auth().currentUser){
+            next();
+        // ログインしてて　かつ　メール確認がまだだったらメール送信画面へ
+        }else if(!firebase.auth().currentUser.emailVerified){
+            next({
+                path: '/verify-email',
+                query: {
+                    redirect: to.fullpath
+                }
+            });
+        // ログインしてて　かつ　メール確認も済みだったらホームへ
+        }else{
+            next({
+                path: '/',
+                query: {
+                    redirect: to.fullpath
+                }
+            });
         }
     }else{
         // Proceed to route

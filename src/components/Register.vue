@@ -41,7 +41,8 @@ export default {
             firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
             .then(
                 user => {
-                    alert(`Account created for ${user.user.email}`);
+                    // alert(`Account created for ${user.user.email}`);
+                    console.log(firebase.auth().currentUser);
                     // this.$router.go({path: this.$router.path});
                     user.user.sendEmailVerification({
                         url: 'https://b09a6b5ec4304472868077c701c72171.vfs.cloud9.ap-northeast-1.amazonaws.com/email-verified',
