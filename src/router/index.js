@@ -6,7 +6,6 @@ import ViewThread from '@/components/ViewThread';
 import NewComment from '@/components/NewComment';
 import Login from '@/components/Login';
 import EmailVerified from '@/components/EmailVerified';
-import EmailSent from '@/components/EmailSent';
 import VerifyEmail from '@/components/VerifyEmail';
 import Register from '@/components/Register';
 import firebase from 'firebase';
@@ -53,14 +52,6 @@ let router = new Router({
             path: '/verify-email',
             name: 'verify-email',
             component: VerifyEmail,
-            meta: {
-                requiresAuth: true
-            }
-        },
-        {
-            path: '/email-sent',
-            name: 'email-sent',
-            component: EmailSent,
             meta: {
                 requiresAuth: true
             }
