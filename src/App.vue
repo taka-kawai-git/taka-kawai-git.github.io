@@ -21,24 +21,7 @@ export default {
 @import url('https://fonts.googleapis.com/css?family=Exo:800&display=swap');
 
 #app {
-/* Google fontsで導入したいfontsからfont-familyを取ってくる */
     font-family: 'Noto Sans JP', sans-serif;
 }
-/*.container {*/
-/*    margin: 0 auto;*/
-/*    max-width: 1280px;*/
-/*    width: 100%;*/
-/*}*/
 
-/*@media only screen and (min-width: 601px) {*/
-/*  .container {*/
-/*    width: 85%;*/
-/*  }*/
-/*}*/
-
-/*@media only screen and (min-width: 993px) {*/
-/*  .container {*/
-/*    width: 70%;*/
-/*  }*/
-/*}*/
 </style>

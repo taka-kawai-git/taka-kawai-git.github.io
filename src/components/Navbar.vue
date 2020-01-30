@@ -3,7 +3,7 @@
         <nav class="z-depth-0">
             <div class="nav-wrapper bg-theme border-b-grey-l3">
                 <div class="container">
-                    <router-link to="/" class="black-text exo-800 fs-1-5">Mabor</router-link>
+                    <router-link to="/" class="black-text exo-800 fs-1-5">Mavor</router-link>
                     <ul class="right">
                         <li v-if="!isLogggedIn && !isEmailVerified"><router-link to="/login" class="black-text">Login</router-link></li>
                         <li v-if="!isLogggedIn && !isEmailVerified"><router-link to="/register" class="black-text">Register</router-link></li>

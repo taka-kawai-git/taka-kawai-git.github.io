@@ -2,10 +2,10 @@
 <div id="home" class="container">
     <div class="fs-1-5 fw-b m-t-1-125">最新のスレッド</div>
     <ul class="collection border-0">
-        <li v-for="thread in threads" v-bind:key="thread.id" class="collection-item border-0 p-x-0 bg-theme">
+        <li v-for="thread in threads" v-bind:key="thread.id" class="collection-item p-x-0 bg-theme">
             <router-link class="fs-1 fw-b black-text"
             v-bind:to="{ name:'view-thread', params: { thread_id: thread.thread_id } }">
-                {{ thread.title }}
+            <div>{{ thread.title }}</div>
             </router-link>
         </li>
     </ul>
