@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import db from './firebaseInit'
 import firebase from 'firebase';
 
 export default {
@@ -36,13 +37,78 @@ export default {
             .then(
                 user => {
                     console.log('Logged in as ' + user.user.email);
-                    this.$router.go({path: this.$router.path});
+                    this.registerUser(user);
                 },
                 err => {
                     alert(err.message);
                 }
             )
             e.preventDefault();
+        },
+        
+        registerUser: function(user) {
+            var self = this;
+            var domain = user.user.email.split('@')[1];
+            db.collection('users').add({
+                email: user.user.email,
+                domain: domain,
+                created_at: new Date(),
+            })
+            .then(function(docRef) {
+                console.log("Document written with ID: ", docRef.id);
+                self.updateOrRegisterDomain(domain);
+            })
+            .catch(error => console.log(error))
+        },
+        
+        updateOrRegisterDomain: function(domain) {
+            var self = this;
+            var domainRef = db.collection("domains").doc(domain);
+            domainRef.get().then(function(doc) {
+                if (doc.exists) {
+                    console.log("Document data:", doc.data());
+                    self.updateDomain(domainRef);
+                    self.$router.push('/');
+                } else {
+                    console.log("No such document!");
+                    self.registerDomain(domainRef, domain);
+                }
+            }).catch(function(error) {
+                console.log("Error getting document:", error);
+            });
+        },
+        
+        updateDomain: function(domainRef) {
+            var self = this;
+            domainRef.update({
+                participants: firebase.firestore.FieldValue.increment(1)
+            })
+            .then(function() {
+                console.log("Document successfully updated!");
+                self.$router.go({path: self.$router.path});
+            })
+            .catch(function(error) {
+                console.error("Error updating document: ", error);
+                self.$router.go({path: self.$router.path});
+            });
+        },
+        
+        registerDomain: function(domainRef, domain) {
+            var self = this;
+            var data = {
+                create_at: new Date(),
+                domain: domain,
+                participants: 1
+            }
+            domainRef.set(data)
+            .then(function() {
+                console.log("Document successfully written!");
+                self.$router.go({path: self.$router.path});
+            })
+            .catch(function(error) {
+                console.error("Error updating document: ", error);
+                self.$router.go({path: self.$router.path});
+            });
         }
     }
 };

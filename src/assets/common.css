@@ -59,6 +59,13 @@
     background: #fafafa !important;
 }
 
+
+/******************** Override Materialize ********************/
+
+button, input, optgroup, select, textarea {
+    font-family: 'Noto Sans JP', sans-serif !important;
+}
+
 /******************** .container ********************/
 
 /*.container {*/
@@ -92,6 +99,11 @@
 .exo-800 {
     font-family: 'Exo', sans-serif;
     font-size: 800;
+}
+
+.button-naked {
+    border-width: 0;
+    background: none;
 }
 
 /*############################## ViewThread.vue ##############################*/

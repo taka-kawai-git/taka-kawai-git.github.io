@@ -21,7 +21,7 @@ export default {
 @import url('https://fonts.googleapis.com/css?family=Exo:800&display=swap');
 
 #app {
-    font-family: 'Noto Sans JP', sans-serif;
+    font-family: 'Noto Sans JP', sans-serif !important;
 }
 
 </style>
