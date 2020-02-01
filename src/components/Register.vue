@@ -3,20 +3,14 @@
         <div class="container">
             <div class="row">
                 <div class="col s12 m8 offset-m2">
-                    <div class="login card-panel grey lighten-4 black-text center">
-                        <h3>Register</h3>
+                    <div class="center">
+                        <div class="fs-1-5 fw-b m-y-2 font-bold">登録</div>
                         <form>
-                            <div class="input-field">
-                                <i class="fas fa-envelope"></i>
-                                <input type="text" id="email" v-model="email">
-                                <label for="email">Email</label>
-                            </div>
-                            <div class="input-field">
-                                <i class="fas fa-lock"></i></i>
-                                <input type="password" id="password" v-model="password">
-                                <label for="password">Password</label>
-                            </div>
-                            <button v-on:click="register" class="btn btn-large greyy lighten-4 black-text">Register</button>
+                            <input type="text" class="grey lighten-3 border-0 rounded-5" id="email"
+                            placeholder="メールアドレス" v-model="email">
+                            <input type="password" class="grey lighten-3 border-0 rounded-5" id="password"
+                            placeholder="パスワード" v-model="password">
+                            <button v-on:click="register" class="btn btn-large rounded-5 w-100 blue-grey m-y-1">登録</button>
                         </form>
                     </div>
                 </div>
@@ -53,3 +47,7 @@ export default {
     }
 };
 </script>
+
+<style scoped>
+    @import "../assets/common.css";
+</style>

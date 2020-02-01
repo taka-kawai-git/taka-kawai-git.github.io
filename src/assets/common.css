@@ -1,7 +1,7 @@
 /*############################## Common ##############################*/
 
 .rounded-5 {
-    border-radius: 5px;
+    border-radius: 5px !important;
 }
 
 .rounded-30 {
@@ -27,6 +27,11 @@
 .m-y-1 {
     margin-top: 1rem;
     margin-bottom: 1rem;
+}
+
+.m-y-2 {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .top-1 {
@@ -115,4 +120,31 @@
 .m-y-1-125 {
     margin-top: 1.125rem;
     margin-bottom: 1.125rem;
+}
+
+/*############################## Login.vue ##############################*/
+
+/******************** .input ********************/
+
+input {
+    text-indent: 1rem;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+    border-bottom: none!important;
+    box-shadow: none!important;
+}
+
+input::placeholder {
+  color: grey;
+}
+
+/* IE */
+input:-ms-input-placeholder {
+  color: grey;
+}
+
+/* Edge */
+input::-ms-input-placeholder {
+  color: grey;
 }
