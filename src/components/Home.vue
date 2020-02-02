@@ -3,7 +3,7 @@
     <div class="fs-1-5 fw-b m-t-1-125">最新のスレッド</div>
     <ul class="collection border-0">
         <li v-for="thread in threads" v-bind:key="thread.id" class="collection-item p-x-0 bg-theme">
-            <router-link class="fs-1 fw-b black-text"
+            <router-link class="fs-1-2 black-text"
             v-bind:to="{ name:'view-thread', params: { thread_id: thread.thread_id } }">
             <div>{{ thread.title }}</div>
             </router-link>
@@ -19,6 +19,8 @@
 
 <script>
 import db from './firebaseInit'
+import firebase from 'firebase';
+
 export default {
     name : 'home',
     data() {
@@ -27,7 +29,9 @@ export default {
         }
     },
     created () {
-        db.collection('threads').orderBy('created_at').get().then(querySnapshot => {
+        var domain = firebase.auth().currentUser.email.split('@')[1];
+        db.collection('domains').doc(domain).collection('threads')
+        .orderBy('created_at').get().then(querySnapshot => {
             querySnapshot.forEach(doc => {
                 const data = {
                     'id' : doc.id,

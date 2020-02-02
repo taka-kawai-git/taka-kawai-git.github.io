@@ -19,6 +19,8 @@
 
 <script>
 import db from './firebaseInit'
+import firebase from 'firebase';
+
 export default {
     name : 'view-thread',
     data() {
@@ -29,8 +31,10 @@ export default {
         }
     },
     beforeRouteEnter(to, from, next) {
-        db.collection('threads').where('thread_id', '==', to.params.thread_id)
-        .get().then(querySnapshot => {
+        var domain = firebase.auth().currentUser.email.split('@')[1];
+        db.collection('domains').doc(domain).collection('threads')
+        .where('thread_id', '==', to.params.thread_id).get()
+        .then(querySnapshot => {
             querySnapshot.forEach(doc => {
                 next(vm => {
                     vm.thread_id = doc.data().thread_id

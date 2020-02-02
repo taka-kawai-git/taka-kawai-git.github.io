@@ -39,11 +39,13 @@ export default {
             //         this.title = doc.id
             //     })
             // })
-
-            db.collection('threads').where('thread_id', '==', this.$route.params.thread_id)
+            
+            var domain = firebase.auth().currentUser.email.split('@')[1];
+            db.collection('domains').doc(domain).collection('threads')
+            .where('thread_id', '==', this.$route.params.thread_id)
             .get().then(querySnapshot => {
                 querySnapshot.forEach(doc => {
-                    db.collection("threads").doc(doc.id).update({
+                    db.collection('domains').doc(domain).collection("threads").doc(doc.id).update({
                         comments: firebase.firestore.FieldValue.arrayUnion({
                             comment: this.comment,
                             like: 0,

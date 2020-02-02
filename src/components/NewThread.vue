@@ -24,8 +24,9 @@
 </template>
 
 <script>
-import db from './firebaseInit'
-import {uuid} from 'vue-uuid'
+import db from './firebaseInit';
+import firebase from 'firebase';
+import {uuid} from 'vue-uuid';
 
 export default {
     name : 'new-thread',
@@ -41,17 +42,18 @@ export default {
     },
     methods: {
         saveThread() {
-            let posted_at = new Date();
-            db.collection('threads').add({
+            var domain = firebase.auth().currentUser.email.split('@')[1];
+            var date = new Date();
+            db.collection('domains').doc(domain).collection('threads').add({
                 thread_id: this.thread_id,
                 title: this.title,
                 comments:
                     [{
                         comment: this.comment,
                         like: 0,
-                        posted_at: posted_at
+                        posted_at: date
                     }],
-                created_at : posted_at
+                created_at: date
                 
             })
             .then(docRef => this.$router.push('/'))
