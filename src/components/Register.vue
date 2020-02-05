@@ -68,11 +68,11 @@ export default {
                 if (doc.exists) {
                     console.log("Document data:", doc.data());
                     self.updateDomain(domainRef);
-                    self.$router.push('/');
                 } else {
                     console.log("No such document!");
                     self.registerDomain(domainRef, domain);
                 }
+                self.$router.go({path: self.$router.path});
             }).catch(function(error) {
                 console.log("Error getting document:", error);
             });
@@ -85,11 +85,9 @@ export default {
             })
             .then(function() {
                 console.log("Document successfully updated!");
-                self.$router.go({path: self.$router.path});
             })
             .catch(function(error) {
                 console.error("Error updating document: ", error);
-                self.$router.go({path: self.$router.path});
             });
         },
         
@@ -103,11 +101,9 @@ export default {
             domainRef.set(data)
             .then(function() {
                 console.log("Document successfully written!");
-                self.$router.go({path: self.$router.path});
             })
             .catch(function(error) {
                 console.error("Error updating document: ", error);
-                self.$router.go({path: self.$router.path});
             });
         }
     }
