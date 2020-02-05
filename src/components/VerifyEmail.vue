@@ -21,7 +21,7 @@ export default {
     created() {
         let user = firebase.auth().currentUser;
         if(!user.emailVerified){
-            var returnUrl;
+            var returnUrl = null;
             if(process.env.NODE_ENV == "development") {
                 returnUrl = 'https://b09a6b5ec4304472868077c701c72171.vfs.cloud9.ap-northeast-1.amazonaws.com/email-verified'
             }else if(process.env.NODE_ENV == "production") {
@@ -36,7 +36,7 @@ export default {
     },
     methods: {
         reload: function(e) {
-            firebase.auth().currentUser.reload();
+            this.$router.go({path: this.$router.path});
         }
     }
 };
