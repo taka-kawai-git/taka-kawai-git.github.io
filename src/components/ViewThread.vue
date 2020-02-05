@@ -3,7 +3,7 @@
     <div class="fs-1-5 fw-b m-t-1-125">{{title}}</div>
     <ul class="collection border-0">
         <li class="collection-item bg-theme p-x-0 border-0" v-for="(comment, index) in comments">
-            <div class="fs-0-8 m-b-1">{{index+1}}. 名無しさん：{{comment.posted_at.toDate().toDateString()}}</div>
+            <div v-bind:id="index+1" class="fs-0-8 m-b-1">{{index+1}}. 名無しさん：{{comment.posted_at.toDate().toDateString()}}</div>
             <div class="fs-1-2">{{comment.comment}}</div>
         </li>
     </ul>
@@ -58,17 +58,6 @@ export default {
                 })
             })
         },
-        deleteEmployee() {
-            if(confirm('Are you sure?')){
-                db.collection('threads').where('thread_id', '==', this.$route.params.thread_id)
-                .get().then(querySnapshot => {
-                    querySnapshot.forEach(doc => {
-                        doc.ref.delete()
-                        this.$router.push('/')
-                    })
-                })
-            }
-        }
     }
 }
 </script>
