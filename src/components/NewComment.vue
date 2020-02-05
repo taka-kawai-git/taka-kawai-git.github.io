@@ -19,7 +19,7 @@ export default {
     name : 'new-comment',
     data() {
         return {
-            comment : null
+            comment: null
         }
     },
     methods: {
@@ -45,7 +45,8 @@ export default {
                         comments: firebase.firestore.FieldValue.arrayUnion({
                             comment: this.comment,
                             like: 0,
-                            posted_at: new Date()
+                            posted_at: new Date(),
+                            user_id: firebase.auth().currentUser.uid
                         })
                     });
                     this.$router.push('/')

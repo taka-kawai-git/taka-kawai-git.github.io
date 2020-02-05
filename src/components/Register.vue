@@ -49,13 +49,13 @@ export default {
         registerUser: function(user) {
             var self = this;
             var domain = user.user.email.split('@')[1];
-            db.collection('users').add({
+            db.collection('users').doc(user.user.email).set({
                 email: user.user.email,
                 domain: domain,
                 created_at: new Date(),
             })
-            .then(function(docRef) {
-                console.log("Document written with ID: ", docRef.id);
+            .then(function() {
+                console.log("user created");
                 self.updateOrRegisterDomain(domain);
             })
             .catch(error => console.log(error))
