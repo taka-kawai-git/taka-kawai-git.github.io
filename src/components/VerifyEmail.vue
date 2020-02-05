@@ -21,8 +21,15 @@ export default {
     created() {
         let user = firebase.auth().currentUser;
         if(!user.emailVerified){
+            var returnUrl;
+            if(process.env.NODE_ENV == "development") {
+                returnUrl = 'https://b09a6b5ec4304472868077c701c72171.vfs.cloud9.ap-northeast-1.amazonaws.com/email-verified'
+            }else if(process.env.NODE_ENV == "production") {
+                returnUrl = 'https://taka-kawai-git.github.io/index.html#/'
+            }
+            
             user.sendEmailVerification({
-                url: 'https://b09a6b5ec4304472868077c701c72171.vfs.cloud9.ap-northeast-1.amazonaws.com/email-verified',
+                url: returnUrl,
                 handleCodeInApp: false,
             });
         }
