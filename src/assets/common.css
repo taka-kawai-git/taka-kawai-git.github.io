@@ -12,6 +12,14 @@
     font-size: 0.8rem;
 }
 
+.fs-1-1 {
+    font-size: 1.1rem;
+}
+
+.fs-1-2 {
+    font-size: 1.2rem;
+}
+
 .fs-1-5 {
     font-size: 1.5rem;
 }
@@ -119,10 +127,6 @@ button, input, optgroup, select, textarea {
 
 .m-t-1-125 {
     margin-top: 1.125rem;
-}
-
-.fs-1-2 {
-    font-size: 1.2rem;
 }
 
 

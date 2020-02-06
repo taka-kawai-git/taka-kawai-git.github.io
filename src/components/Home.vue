@@ -3,7 +3,7 @@
     <div class="fs-1-5 fw-b m-y-1-125">最新のスレッド</div>
     <ul class="collection border-x-0 b-color-theme">
         <li v-for="thread in threads" v-bind:key="thread.id" class="collection-item p-x-0 bg-theme b-color-theme">
-            <router-link class="fs-1-2 black-text"
+            <router-link class="fs-1-1 black-text"
             v-bind:to="{ name:'view-thread', params: { thread_id: thread.thread_id } }">
             <div>{{ thread.title }}</div>
             </router-link>
