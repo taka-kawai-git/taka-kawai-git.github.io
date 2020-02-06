@@ -129,6 +129,13 @@ button, input, optgroup, select, textarea {
     margin-top: 1.125rem;
 }
 
+.m-b-2 {
+    margin-bottom: 2rem;
+}
+
+.p-t-0 {
+    padding-top: 0px;
+}
 
 /*############################## Home.vue ##############################*/
 
