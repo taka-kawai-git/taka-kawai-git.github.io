@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Home from '@/components/Home';
 import Menu from '@/components/Menu';
+import Terms from '@/components/Terms';
 import NewThread from '@/components/NewThread';
 import ViewThread from '@/components/ViewThread';
 import NewComment from '@/components/NewComment';
@@ -29,6 +30,14 @@ let router = new Router({
             path: '/menu',
             name: 'menu',
             component: Menu,
+            meta: {
+                requiresEmailVerified: true
+            }
+        },
+        {
+            path: '/terms',
+            name: 'terms',
+            component: Terms,
             meta: {
                 requiresEmailVerified: true
             }

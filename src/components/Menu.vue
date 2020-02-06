@@ -1,8 +1,11 @@
 <template>
 <div id="menu" class="container">
-    <ul class="collection border-0">
+    <ul class="collection border-0 m-y-1-125">
         <li class="collection-item p-x-0 bg-theme w-100 b-color-theme">
             <div v-on:click="logout" class="fs-1-2">ログアウト</div>
+        </li>
+        <li class="collection-item p-x-0 bg-theme w-100 b-color-theme">
+            <router-link to="/terms" class="fs-1-2 black-font"><div class="black-text">利用規約</div></router-link>
         </li>
     </ul>
 </div>
