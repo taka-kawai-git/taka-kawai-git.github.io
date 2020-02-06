@@ -77,6 +77,10 @@
     padding: 0px;
 }
 
+.l-h-2-5 {
+    line-height: 2.5rem !important;
+}
+
 
 /******************** Override Materialize ********************/
 
@@ -180,4 +184,10 @@ input:-ms-input-placeholder {
 /* Edge */
 input::-ms-input-placeholder {
   color: grey;
+}
+
+/*############################## Menu.vue ##############################*/
+
+.p-r-1 {
+    padding-right: 1rem;
 }

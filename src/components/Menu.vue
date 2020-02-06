@@ -1,11 +1,13 @@
 <template>
 <div id="menu" class="container">
     <ul class="collection border-0 m-y-1-125 fs-1-2">
-        <li class="collection-item p-x-0 bg-theme w-100 b-color-theme">
-            <div v-on:click="logout" class="">ログアウト</div>
+        <li class="collection-item p-x-0 bg-theme w-100 b-color-theme l-h-2-5">
+            <div v-on:click="logout" class=""><i class="fas fa-sign-out-alt p-r-1"></i>ログアウト</div>
         </li>
-        <li class="collection-item p-x-0 bg-theme w-100 b-color-theme">
-            <router-link to="/terms" class="black-font"><div class="black-text">利用規約</div></router-link>
+        <li class="collection-item p-x-0 bg-theme w-100 b-color-theme l-h-2-5">
+            <router-link to="/terms" class="black-font"><div class="black-text">
+                <i class="fas fa-book p-r-1"></i>利用規約</div>
+            </router-link>
         </li>
     </ul>
 </div>
