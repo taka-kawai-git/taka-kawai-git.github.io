@@ -71,6 +71,11 @@
     background: none !important;
 }
 
+.bg-theme-grad {
+    background: linear-gradient(111.41488250868701deg, rgba(128, 216, 255,1) 1.986328125%,rgba(127, 215, 254,1) 1.986328125%,rgba(0, 145, 234,1) 100.18945312499999%)
+;
+}
+
 .button-naked {
     border-width: 0;
     background: none;

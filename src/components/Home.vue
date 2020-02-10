@@ -10,7 +10,7 @@
         </li>
     </ul>
     <div class="fixed-action-btn">
-        <router-link to="/new" class="btn-floating btn-large light-blue z-depth-0">
+        <router-link to="/new" class="btn-floating btn-large bg-theme-grad z-depth-2">
             <i class="fa fa-plus"></i>
         </router-link>
     </div>
