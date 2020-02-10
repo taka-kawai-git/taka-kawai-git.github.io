@@ -8,7 +8,9 @@
                         <li><router-link to="/login" class="black-text fw-b">ログイン</router-link></li>
                         <li><router-link to="/register" class="black-text fw-b">新規登録</router-link></li>
                     </ul>
-                    <div v-if="isLogggedIn && isEmailVerified" class="right"><router-link to="/menu" class="black-text"><i class="fas fa-bars"></i></router-link></div>
+                    <div v-if="isLogggedIn && isEmailVerified" class="right"><router-link to="/menu" class="black-text">
+                        <img class="v-align-m" src="../assets/image/menu.svg"/>
+                    </router-link></div>
                     <div v-if="isLogggedIn && !isEmailVerified" class="right"><button v-on:click="logout" class="button-naked fw-b">ログアウト</button></div>
                     </ul>
                 </div>

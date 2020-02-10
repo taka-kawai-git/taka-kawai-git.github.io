@@ -191,3 +191,7 @@ input::-ms-input-placeholder {
 .p-r-1 {
     padding-right: 1rem;
 }
+
+.v-align-m {
+    vertical-align: middle;
+}
