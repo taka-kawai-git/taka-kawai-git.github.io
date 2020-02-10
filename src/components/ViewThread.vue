@@ -2,7 +2,7 @@
 <div id="view-thread" class="container">
     <div class="fs-1-5 fw-b m-y-2">{{title}}</div>
     <ul class="collection border-0 m-t-0">
-        <li class="collection-item bg-theme p-x-0 border-0 m-b-2 p-t-0" v-for="(comment, index) in comments">
+        <li class="collection-item bg-none p-x-0 border-0 m-b-2 p-t-0" v-for="(comment, index) in comments">
             <div v-bind:id="index+1" class="fs-0-8 m-b-1 grey-text">{{index+1}}. 名無しさん：{{comment.posted_at.toDate().toDateString()}}</div>
             <div class="fs-1-2 fw-b">{{comment.comment}}</div>
         </li>
