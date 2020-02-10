@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col s12 m8 offset-m2">
                     <div class="center">
-                        <div class="fs-1-5 fw-b m-y-2 font-bold">登録</div>
+                        <div class="fs-1-5 fw-b m-y-2 font-bold">新規登録</div>
                         <form>
                             <input type="text" class="grey lighten-3 border-0 rounded-5" id="email"
                             placeholder="メールアドレス" v-model="email">
