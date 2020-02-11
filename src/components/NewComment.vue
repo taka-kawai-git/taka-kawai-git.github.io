@@ -4,7 +4,7 @@
         <form @submit.prevent="saveComment" class="col s12 p-x-0">
             <input type="text" class="grey lighten-3 border-0 rounded-10 h-10"
             placeholder="コメント" v-model="comment" required>
-            <button type="submit" class="btn btn-large rounded-10 w-50 m-y-1 bg-theme-grad right">コメントする</button>
+            <button type="submit" class="btn h-3 rounded-10 w-50 m-y-1 bg-theme-grad right">コメントする</button>
             <router-link to="/" class="m-y-1 left">キャンセル</router-link>
         </form>
     </div>
