@@ -1,7 +1,7 @@
 /*############################## Common ##############################*/
 
-.rounded-5 {
-    border-radius: 5px !important;
+.rounded-10 {
+    border-radius: 10px !important;
 }
 
 .rounded-30 {
@@ -35,6 +35,10 @@
 .m-y-1 {
     margin-top: 1rem;
     margin-bottom: 1rem;
+}
+
+.m-t-1 {
+    margin-top: 1rem;
 }
 
 .m-y-2 {
@@ -87,7 +91,11 @@
 }
 
 .h-3 {
-    height: 3rem
+    height: 3rem;
+}
+
+.h-10 {
+    height: 10rem !important;
 }
 
 

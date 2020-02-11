@@ -1,13 +1,12 @@
 <template>
-<div id="new-thread" class="container">
-    <div class="fs-1-5 m-y-1">新しいスレッドの作成</div>
+<div id="new-thread" class="container m-t-1">
     <div class="row">
         <form @submit.prevent="saveThread" class="col s12 p-x-0">
-            <input type="text" class="grey lighten-3 border-0 rounded-5"
+            <input type="text" class="grey lighten-3 border-0 rounded-10"
             placeholder="スレッドタイトル" v-model="title" required>
-            <input type="text" class="grey lighten-3 border-0 rounded-5"
+            <input type="text" class="grey lighten-3 border-0 rounded-10 h-10"
             placeholder="最初のコメント" v-model="comment" required>
-            <button type="submit" class="btn h-3 rounded-5 w-50 m-y-1 bg-theme-grad right">作成する</button>
+            <button type="submit" class="btn h-3 rounded-10 w-50 m-y-1 bg-theme-grad right">作成する</button>
             <router-link to="/" class="m-y-1 left">キャンセル</router-link>
         </form>
     </div>

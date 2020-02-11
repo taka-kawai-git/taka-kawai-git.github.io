@@ -6,11 +6,11 @@
                     <div class="center">
                         <div class="fs-1-5 fw-b m-y-2 font-bold">ログイン</div>
                         <form>
-                            <input type="text" class="grey lighten-3 border-0 rounded-5" id="email"
+                            <input type="text" class="grey lighten-3 border-0 rounded-10" id="email"
                             placeholder="メールアドレス" v-model="email">
-                            <input type="password" class="grey lighten-3 border-0 rounded-5" id="password"
+                            <input type="password" class="grey lighten-3 border-0 rounded-10" id="password"
                             placeholder="パスワード" v-model="password">
-                            <button v-on:click="login" class="btn btn-large rounded-5 w-100 blue-grey m-y-1">ログイン</button>
+                            <button v-on:click="login" class="btn btn-large rounded-10 w-100 bg-theme-grad m-y-1">ログイン</button>
                         </form>
                     </div>
                 </div>
