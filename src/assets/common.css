@@ -86,6 +86,10 @@
     line-height: 2.5rem !important;
 }
 
+.h-3 {
+    height: 3rem
+}
+
 
 /******************** Override Materialize ********************/
 
@@ -198,5 +202,5 @@ input::-ms-input-placeholder {
 }
 
 .v-align-m {
-    vertical-align: middle;
+    vertical-align: middle !important;
 }

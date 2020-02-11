@@ -2,11 +2,11 @@
 <div id="new-comment" class="container">
     <div class="fs-1-5 m-y-1">新しいコメントを作成</div>
     <div class="row">
-        <form @submit.prevent="saveComment" class="col s12">
+        <form @submit.prevent="saveComment" class="col s12 p-x-0">
             <input type="text" class="grey lighten-3 border-0 rounded-5"
             placeholder="コメント" v-model="comment" required>
-            <button type="submit" class="btn btn-large rounded-5 w-50 blue-grey m-y-1">コメントする</button>
-            <router-link to="/" class="btn btn-large rounded-5 w-50 grey m-y-1">キャンセル</router-link>
+            <button type="submit" class="btn btn-large rounded-5 w-50 m-y-1 bg-theme-grad right">コメントする</button>
+            <router-link to="/" class="m-y-1 left">キャンセル</router-link>
         </form>
     </div>
 </div>
