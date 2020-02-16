@@ -10,7 +10,7 @@
                             placeholder="メールアドレス" v-model="email">
                             <input type="password" class="grey lighten-3 border-0 rounded-10" id="password"
                             placeholder="パスワード" v-model="password">
-                            <button v-on:click="login" class="btn btn-large rounded-10 w-100 bg-theme-grad m-y-1">ログイン</button>
+                            <button v-on:click="login" class="btn rounded-10 w-100 bg-theme-grad m-y-1 h-3">ログイン</button>
                         </form>
                     </div>
                 </div>
