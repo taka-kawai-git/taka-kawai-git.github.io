@@ -37,6 +37,7 @@ export default {
             db.collection('domains').doc(domain).collection('threads').add({
                 thread_id: this.thread_id,
                 title: this.title,
+                num_shards: process.env.VUE_APP_NUM_SHARD,
                 comments:
                     [{
                         comment: this.comment,
@@ -46,7 +47,12 @@ export default {
                 created_at: date
                 
             })
-            .then(docRef => this.$router.push('/'))
+            .then(docRef => {
+                for (let i = 0; i < process.env.VUE_APP_NUM_SHARD; i++) {
+                    docRef.collection('shards').doc(i.toString()).set({likes: []})
+                }
+                this.$router.push({ name: 'view-thread', params: { thread_id: this.thread_id } })
+            })
             .catch(error => console.log(err))
         }
     }
