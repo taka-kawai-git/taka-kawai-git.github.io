@@ -6,7 +6,8 @@
             <div v-bind:id="index+1" class="fs-0-8 m-b-1 grey-text">
                 <span class="m-r-1">{{index+1}}. 名無しさん：{{comment.posted_at.toDate().toDateString()}}</span>
                 <span class="m-r-1">通報</span>
-                <span @click="incrementLike" class=""><i class="far fa-heart"></i></span>
+                <span v-if="!likes.includes(index+1)"
+                @click="updateLike(index+1)" class=""><i class="far fa-heart"></i></span>
             </div>
             <div class="fs-1-2 fw-b">{{comment.comment}}</div>
         </li>
@@ -29,9 +30,11 @@ export default {
     name : 'view-thread',
     data() {
         return {
-            thread_id : null,
-            title : null,
-            comments : null,
+            doc_id: null,
+            thread_id: null,
+            title: null,
+            comments: null,
+            likes: []
         }
     },
     beforeRouteEnter(to, from, next) {
@@ -41,6 +44,7 @@ export default {
         .then(querySnapshot => {
             querySnapshot.forEach(doc => {
                 next(vm => {
+                    vm.doc_id = doc.id
                     vm.thread_id = doc.data().thread_id
                     vm.title = doc.data().title
                     vm.comments = doc.data().comments
@@ -48,34 +52,57 @@ export default {
             })
         })
     },
+    mounted() {
+        const self = this;
+        db.collection('users').doc(firebase.auth().currentUser.email)
+        .get().then(
+            doc => {
+                if(doc.exists) {
+                    self.likes = doc.get("likes." + self.doc_id);
+                }
+                else console.log("user doesn't exists.");
+            }
+        )
+    },
     watch: {
         '$route' : 'fetchData'
     },
     methods: {
         fetchData() {
-            db.collection('threads').where('thread_id', '==', this.$route.params.thread_id)
+            var domain = firebase.auth().currentUser.email.split('@')[1];
+            db.collection('domains').doc(domain).collection('threads')
+            .where('thread_id', '==', this.$route.params.thread_id)
             .get().then(querySnapshot => {
                 querySnapshot.forEach(doc => {
+                    this.doc_id = doc.id
                     this.thread_id = doc.data().thread_id
                     this.title = doc.data().title
                     this.comments = doc.data().comments
                 })
             })
         },
-        incrementLike() {
-            var domain = firebase.auth().currentUser.email.split('@')[1];
+        updateLike(index) {
+            const self = this;
+            const domain = firebase.auth().currentUser.email.split('@')[1];
+            const shard_id = Math.floor(Math.random() * 1).toString();
+
             db.collection('domains').doc(domain).collection('threads')
-            .where('thread_id', '==', this.$route.params.thread_id)
+            .where('thread_id', '==', this.$route.params.thread_id).limit(1)
             .get().then(querySnapshot => {
                 querySnapshot.forEach(doc => {
-                    db.collection('domains').doc(domain).collection("threads").doc(doc.id).update({
-                        comments: firebase.firestore.FieldValue.arrayUnion({
-                            like: firebase.firestore.FieldValue.increment(1)
-                        })
+                    db.collection('domains').doc(domain).collection("threads").doc(doc.id)
+                    .collection('shards').doc(shard_id).update({
+                        likes: firebase.firestore.FieldValue.arrayUnion(index)
                     });
-                    // this.$router.push('/')
+                    self.addLike(doc.id, index);
+                    self.likes.push(index);
                 })
             })
+        },
+        addLike(thread_doc_id, index) {
+            db.collection('users').doc(firebase.auth().currentUser.email).update({
+                [`likes.${thread_doc_id}`]: firebase.firestore.FieldValue.arrayUnion(index)
+            });
         }
     }
 }
