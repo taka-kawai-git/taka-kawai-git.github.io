@@ -5,7 +5,7 @@
         <li class="collection-item bg-none p-x-0 border-0 m-b-2 p-t-0" v-for="(comment, index) in comments">
             <div v-bind:id="index+1" class="fs-0-8 m-b-1 grey-text">
                 <span class="m-r-1">{{index+1}}. 名無しさん：{{comment.posted_at.toDate().toDateString()}}</span>
-                <span class="m-r-1">通報</span>
+                <span class="m-r-1 right">通報</span>
                 <span v-if="!likes.includes(index+1)"
                 @click="updateLike(index+1)" class=""><i class="far fa-heart"></i></span>
             </div>
@@ -58,7 +58,8 @@ export default {
         .get().then(
             doc => {
                 if(doc.exists) {
-                    self.likes = doc.get("likes." + self.doc_id);
+                    const likes = doc.get("likes." + self.doc_id);
+                    if(typeof likes !== "undefined") self.likes = likes;
                 }
                 else console.log("user doesn't exists.");
             }
