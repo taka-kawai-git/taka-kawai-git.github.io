@@ -23,18 +23,6 @@ export default {
     },
     methods: {
         saveComment() {
-            // var map = new Map();
-            // map.set("comment", this.comment);
-            // map.set("like", 0);
-            // map.set("posted_at", firebase.firestore.FieldValue.serverTimestamp());
-            
-            // db.collection('threads').where('thread_id', '==', this.$route.params.thread_id)
-            // .get().then(querySnapshot => {
-            //     querySnapshot.forEach(doc => {
-            //         this.title = doc.id
-            //     })
-            // })
-            
             var domain = firebase.auth().currentUser.email.split('@')[1];
             db.collection('domains').doc(domain).collection('threads')
             .where('thread_id', '==', this.$route.params.thread_id)
@@ -48,7 +36,8 @@ export default {
                             user_id: firebase.auth().currentUser.uid
                         })
                     });
-                    this.$router.push('/')
+                    this.$router.push({ name: 'view-thread',
+                    params: { thread_id: this.$route.params.thread_id } })
                 })
             })
         }
