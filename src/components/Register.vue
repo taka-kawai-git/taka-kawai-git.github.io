@@ -53,6 +53,7 @@ export default {
                 email: user.user.email,
                 domain: domain,
                 created_at: new Date(),
+                likes: {}
             })
             .then(function() {
                 console.log("user created");
