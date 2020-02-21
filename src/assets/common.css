@@ -71,6 +71,10 @@
     padding-right: 0px !important;
 }
 
+.p-1 {
+    padding: 1rem !important;
+}
+
 .p-l-20 {
     padding-left: 20px !important;
 }
@@ -107,6 +111,10 @@
 
 button, input, optgroup, select, textarea {
     font-family: 'Noto Sans JP', sans-serif !important;
+}
+
+input::placeholder, textarea::placeholder {
+    color: #bdbdbd !important;
 }
 
 /******************** .container ********************/

@@ -1,9 +1,9 @@
 <template>
 <div id="new-comment" class="container m-t-1">
     <div class="row">
-        <form @submit.prevent="saveComment" class="col s12 p-x-0">
-            <input type="text" class="grey lighten-3 border-0 rounded-10 h-10"
-            placeholder="コメント" v-model="comment" required>
+        <form @submit.prevent="saveComment" class="col s12 p-x-0 fs-1-2">
+            <textarea class="grey lighten-3 border-0 rounded-10 h-10 p-1"
+            placeholder="コメント" v-model="comment" required></textarea>
             <button type="submit" class="btn h-3 rounded-10 w-50 m-y-1 bg-theme-grad right">コメントする</button>
             <router-link to="/" class="m-y-1 left">キャンセル</router-link>
         </form>

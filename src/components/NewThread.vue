@@ -1,11 +1,11 @@
 <template>
 <div id="new-thread" class="container m-t-1">
     <div class="row">
-        <form @submit.prevent="saveThread" class="col s12 p-x-0">
+        <form @submit.prevent="saveThread" class="col s12 p-x-0 fs-1-2">
             <input type="text" class="grey lighten-3 border-0 rounded-10"
             placeholder="スレッドタイトル" v-model="title" required>
-            <input type="text" class="grey lighten-3 border-0 rounded-10 h-10"
-            placeholder="最初のコメント" v-model="comment" required>
+            <textarea class="grey lighten-3 border-0 rounded-10 h-10 p-1"
+            placeholder="最初のコメント" v-model="comment" required></textarea>
             <button type="submit" class="btn h-3 rounded-10 w-50 m-y-1 bg-theme-grad right">作成する</button>
             <router-link to="/" class="m-y-1 left">キャンセル</router-link>
         </form>
