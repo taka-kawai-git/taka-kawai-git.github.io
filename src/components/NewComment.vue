@@ -5,7 +5,7 @@
             <textarea class="grey lighten-3 border-0 rounded-10 h-10 p-1"
             placeholder="コメント" v-model="comment" required></textarea>
             <button type="submit" class="btn h-3 rounded-10 w-50 m-y-1 bg-theme-grad right">コメントする</button>
-            <router-link to="/" class="m-y-1 left">キャンセル</router-link>
+            <router-link to="/" class="m-y-1 left fs-1">キャンセル</router-link>
         </form>
     </div>
 </div>
