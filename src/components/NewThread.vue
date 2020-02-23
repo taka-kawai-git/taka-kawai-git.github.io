@@ -48,8 +48,12 @@ export default {
                 
             })
             .then(docRef => {
+                var likes = [];
+                for (let i = 0; i < process.env.VUE_APP_MAX_NUM_COMMENTS; i++) {
+                    likes.push(0);
+                }
                 for (let i = 0; i < process.env.VUE_APP_NUM_SHARD; i++) {
-                    docRef.collection('shards').doc(i.toString()).set({likes: []})
+                    docRef.collection('shards').doc(i.toString()).set({likes: likes})
                 }
                 this.$router.push({ name: 'view-thread', params: { thread_id: this.thread_id } })
             })
