@@ -37,6 +37,11 @@ export default {
 
             /* ---- Create thread under domain/{domainId}/threads/ ---- */
 
+            var likes = [];
+            for (let i = 0; i < process.env.VUE_APP_MAX_NUM_COMMENTS; i++) {
+                likes.push(0);
+            }
+
             db.collection('domains').doc(domain).collection('threads').add({
                 thread_id: this.thread_id,
                 title: this.title,
@@ -45,7 +50,7 @@ export default {
                 comments:
                     [{
                         comment: this.comment,
-                        like: 0,
+                        like: likes,
                         posted_at: date
                     }],
                 created_at: date
@@ -55,12 +60,8 @@ export default {
 
                 /* ---- Create Shards under domain/{domainId}/thread/{threadId}/ ---- */
 
-                var likes = [];
-                for (let i = 0; i < process.env.VUE_APP_MAX_NUM_COMMENTS; i++) {
-                    likes.push(0);
-                }
                 for (let i = 0; i < process.env.VUE_APP_NUM_SHARD; i++) {
-                    docRef.collection('shards').doc(i.toString()).set({likes: likes})
+                    docRef.collection('shards').doc(i.toString()).set({likes: []})
                 }
                 this.$router.push({ name: 'view-thread', params: { thread_id: this.thread_id } })
             })
