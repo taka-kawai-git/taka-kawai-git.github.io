@@ -45,12 +45,11 @@ export default {
             db.collection('domains').doc(domain).collection('threads').add({
                 thread_id: this.thread_id,
                 title: this.title,
-                likes: [],
+                likes: likes,
                 num_shards: process.env.VUE_APP_NUM_SHARD,
                 comments:
                     [{
                         comment: this.comment,
-                        like: likes,
                         posted_at: date
                     }],
                 created_at: date
@@ -65,7 +64,7 @@ export default {
                 }
                 this.$router.push({ name: 'view-thread', params: { thread_id: this.thread_id } })
             })
-            .catch(error => console.log(err))
+            .catch(error => console.log(error))
         }
     }
 }
