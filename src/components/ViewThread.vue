@@ -6,8 +6,8 @@
             <div v-bind:id="index+1" class="fs-0-8 m-b-1 grey-text text-lighten-1">
                 <span class="m-r-1">{{index+1}}. 名無しさん：{{comment.posted_at.toDate().toDateString()}}</span>
                 <span class="m-r-1 right">通報</span>
-                <span v-if="!likes.includes(index+1)"
-                @click="updateLike(index+1)" class=""><i class="far fa-heart"></i></span>
+                <span v-if="!likes.includes(index)"
+                @click="updateLike(index)" class=""><i class="far fa-heart"></i></span>
             </div>
             <div class="fs-1-2">{{comment.comment}}</div>
         </li>
