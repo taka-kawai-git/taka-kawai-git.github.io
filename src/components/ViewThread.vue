@@ -85,7 +85,7 @@ export default {
         updateLike(index) {
             const self = this;
             const domain = firebase.auth().currentUser.email.split('@')[1];
-            const shard_id = Math.floor(Math.random() * 1).toString();
+            const shard_id = Math.floor(Math.random() * process.env.VUE_APP_NUM_SHARD).toString();
 
             db.collection('domains').doc(domain).collection('threads')
             .where('thread_id', '==', this.$route.params.thread_id).limit(1)
