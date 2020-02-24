@@ -50,7 +50,8 @@ export default {
                 comments:
                     [{
                         comment: this.comment,
-                        posted_at: date
+                        posted_at: date,
+                        user_id: firebase.auth().currentUser.uid
                     }],
                 created_at: date
                 

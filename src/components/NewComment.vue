@@ -31,7 +31,6 @@ export default {
                     db.collection('domains').doc(domain).collection("threads").doc(doc.id).update({
                         comments: firebase.firestore.FieldValue.arrayUnion({
                             comment: this.comment,
-                            like: 0,
                             posted_at: new Date(),
                             user_id: firebase.auth().currentUser.uid
                         })
