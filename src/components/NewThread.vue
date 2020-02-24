@@ -34,9 +34,13 @@ export default {
         saveThread() {
             var domain = firebase.auth().currentUser.email.split('@')[1];
             var date = new Date();
+
+            /* ---- Create thread under domain/{domainId}/threads/ ---- */
+
             db.collection('domains').doc(domain).collection('threads').add({
                 thread_id: this.thread_id,
                 title: this.title,
+                likes: [],
                 num_shards: process.env.VUE_APP_NUM_SHARD,
                 comments:
                     [{
@@ -48,6 +52,9 @@ export default {
                 
             })
             .then(docRef => {
+
+                /* ---- Create Shards under domain/{domainId}/thread/{threadId}/ ---- */
+
                 var likes = [];
                 for (let i = 0; i < process.env.VUE_APP_MAX_NUM_COMMENTS; i++) {
                     likes.push(0);
