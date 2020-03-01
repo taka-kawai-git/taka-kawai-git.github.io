@@ -1,7 +1,7 @@
 <template>
 <div id="new-thread" class="container">
     <div class="row m-t-1">
-        <form @submit.prevent="saveThread" class="col s12 p-x-0 fs-1-2">
+        <form @submit.prevent="saveThread" class="col s12 p-x-0 fs-1-1">
             <input type="text" class="grey lighten-3 border-0 rounded-10"
             placeholder="スレッドタイトル" v-model="title" required>
             <textarea class="grey lighten-3 border-0 rounded-10 h-10 p-1"

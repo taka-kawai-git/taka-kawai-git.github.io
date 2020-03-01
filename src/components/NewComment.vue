@@ -1,7 +1,7 @@
 <template>
 <div id="new-comment" class="container">
     <div class="row m-t-1">
-        <form @submit.prevent="saveComment" class="col s12 p-x-0 fs-1-2">
+        <form @submit.prevent="saveComment" class="col s12 p-x-0 fs-1-1">
             <textarea class="grey lighten-3 border-0 rounded-10 h-10 p-1"
             placeholder="コメント" v-model="comment" required></textarea>
             <button type="submit" class="btn waves-effect waves-light h-3 rounded-10 w-50 m-y-1
