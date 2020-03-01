@@ -62,6 +62,11 @@
     border-width: 0px !important;
 }
 
+.border-x-0 {
+    border-right-width: 0px !important;
+    border-left-width: 0px !important;
+}
+
 .b-color-theme {
     border-color: #f5f5f5;
 }
@@ -212,6 +217,10 @@ input::placeholder, textarea::placeholder {
 
 .p-t-0 {
     padding-top: 0px;
+}
+
+.m-r-0-5 {
+    margin-right: 0.5rem;
 }
 
 /*############################## Home.vue ##############################*/

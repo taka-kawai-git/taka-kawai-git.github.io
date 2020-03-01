@@ -1,18 +1,21 @@
 <template>
-<div id="view-thread" class="container">
-    <div class="fs-1-5 fw-b m-y-2">{{title}}</div>
-    <ul class="collection border-0 m-t-0">
-        <li class="collection-item bg-none p-x-0 border-0 m-b-2 p-t-0" v-for="(comment, index) in comments">
-            <div v-bind:id="index+1" class="fs-0-8 m-b-1 grey-text text-lighten-1">
-                <span class="m-r-1">{{index+1}}. 名無しさん：{{comment.posted_at.toDate().toDateString()}}</span>
-                <span class="m-r-1 right">通報</span>
-                <span v-if="!likes.includes(index)"
-                @click="updateLike(index)" class=""><i class="far fa-heart"></i></span>
+<div id="view-thread" class="container-100">
+    <div class="fs-1-2 fw-b container-sub"><div class="m-y-2">{{ title }}</div></div>
+    <ul class="collection border-x-0 b-color-theme m-t-0">
+        <li class="collection-item bg-none b-color-theme p-x-0" v-for="(comment, index) in comments">
+            <div class="container-sub">
+                <div v-bind:id="index+1" class="fs-0-8 m-b-1 grey-text text-lighten-2">
+                    <span class="m-r-0-5">{{ index+1 }}.　名無しさん</span>
+                    <span class="m-r-0-5">通報</span>
+                    <span class="m-r-1">{{ comment.posted_at.toDate().toDateString() }}</span>
+                    <span class="" v-if="!likes.includes(index)"
+                    @click="updateLike(index)"><i class="far fa-heart"></i></span>
+                </div>
+                <div class="fs-1 m-b-2">{{ comment.comment }}</div>
             </div>
-            <div class="fs-1-2">{{comment.comment}}</div>
         </li>
     </ul>
-    <!-- <button @click="deleteEmployee" class="btn red">Delete</button> -->
+
     <div class="fixed-action-btn">
         <router-link v-bind:to="{name: 'new-comment', params: {thread_id: thread_id}}"
         class="btn-floating bg-none lighten-5 z-depth-0">
