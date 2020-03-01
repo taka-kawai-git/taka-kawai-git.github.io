@@ -124,8 +124,8 @@
 
 /******************** Override Materialize ********************/
 
-button, input, optgroup, select, textarea {
-    font-family: 'Noto Sans JP', sans-serif !important;
+div, span, button, input, optgroup, select, textarea {
+    font-family: "Hiragino Kaku Gothic ProN", 'Noto Sans JP', sans-serif !important;
 }
 
 input::placeholder, textarea::placeholder {
