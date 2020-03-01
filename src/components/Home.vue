@@ -32,7 +32,7 @@
                 <router-link class="black-text"
                 v-bind:to="{ name:'view-thread', params: { thread_id: thread.thread_id } }">
                 <div class="container-sub">
-                    <span class="m-r-1 cyan-text text-accent-4 fw-b">{{ index + 1 }}.</span>{{ thread.title }}
+                    <span class="m-r-1 text-theme fw-b">{{ index + 1 }}.</span>{{ thread.title }}
                 </div>
                 </router-link>
             </li>

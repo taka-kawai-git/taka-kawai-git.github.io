@@ -97,8 +97,8 @@
     /* cyan-accent-3.8 */
     /*background-color: #00c8d4;*/
 
-    /* cyan-accent-4 */
-    background-color: #00b8d4;
+    /* blue */
+    background-color: #2196f3;
 
     /* light-blue accent-4 */
     /*background-color: #0091ea;*/
@@ -193,7 +193,7 @@ input::placeholder, textarea::placeholder {
 }
 
 .text-theme {
-    color: #00b8d4 !important;
+    color: #2196f3 !important;
 }
 
 .exo-800 {
@@ -247,12 +247,12 @@ input::placeholder, textarea::placeholder {
 
 .tabs >>> .tab a.active {
     background-color: transparent;
-    color: #00b8d4;
+    color: #2196f3;
 }
 
 .tabs >>> .indicator {
     /*background-color: #000;*/
-    background: linear-gradient(90deg, #fafafa 0%, #fafafa 40%, #00b8d4 40%, #00b8d4 60%, #fafafa 60%,#fafafa 100%);
+    background: linear-gradient(90deg, #fafafa 0%, #fafafa 40%, #2196f3 40%, #2196f3 60%, #fafafa 60%,#fafafa 100%);
 }
 
 .tabs >>> .tab a:focus {
