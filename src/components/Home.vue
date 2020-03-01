@@ -42,6 +42,7 @@
     <!-------- Questionnaire -------->
 
     <div id="tab-swipe-3" class="col s12">
+        <div class="fs-1-3 m-t-1 center">Comming Soon !!</div>
     </div>
 
     <!-------- Add-Comment button -------->

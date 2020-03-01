@@ -252,7 +252,7 @@ input::placeholder, textarea::placeholder {
 
 .tabs >>> .indicator {
     /*background-color: #000;*/
-    background: linear-gradient(90deg, #fafafa 0%, #fafafa 40%, #2196f3 40%, #2196f3 60%, #fafafa 60%,#fafafa 100%);
+    background: linear-gradient(90deg, #ffffff 0%, #ffffff 40%, #2196f3 40%, #2196f3 60%, #ffffff 60%,#ffffff 100%);
 }
 
 .tabs >>> .tab a:focus {
