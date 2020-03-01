@@ -90,7 +90,10 @@
 
 .bg-theme {
     /* cyan-accent-3.8 */
-    background-color: #00c8d4;
+    /*background-color: #00c8d4;*/
+
+    /* cyan-accent-4 */
+    background-color: #00b8d4;
 
     /* light-blue accent-4 */
     /*background-color: #0091ea;*/
@@ -185,7 +188,7 @@ input::placeholder, textarea::placeholder {
 }
 
 .text-theme {
-    color: #03a9f4 !important;
+    color: #00b8d4 !important;
 }
 
 .exo-800 {
@@ -230,16 +233,17 @@ input::placeholder, textarea::placeholder {
 
 .tabs >>> .tab a:hover {
     background-color: transparent;
-    color: #000;
+    /*color: #000;*/
 }
 
 .tabs >>> .tab a.active {
     background-color: transparent;
-    color: #000;
+    color: #00b8d4;
 }
 
 .tabs >>> .indicator {
-    background-color: #000;
+    /*background-color: #000;*/
+    background: linear-gradient(90deg, #fafafa 0%, #fafafa 40%, #00b8d4 40%, #00b8d4 60%, #fafafa 60%,#fafafa 100%);
 }
 
 .tabs >>> .tab a:focus {

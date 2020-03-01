@@ -27,17 +27,19 @@
 
     <div id="tab-swipe-2" class="col s12">
         <ul class="collection border-0 b-color-theme fs-1-1 m-y-0">
-            <li v-for="thread in threads_popular" v-bind:key="thread.id"
+            <li v-for="(thread, index) in threads_popular" v-bind:key="thread.id"
             class="collection-item p-x-0 bg-none b-color-theme l-h-2-5">
                 <router-link class="black-text"
                 v-bind:to="{ name:'view-thread', params: { thread_id: thread.thread_id } }">
-                <div class="container-sub">{{ thread.title }}</div>
+                <div class="container-sub">
+                    <span class="m-r-1 cyan-text text-accent-4 fw-b">{{ index + 1 }}.</span>{{ thread.title }}
+                </div>
                 </router-link>
             </li>
         </ul>
     </div>
 
-    <!-------- Popular -------->
+    <!-------- Questionnaire -------->
 
     <div id="tab-swipe-3" class="col s12">
     </div>
@@ -45,8 +47,8 @@
     <!-------- Add-Comment button -------->
 
     <div class="fixed-action-btn">
-        <router-link to="/new" class="btn-floating btn-large bg-theme z-depth-0">
-            <i class="fa fa-plus"></i>
+        <router-link to="/new" class="btn-floating btn-large bg-none z-depth-0">
+            <i class="fa fa-plus text-theme"></i>
         </router-link>
     </div>
 </div>

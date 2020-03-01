@@ -15,8 +15,8 @@
     <!-- <button @click="deleteEmployee" class="btn red">Delete</button> -->
     <div class="fixed-action-btn">
         <router-link v-bind:to="{name: 'new-comment', params: {thread_id: thread_id}}"
-        class="btn-floating btn-large bg-theme z-depth-0">
-            <i class="fas fa-comment"></i>
+        class="btn-floating bg-none lighten-5 z-depth-0">
+            <i class="fas fa-comment text-theme"></i>
         </router-link>
     </div>
 </div>
