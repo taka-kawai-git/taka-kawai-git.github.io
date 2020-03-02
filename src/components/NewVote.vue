@@ -3,17 +3,17 @@
     <div class="row m-t-1">
         <form @submit.prevent="saveVote" class="col s12 p-x-0 fs-1-1">
             
-            <!-- title -->
+            <!-------- Title -------->
             
             <input type="text" class="grey lighten-3 border-0 rounded-10"
             placeholder="投票タイトル" v-model="title" required>
 
-            <!-- description -->
+            <!-------- Description -------->
 
             <textarea class="grey lighten-3 border-0 rounded-10 h-10 p-1"
             placeholder="説明" v-model="desc" required></textarea>
 
-            <!-- candidates -->
+            <!-------- Candidates -------->
             
             <input type="text" class="grey lighten-3 border-0 rounded-10"
             placeholder="候補" v-for="(candidate, index) in candidates"
@@ -25,7 +25,7 @@
             
             <hr>
             
-            <!-- create button -->
+            <!-------- Create button -------->
             
             <button type="submit" class="btn waves-effect waves-light h-3 rounded-10 w-50 m-y-1
             bg-theme z-depth-0 right fs-1">作成する</button>

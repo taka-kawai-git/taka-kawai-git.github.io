@@ -1,6 +1,12 @@
 <template>
 <div id="view-thread" class="container-100">
+
+    <!-------- Title -------->
+
     <div class="fs-1-3 fw-b container-sub"><div class="m-y-2 blue-text center">{{ title }}</div></div>
+
+    <!-------- Comments -------->
+
     <ul class="collection border-x-0 b-color-theme m-t-0">
         <li class="collection-item bg-none b-color-theme p-x-0" v-for="(comment, index) in comments">
             <div class="container-sub">
