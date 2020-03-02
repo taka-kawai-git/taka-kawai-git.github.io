@@ -1,17 +1,17 @@
 <template>
 <div id="view-thread" class="container-100">
-    <div class="fs-1-3 fw-b container-sub"><div class="m-y-2">{{ title }}</div></div>
+    <div class="fs-1-3 fw-b container-sub"><div class="m-y-2 blue-text center">{{ title }}</div></div>
     <ul class="collection border-x-0 b-color-theme m-t-0">
         <li class="collection-item bg-none b-color-theme p-x-0" v-for="(comment, index) in comments">
             <div class="container-sub">
                 <div v-bind:id="index+1" class="fs-0-8 m-b-1 grey-text text-lighten-2">
-                    <span class="m-r-0-5">{{ index+1 }}.　名無しさん</span>
+                    <span class="m-r-0-5"><span class="blue-text">{{ index+1 }}.</span>　名無しさん</span>
                     <span class="m-r-0-5">通報</span>
                     <span class="m-r-1">{{ comment.posted_at.toDate().toDateString() }}</span>
                     <span class="" v-if="!likes.includes(index)"
                     @click="updateLike(index)"><i class="far fa-heart"></i></span>
                 </div>
-                <div class="fs-1-1 m-b-2">{{ comment.comment }}</div>
+                <div class="fs-1-1 m-b-2 m-l-1-3">{{ comment.comment }}</div>
             </div>
         </li>
     </ul>
