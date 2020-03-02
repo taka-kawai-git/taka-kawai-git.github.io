@@ -45,10 +45,10 @@
         <div class="fs-1-3 m-t-1 center">Comming Soon !!</div>
     </div>
 
-    <!-------- Add-Comment button -------->
+    <!-------- Add-Thread button -------->
 
     <div class="fixed-action-btn">
-        <router-link to="/new" class="btn-floating btn-large bg-none z-depth-0">
+        <router-link to="/new-thread" class="btn-floating btn-large bg-none z-depth-0">
             <i class="fa fa-plus text-theme"></i>
         </router-link>
     </div>

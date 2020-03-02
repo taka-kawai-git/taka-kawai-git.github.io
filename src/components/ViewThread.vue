@@ -16,6 +16,8 @@
         </li>
     </ul>
 
+    <!-------- Add-Comment button -------->
+
     <div class="fixed-action-btn">
         <router-link v-bind:to="{name: 'new-comment', params: {thread_id: thread_id}}"
         class="btn-floating bg-none lighten-5 z-depth-0">

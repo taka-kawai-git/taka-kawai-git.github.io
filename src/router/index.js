@@ -76,7 +76,7 @@ let router = new Router({
             }
         },
         {
-            path: '/new',
+            path: '/new-thread',
             name: 'new-thread',
             component: NewThread,
             meta: {
@@ -92,7 +92,7 @@ let router = new Router({
             }
         },
         {
-            path: '/:thread_id',
+            path: '/thread/:thread_id',
             name: 'view-thread',
             component: ViewThread,
             meta: {
@@ -100,7 +100,7 @@ let router = new Router({
             }
         },
         {
-            path: '/:thread_id/new',
+            path: '/thread/:thread_id/new',
             name: 'new-comment',
             component: NewComment,
             meta: {
