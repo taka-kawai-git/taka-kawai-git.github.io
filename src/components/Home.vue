@@ -6,7 +6,7 @@
     <ul id="tabs-swipe-ul" class="tabs bg-none">
         <li class="tab col s3"><a class="active" href="#tab-swipe-1">最新</a></li>
         <li class="tab col s3"><a href="#tab-swipe-2">話題</a></li>
-        <li class="tab col s3"><a href="#tab-swipe-3">投票</a></li>
+        <li class="tab col s3"><a href="#tab-swipe-3" id="tab-vote">投票</a></li>
     </ul>
 
     <!-------- Latest -------->
@@ -55,9 +55,14 @@
 
     <!-------- Add-Thread button -------->
 
-    <div class="fixed-action-btn">
+    <div v-if="!isVoteActive" class="fixed-action-btn">
         <router-link to="/new-thread" class="btn-floating btn-large bg-none z-depth-0">
             <i class="fa fa-plus text-theme"></i>
+        </router-link>
+    </div>
+    <div v-if="isVoteActive" class="fixed-action-btn">
+        <router-link to="/new-vote" class="btn-floating btn-large bg-none z-depth-0">
+            <i class="fas fa-chart-bar text-theme"></i>
         </router-link>
     </div>
 </div>
@@ -74,14 +79,34 @@ export default {
         return {
             threads_latest: [],
             threads_popular: [],
-            votes: []
+            votes: [],
+            isVoteActive: false,
         }
     },
     mounted() {
+
+        /* -------- Enable Materialize tab -------- */
+
         var el = document.querySelector('.tabs');
         var instance = M.Tabs.init(el, {
             swipeable: true,
         });
+
+        /* -------- Watch active tab  -------- */
+
+        const target = document.getElementById('tab-vote')
+        const observer = new MutationObserver(mutations => {
+            mutations.forEach((mutation) => {
+                console.log(mutation.target);
+                if(mutation.target.className == "active") this.isVoteActive = true;
+                else this.isVoteActive = false;
+            })
+        })
+
+        observer.observe(target, {
+            attributes: true,
+            attributeFilter: ['class']
+        })
     },
     created() {
 

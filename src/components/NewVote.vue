@@ -19,8 +19,9 @@
             placeholder="候補" v-for="(candidate, index) in candidates"
             v-model="candidate.desc" v-if="candidate.enabled">
             
-            <div v-if="!candidates[4].enabled" @click="addCandidate">
-                <i class="fa fa-plus text-theme"></i>
+            <div v-if="!candidates[4].enabled" @click="addCandidate"
+            class="blue lighten-5 border-0 rounded-10 h-3 valign-wrapper">
+                <i class="fa fa-plus text-theme center"></i>
             </div>
             
             <hr>
