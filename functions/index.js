@@ -44,7 +44,7 @@ function updateLikesInThread(threadDoc, res) {
     threadDoc.ref.collection('shards').get()
     .then(shardSnapshot => {
         shardSnapshot.forEach(doc => {
-            likes = sumup(doc, likes);
+            likes = sumupLikes(doc, likes);
         });
         threadDoc.ref.update({
             likes: likes
@@ -98,7 +98,7 @@ function updateVotesInVote(voteDoc, res) {
     voteDoc.ref.collection('shards').get()
     .then(shardSnapshot => {
         shardSnapshot.forEach(doc => {
-            votes = sumup(doc, votes);
+            votes = sumupVotes(doc, votes);
         });
         voteDoc.ref.update({
             votes: votes
@@ -113,9 +113,16 @@ function updateVotesInVote(voteDoc, res) {
 
 /* -------- Helpers -------- */
 
-function sumup(doc, counts) {
-    doc.data().counts.forEach(value => {
-        counts[value]++;
+function sumupLikes(doc, likes) {
+    doc.data().likes.forEach(value => {
+        likes[value]++;
     })
-    return counts;
+    return likes;
+}
+
+function sumupVotes(doc, votes) {
+    doc.data().votes.forEach(value => {
+        votes[value]++;
+    })
+    return votes;
 }

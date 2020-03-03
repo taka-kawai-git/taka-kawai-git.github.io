@@ -65,8 +65,12 @@ export default {
             var date = new Date();
 
             var candidates = [];
+            var votes = [];
             for(let i = 0; i < 5; i++) {
-                if(this.candidates[i].enabled) candidates.push(this.candidates[i].desc);
+                if(this.candidates[i].enabled){
+                    candidates.push(this.candidates[i].desc);
+                    votes.push(0);
+                }
             }
 
             /* -------- Create vote under domain/{domainId}/votes/ -------- */
@@ -76,6 +80,7 @@ export default {
                 title: this.title,
                 desc: this.desc,
                 candidates: candidates,
+                votes: votes,
                 num_shards: process.env.VUE_APP_NUM_SHARD,
                 created_at: date
             })
@@ -84,7 +89,7 @@ export default {
                 /* -------- Create Shards under domain/{domainId}/vote/{voteId}/ -------- */
 
                 for (let i = 0; i < process.env.VUE_APP_NUM_SHARD; i++) {
-                    docRef.collection('shards').doc(i.toString()).set({candidates: []})
+                    docRef.collection('shards').doc(i.toString()).set({votes: []})
                 }
                 // this.$router.push({ name: 'home', params: { view_id: this.view_id } })
                 this.$router.push({ name: 'home', params: { view_id: this.view_id } })
