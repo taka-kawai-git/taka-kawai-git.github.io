@@ -227,6 +227,11 @@ input::placeholder, textarea::placeholder {
     margin-left: 1.3rem;
 }
 
+.m-y-3 {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
 /*############################## Home.vue ##############################*/
 
 .fs-1 {

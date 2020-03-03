@@ -42,7 +42,15 @@
     <!-------- Questionnaire -------->
 
     <div id="tab-swipe-3" class="col s12">
-        <div class="fs-1-3 m-t-1 center">Comming Soon !!</div>
+        <ul class="collection border-x-0 b-color-theme fs-1-1 m-y-0">
+            <li v-for="vote in votes" v-bind:key="vote.id"
+            class="collection-item p-x-0 bg-none b-color-theme l-h-2-5">
+                <router-link class="black-text"
+                v-bind:to="{ name:'view-vote', params: { vote_id: vote.vote_id } }">
+                <div class="container-sub">{{ vote.title }}</div>
+                </router-link>
+            </li>
+        </ul>
     </div>
 
     <!-------- Add-Thread button -------->
@@ -65,7 +73,8 @@ export default {
     data() {
         return {
             threads_latest: [],
-            threads_popular: []
+            threads_popular: [],
+            votes: []
         }
     },
     mounted() {
@@ -75,7 +84,13 @@ export default {
         });
     },
     created() {
+
+        /* -------- Get user domain -------- */
+
         var domain = firebase.auth().currentUser.email.split('@')[1];
+
+        /* -------- Get Threads data -------- */
+
         db.collection('domains').doc(domain).collection('threads')
         .orderBy('created_at').get().then(querySnapshot => {
             querySnapshot.forEach(doc => {
@@ -89,6 +104,20 @@ export default {
                 this.threads_popular.push(data);
                 this.threads_popular.sort(
                     (a, b) => b.num_comments - a.num_comments);
+            })
+        })
+
+        /* -------- Get Votes data -------- */
+
+        db.collection('domains').doc(domain).collection('votes')
+        .orderBy('created_at').get().then(querySnapshot => {
+            querySnapshot.forEach(doc => {
+                const data = {
+                    'id' : doc.id,
+                    'title' : doc.data().title,
+                    'vote_id' : doc.data().vote_id,
+                }
+                this.votes.push(data);;
             })
         })
     }
