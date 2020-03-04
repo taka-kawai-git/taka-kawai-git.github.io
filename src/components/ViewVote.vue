@@ -3,11 +3,27 @@
 
     <!-------- Title -------->
 
-    <div class="fs-1-3 fw-b container-sub"><div class="m-y-3 blue-text center">{{ title }}</div></div>
+    <div class="border-b">
+    <div class="fs-1-3 fw-b container-sub m-y-3 blue-text center">{{ title }}</div>
+    </div>
+
+    <!-------- Votes nunmber and Time Limit -------->
+
+    <div class="border-b">
+    <div class="fs-1-2 fw-b container-sub m-y-1-125 center">
+        <span class="m-r-1">投票数</span><span class="blue-text">{{ this.deno }}</span>
+    </div>
+    </div>
+
+    <!-------- Description -------->
+
+    <div class="border-b">
+    <div class="fs-1 container-sub m-y-1-125">{{ desc }}</div>
+    </div>
 
     <!-------- Votes -------->
 
-    <ul class="collection border-x-0 b-color-theme m-t-0">
+    <ul class="collection border-0 m-t-0">
 
         <!-------- Not voted yet, show vote -------->
 
@@ -25,13 +41,13 @@
         
         <!-------- Already voted, show the result -------->
         
-        <div v-if="isFetched && isVoted">
-        <li class="collection-item bg-none b-color-theme p-x-0" v-for="(ratio, index) in ratios">
+        <div v-if="isFetched && isVoted" class="m-y-1-125">
+        <li class="collection-item bg-none border-0 p-x-0 p-b-0" v-for="(ratio, index) in ratios">
             <div class="container-sub">
-                <div class="p-absolute fw-b fs-1 h-3 valign-wrapper">
+                <div class="p-absolute fw-b fs-1 h-2-5 valign-wrapper">
                     <span class="m-l-1 m-r-0-5">{{ ratio }}% </span><span class="">{{ candidates[index] }}</span>
                 </div>
-                <div v-bind:id="index+1" class="blue h-3 rounded-10 border-0" v-bind:style="{width: ratio + '%'}">
+                <div v-bind:id="index+1" class="blue h-2-5 rounded-10 border-0" v-bind:style="{width: ratio + '%'}">
                 </div>
             </div>
         </li>
@@ -84,11 +100,11 @@ export default {
                 if(doc.exists) {
                     const votes = doc.get("votes." + self.doc_id);
                     if(typeof votes !== "undefined") {
-                        self.isFetched = true;
                         self.isVoted = true;
                     }
                 }
                 else console.log("user doesn't exists.");
+                self.isFetched = true;
             }
         )
     },
@@ -97,15 +113,18 @@ export default {
     },
     computed: {
         ratios: function() {
-            var deno = 0;
             var ratios = [];
+            this.votes.forEach(vote => {
+                ratios.push(vote/this.deno * 100);
+            })
+            return ratios;
+        },
+        deno: function() {
+            var deno = 0;
             this.votes.forEach(vote => {
                 deno += vote;
             })
-            this.votes.forEach(vote => {
-                ratios.push(vote/deno * 100);
-            })
-            return ratios;
+            return deno;
         }
     },
     methods: {
@@ -137,7 +156,7 @@ export default {
                         votes: firebase.firestore.FieldValue.arrayUnion(index)
                     });
                     self.addVote(doc.id, index);
-                    self.voted = true;
+                    self.isVoted = true;
                 })
             })
         },
