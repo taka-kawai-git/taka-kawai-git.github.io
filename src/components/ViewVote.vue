@@ -11,7 +11,7 @@
 
         <!-------- Not voted yet, show vote -------->
 
-        <div v-if="!voted">
+        <div v-if="isFetched && !isVoted">
         <li class="collection-item bg-none b-color-theme p-x-0" v-for="(candidate, index) in candidates">
             <div class="container-sub">
                 <div v-bind:id="index+1" class="fs-1-1 m-b-1">
@@ -25,6 +25,17 @@
         
         <!-------- Already voted, show the result -------->
         
+        <div v-if="isFetched && isVoted">
+        <li class="collection-item bg-none b-color-theme p-x-0" v-for="(ratio, index) in ratios">
+            <div class="container-sub">
+                <div class="p-absolute fw-b fs-1 h-3 valign-wrapper">
+                    <span class="m-l-1 m-r-0-5">{{ ratio }}% </span><span class="">{{ candidates[index] }}</span>
+                </div>
+                <div v-bind:id="index+1" class="blue h-3 rounded-10 border-0" v-bind:style="{width: ratio + '%'}">
+                </div>
+            </div>
+        </li>
+        </div>
         
     </ul>
 </div>
@@ -43,7 +54,9 @@ export default {
             title: null,
             desc: null,
             candidates: [],
-            voted: false
+            votes: [],
+            isVoted: false,
+            isFetched: false,
         }
     },
     beforeRouteEnter(to, from, next) {
@@ -57,10 +70,11 @@ export default {
                     vm.vote_id = doc.data().vote_id
                     vm.title = doc.data().title
                     vm.desc = doc.data().desc
+                    vm.votes = doc.data().votes
                     vm.candidates = doc.data().candidates
                 })
             })
-        })
+        });
     },
     created() {
         const self = this;
@@ -69,7 +83,10 @@ export default {
             doc => {
                 if(doc.exists) {
                     const votes = doc.get("votes." + self.doc_id);
-                    if(typeof votes !== "undefined") self.voted = true;
+                    if(typeof votes !== "undefined") {
+                        self.isFetched = true;
+                        self.isVoted = true;
+                    }
                 }
                 else console.log("user doesn't exists.");
             }
@@ -77,6 +94,19 @@ export default {
     },
     watch: {
         '$route' : 'fetchData'
+    },
+    computed: {
+        ratios: function() {
+            var deno = 0;
+            var ratios = [];
+            this.votes.forEach(vote => {
+                deno += vote;
+            })
+            this.votes.forEach(vote => {
+                ratios.push(vote/deno * 100);
+            })
+            return ratios;
+        }
     },
     methods: {
         fetchData() {

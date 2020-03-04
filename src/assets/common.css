@@ -321,3 +321,13 @@ input::-ms-input-placeholder {
 .fs-1-2 {
     font-size: 1.2rem;
 }
+
+/*############################## ViewVote.vue ##############################*/
+
+.p-absolute {
+    position: absolute;
+}
+
+.m-l-1 {
+    margin-left: 1rem;
+}
