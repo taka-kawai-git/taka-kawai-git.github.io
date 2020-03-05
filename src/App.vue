@@ -22,6 +22,7 @@ export default {
 
 #app {
     font-family: "Hiragino Kaku Gothic ProN", 'Noto Sans JP', sans-serif !important;
+    height: 100%;
 }
 
 </style>

@@ -1,5 +1,5 @@
 <template>
-<div id="home" class="container-100">
+<div id="home" class="container-100 h-100">
 
     <!-------- Tabs -------->
 
@@ -107,6 +107,8 @@ export default {
             attributes: true,
             attributeFilter: ['class']
         })
+
+        document.querySelector(".tabs-content").setAttribute('style', 'height:100%;');
     },
     created() {
 
