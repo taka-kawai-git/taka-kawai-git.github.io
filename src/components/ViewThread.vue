@@ -13,7 +13,8 @@
                 <div v-bind:id="index+1" class="fs-0-8 m-b-1 grey-text text-lighten-2">
                     <span class="m-r-0-5"><span class="blue-text fw-b">{{ index+1 }}.</span>　名無しさん</span>
                     <span class="m-r-0-5">通報</span>
-                    <span class="m-r-1">{{ comment.posted_at.toDate().toDateString() }}</span>
+                    <span class="m-r-1" v-if="comment.now_added">now</span>
+                    <span class="m-r-1" v-if="!comment.now_added">{{ comment.posted_at.toDate().toDateString() }}</span>
                     <span class="" v-if="!likes.includes(index)"
                     @click="updateLike(index)"><i class="far fa-heart"></i></span>
                 </div>
@@ -25,10 +26,22 @@
     <!-------- Add-Comment button -------->
 
     <div class="fixed-action-btn">
-        <router-link v-bind:to="{name: 'new-comment', params: {thread_id: thread_id}}"
-        class="btn-floating bg-none lighten-5 z-depth-0">
+        <a href="#new-comment" class="btn-floating bg-none lighten-5 z-depth-0 modal-trigger">
             <i class="fas fa-comment text-theme"></i>
-        </router-link>
+        </a>
+    </div>
+
+    <!-------- Modal input -------->
+
+    <div id="new-comment" class="modal bottom-sheet">
+        <div class="container row modal-content">
+            <form @submit.prevent="saveComment" class="col m-t-1 s12 p-x-0 fs-1-1">
+                <textarea class="grey lighten-3 border-0 rounded-10 h-10 p-1"
+                placeholder="コメント" v-model="comment" required></textarea>
+                <button type="submit" class="btn waves-effect waves-light h-3 rounded-10 w-50 m-y-1
+                bg-theme z-depth-0 right">コメントする</button>
+            </form>
+        </div>
     </div>
 </div>
 </template>
@@ -36,6 +49,7 @@
 <script>
 import db from './firebaseInit'
 import firebase from 'firebase';
+import M from 'materialize-css'
 
 export default {
     name : 'view-thread',
@@ -45,7 +59,11 @@ export default {
             thread_id: null,
             title: null,
             comments: null,
-            likes: []
+            likes: [],
+
+            /*-------- Modal input --------*/
+
+            comment: null
         }
     },
     beforeRouteEnter(to, from, next) {
@@ -75,6 +93,8 @@ export default {
                 else console.log("user doesn't exists.");
             }
         )
+        var elems = document.querySelectorAll('.modal');
+        M.Modal.init(elems, {});
     },
     watch: {
         '$route' : 'fetchData'
@@ -115,6 +135,29 @@ export default {
             db.collection('users').doc(firebase.auth().currentUser.email).update({
                 [`likes.${thread_doc_id}`]: firebase.firestore.FieldValue.arrayUnion(index)
             });
+        },
+        saveComment() {
+            var domain = firebase.auth().currentUser.email.split('@')[1];
+            db.collection('domains').doc(domain).collection('threads')
+            .where('thread_id', '==', this.$route.params.thread_id)
+            .get().then(querySnapshot => {
+                querySnapshot.forEach(doc => {
+                    db.collection('domains').doc(domain).collection("threads").doc(doc.id).update({
+                        comments: firebase.firestore.FieldValue.arrayUnion({
+                            comment: this.comment,
+                            posted_at: new Date(),
+                            user_id: firebase.auth().currentUser.uid
+                        })
+                    });
+                })
+            })
+            this.comments.push({
+                comment: this.comment,
+                user_id: firebase.auth().currentUser.uid,
+                now_added: true,
+            });
+            var elem = document.querySelector('.modal');
+            M.Modal.getInstance(elem).close();
         }
     }
 }
