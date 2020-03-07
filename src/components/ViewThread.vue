@@ -25,7 +25,20 @@
 
     <!-------- Add-Comment button -------->
 
-    <div class="fixed-action-btn">
+    <!-------- PC -------->
+
+    <div class="fixed-action-btn grey lighten-4 rounded-30 p-0-5 hide-on-small-only">
+        <a href="#new-comment" class="btn-floating bg-none lighten-5 z-depth-0 modal-trigger m-x-0-5">
+            <i class="fas fa-comment text-theme"></i>
+        </a>
+        <router-link to="/" class="btn-floating bg-none lighten-5 z-depth-0 modal-trigger m-x-0-5">
+            <i class="fas fa-home text-theme"></i>
+        </router-link>
+    </div>
+
+    <!-------- Mobile -------->
+
+    <div class="fixed-action-btn p-0-5 hide-on-med-and-up">
         <a href="#new-comment" class="btn-floating bg-none lighten-5 z-depth-0 modal-trigger">
             <i class="fas fa-comment text-theme"></i>
         </a>
@@ -33,7 +46,7 @@
 
     <!-------- Modal input -------->
 
-    <div id="new-comment" class="modal bottom-sheet">
+    <div id="new-comment" class="modal bottom-sheet rounded-10-top">
         <div class="container row modal-content">
             <form @submit.prevent="saveComment" class="col m-t-1 s12 p-x-0 fs-1-1">
                 <textarea class="grey lighten-3 border-0 rounded-10 h-10 p-1"

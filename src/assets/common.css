@@ -235,6 +235,15 @@ input[type=text], textarea {
     padding-top: 0px;
 }
 
+.p-0-5 {
+    padding: 0.5rem;
+}
+
+.m-x-0-5 {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
 .m-r-0-5 {
     margin-right: 0.5rem;
 }
@@ -246,6 +255,11 @@ input[type=text], textarea {
 .m-y-3 {
     margin-top: 3rem;
     margin-bottom: 3rem;
+}
+
+.rounded-10-top {
+    border-top-left-radius: 10px !important;
+    border-top-right-radius: 10px !important;
 }
 
 /*############################## Home.vue ##############################*/
@@ -263,6 +277,7 @@ input[type=text], textarea {
 
 .tabs >>> .tab a{
     color:#9e9e9e;
+    font-weight: bold;
 }
 
 .tabs >>> .tab a:hover {
