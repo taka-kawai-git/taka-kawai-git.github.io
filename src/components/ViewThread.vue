@@ -3,15 +3,41 @@
 
     <!-------- Title -------->
 
-    <div class="fs-1-3 fw-b container-sub"><div class="m-y-3 blue-text center">{{ title }}</div></div>
+    <div class="fs-1-3 fw-b p-y-3 grey lighten-4"><div class="blue-text center">{{ title }}</div></div>
 
-    <!-------- Comments -------->
+    <!-------- Old Comments -------->
 
-    <ul class="collection border-x-0 b-color-theme m-t-0">
-        <li class="collection-item bg-none b-color-theme p-x-0" v-for="(comment, index) in comments">
+    <ul class="collection border-x-0 b-color-theme m-y-0">
+        <li class="collection-item bg-none b-color-theme p-x-0" v-for="(comment, index) in oldComments">
             <div class="container-sub">
                 <div v-bind:id="index+1" class="fs-0-8 m-b-1 grey-text text-lighten-2">
                     <span class="m-r-0-5"><span class="blue-text fw-b">{{ index+1 }}.</span>　名無しさん</span>
+                    <span class="m-r-0-5">通報</span>
+                    <span class="m-r-1" v-if="comment.now_added">now</span>
+                    <span class="m-r-1" v-if="!comment.now_added">{{ comment.posted_at.toDate().toDateString() }}</span>
+                    <span class="" v-if="!likes.includes(index)"
+                    @click="updateLike(index)"><i class="far fa-heart"></i></span>
+                </div>
+                <div class="fs-1-1 m-b-2 m-l-1-3">{{ comment.comment }}</div>
+            </div>
+        </li>
+    </ul>
+
+    <!-------- Already read until here -------->
+
+    <div v-if="checked_at !== comments.length" class="center grey lighten-4 p-y-3">
+        <div class="center b-color-theme">
+            <i class="far fa-check-circle fs-3 blue-text m-r-1"></i><span class="fs-1">以下が新規コメントです。</span>
+        </div>
+    </div>
+    
+    <!-------- New Comments -------->
+    
+    <ul class="collection border-x-0 b-color-theme m-y-0">
+        <li class="collection-item bg-none b-color-theme p-x-0" v-for="(comment, index) in newComments">
+            <div class="container-sub">
+                <div v-bind:id="index+1+checked_at" class="fs-0-8 m-b-1 grey-text text-lighten-2">
+                    <span class="m-r-0-5"><span class="blue-text fw-b">{{ index+1+checked_at }}.</span>　名無しさん</span>
                     <span class="m-r-0-5">通報</span>
                     <span class="m-r-1" v-if="comment.now_added">now</span>
                     <span class="m-r-1" v-if="!comment.now_added">{{ comment.posted_at.toDate().toDateString() }}</span>
@@ -68,11 +94,18 @@ export default {
     name : 'view-thread',
     data() {
         return {
+
+            /*-------- Thread data --------*/
+
             doc_id: null,
             thread_id: null,
             title: null,
-            comments: null,
+            comments: [],
+
+            /*-------- User data --------*/
+
             likes: [],
+            checked_at: null,
 
             /*-------- Modal input --------*/
 
@@ -95,15 +128,20 @@ export default {
         })
     },
     mounted() {
-        const self = this;
         db.collection('users').doc(firebase.auth().currentUser.email)
         .get().then(
             doc => {
                 if(doc.exists) {
-                    const likes = doc.get("likes." + self.doc_id);
-                    if(typeof likes !== "undefined") self.likes = likes;
+                    const likes = doc.get("likes." + this.doc_id);
+                    const checked_at = doc.get("checked_at." + this.doc_id);
+                    if(typeof likes !== "undefined") this.likes = likes;
+                    this.checked_at = checked_at;
                 }
-                else console.log("user doesn't exists.");
+                else {
+                    this.checked_at = this.comments.length;
+                    console.log("user doesn't exists.");
+                }
+                this.updateCheckedAt(this.doc_id, this.comments.length);
             }
         )
         var elems = document.querySelectorAll('.modal');
@@ -125,6 +163,11 @@ export default {
                     this.comments = doc.data().comments
                 })
             })
+        },
+        updateCheckedAt(thread_doc_id, index) {
+            db.collection('users').doc(firebase.auth().currentUser.email).update({
+                [`checked_at.${thread_doc_id}`]: index
+            });
         },
         updateLike(index) {
             const self = this;
@@ -171,6 +214,14 @@ export default {
             });
             var elem = document.querySelector('.modal');
             M.Modal.getInstance(elem).close();
+        }
+    },
+    computed: {
+        oldComments: function() {
+            return this.comments.slice(0, this.checked_at);
+        },
+        newComments: function() {
+            return this.comments.slice(this.checked_at, this.comments.length);
         }
     }
 }

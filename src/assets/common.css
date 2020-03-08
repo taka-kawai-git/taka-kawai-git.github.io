@@ -239,6 +239,16 @@ input[type=text], textarea {
     padding: 0.5rem;
 }
 
+.p-y-1 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.p-y-3 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
 .m-x-0-5 {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
@@ -260,6 +270,10 @@ input[type=text], textarea {
 .rounded-10-top {
     border-top-left-radius: 10px !important;
     border-top-right-radius: 10px !important;
+}
+
+.fs-3 {
+    font-size: 3rem;
 }
 
 /*############################## Home.vue ##############################*/
