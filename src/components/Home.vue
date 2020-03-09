@@ -17,7 +17,9 @@
             class="collection-item p-x-0 bg-none b-color-theme l-h-2-5">
                 <router-link class="black-text"
                 v-bind:to="{ name:'view-thread', params: { thread_id: thread.thread_id } }">
-                <div class="container-sub">{{ thread.title }}</div>
+                <div class="container-sub">{{ thread.title }}
+                <span v-if="thread.num_new_comments != 0" class="badge fs-0-8 rounded-30 blue white-text">
+                    {{thread.num_new_comments}}</span></div>
                 </router-link>
             </li>
         </ul>
@@ -81,6 +83,7 @@ export default {
             threads_popular: [],
             votes: [],
             isVoteActive: false,
+            checked_at: {}
         }
     },
     mounted() {
@@ -125,7 +128,8 @@ export default {
                     'id' : doc.id,
                     'title' : doc.data().title,
                     'thread_id' : doc.data().thread_id,
-                    'num_comments': doc.data().comments.length
+                    'num_comments': doc.data().comments.length,
+                    'num_new_comments': doc.data().comments.length
                 }
                 this.threads_latest.push(data);
                 this.threads_popular.push(data);
@@ -140,10 +144,11 @@ export default {
         .get().then(
             doc => {
                 if(doc.exists) {
-                    this.checked_at = doc.get("checked_at." + this.doc_id);
+                    this.checked_at = doc.data().checked_at;
+                    this.updateNumOfUnread();
                 }
                 else {
-                    this.checked_at = this.comments.length;
+                    this.checked_at = null;
                     console.log("user doesn't exists.");
                 }
             }
@@ -162,6 +167,24 @@ export default {
                 this.votes.push(data);;
             })
         })
+    },
+    methods: {
+        updateNumOfUnread: function() {
+            if(this.checked_at === null) {
+                return;
+            }
+            this.threads_latest.forEach((thread, index, array) => {
+                if(thread.id in this.checked_at) {
+                    array.splice(index, 1, {
+                        'id' : thread.id,
+                        'title' : thread.title,
+                        'thread_id' : thread.thread_id,
+                        'num_comments': thread.num_comments,
+                        'num_new_comments': thread.num_comments - this.checked_at[thread.id]
+                    })
+                }
+            })
+        }
     }
 }
 </script>

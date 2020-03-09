@@ -7,11 +7,11 @@
 
     <!-------- Old Comments -------->
 
-    <ul class="collection border-x-0 b-color-theme m-y-0">
+    <ul v-if="checked_at !== 0" class="collection border-x-0 b-color-theme m-y-0">
         <li class="collection-item bg-none b-color-theme p-x-0" v-for="(comment, index) in oldComments">
             <div class="container-sub">
                 <div v-bind:id="index+1" class="fs-0-8 m-b-1 grey-text text-lighten-2">
-                    <span class="m-r-0-5"><span class="fs-1-1 blue-text fw-b">{{ index+1 }}.</span>　名無しさん</span>
+                    <span class="m-r-0-5"><span class="blue-text fw-b">{{ index+1 }}.</span>　名無しさん</span>
                     <span class="m-r-0-5">通報</span>
                     <span class="m-r-1" v-if="comment.now_added">now</span>
                     <span class="m-r-1" v-if="!comment.now_added">{{ comment.posted_at.toDate().toDateString() }}</span>
@@ -25,7 +25,7 @@
 
     <!-------- Already read until here -------->
 
-    <div v-if="checked_at !== null && checked_at !== comments.length" class="center grey lighten-4 p-y-3">
+    <div v-if="checked_at !== 0 && checked_at !== comments.length" class="center grey lighten-4 p-y-3">
         <div class="center b-color-theme">
             <i class="far fa-check-circle fs-3 blue-text m-r-1"></i><span class="fs-1">以下が新規コメントです。</span>
         </div>
@@ -105,7 +105,7 @@ export default {
             /*-------- User data --------*/
 
             likes: [],
-            checked_at: null,
+            checked_at: 0,
 
             /*-------- Modal input --------*/
 
@@ -138,7 +138,7 @@ export default {
                     const likes = doc.get("likes." + this.doc_id);
                     const checked_at = doc.get("checked_at." + this.doc_id);
                     if(typeof likes !== "undefined") this.likes = likes;
-                    this.checked_at = checked_at;
+                    if(typeof checked_at !== "undefined") this.checked_at = checked_at;
                 }
                 else {
                     this.checked_at = this.comments.length;
@@ -224,6 +224,7 @@ export default {
     },
     computed: {
         oldComments: function() {
+            
             return this.comments.slice(0, this.checked_at);
         },
         newComments: function() {

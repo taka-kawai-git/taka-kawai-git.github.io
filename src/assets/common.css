@@ -287,6 +287,14 @@ input[type=text], textarea {
     margin-top: 0px;
 }
 
+.p-0-4 {
+    padding: 0.4rem !important;
+}
+
+.fs-0-8 {
+    font-size: 0.8rem;
+}
+
 /******************** Materialize Tabs Override ********************/
 
 .tabs >>> .tab a{
@@ -317,6 +325,19 @@ input[type=text], textarea {
 .tabs >>> .tab a:focus.active {
     background-color: transparent;
     outline: transparent;
+}
+
+span.badge {
+    min-width: 3rem;
+    padding: 0 6px;
+    margin-left: 14px;
+    text-align: center;
+    line-height: 22px;
+    height: 22px;
+    color: #757575;
+    float: none;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 /*############################## VerifyEmail.vue ##############################*/
