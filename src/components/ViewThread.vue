@@ -11,14 +11,14 @@
         <li class="collection-item bg-none b-color-theme p-x-0" v-for="(comment, index) in oldComments">
             <div class="container-sub">
                 <div v-bind:id="index+1" class="fs-0-8 m-b-1 grey-text text-lighten-2">
-                    <span class="m-r-0-5"><span class="blue-text fw-b">{{ index+1 }}.</span>　名無しさん</span>
+                    <span class="m-r-0-5"><span class="fs-1-1 blue-text fw-b">{{ index+1 }}.</span>　名無しさん</span>
                     <span class="m-r-0-5">通報</span>
                     <span class="m-r-1" v-if="comment.now_added">now</span>
                     <span class="m-r-1" v-if="!comment.now_added">{{ comment.posted_at.toDate().toDateString() }}</span>
                     <span class="" v-if="!likes.includes(index)"
                     @click="updateLike(index)"><i class="far fa-heart"></i></span>
                 </div>
-                <div class="fs-1-1 m-b-2 m-l-1-3">{{ comment.comment }}</div>
+                <div class="fs-1-1 m-b-2 m-l-1-5">{{ comment.comment }}</div>
             </div>
         </li>
     </ul>
@@ -44,7 +44,7 @@
                     <span class="" v-if="!likes.includes(index)"
                     @click="updateLike(index)"><i class="far fa-heart"></i></span>
                 </div>
-                <div class="fs-1-1 m-b-2 m-l-1-3">{{ comment.comment }}</div>
+                <div class="fs-1-1 m-b-2 m-l-1-5">{{ comment.comment }}</div>
             </div>
         </li>
     </ul>
@@ -128,6 +128,9 @@ export default {
         })
     },
     mounted() {
+
+        /*-------- Get user data --------*/
+
         db.collection('users').doc(firebase.auth().currentUser.email)
         .get().then(
             doc => {
@@ -144,6 +147,9 @@ export default {
                 this.updateCheckedAt(this.doc_id, this.comments.length);
             }
         )
+
+        /*-------- Initialize Modal input --------*/
+
         var elems = document.querySelectorAll('.modal');
         M.Modal.init(elems, {});
     },

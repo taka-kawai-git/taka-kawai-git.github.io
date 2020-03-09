@@ -134,6 +134,21 @@ export default {
             })
         })
 
+        /*-------- Get user data --------*/
+
+        db.collection('users').doc(firebase.auth().currentUser.email)
+        .get().then(
+            doc => {
+                if(doc.exists) {
+                    this.checked_at = doc.get("checked_at." + this.doc_id);
+                }
+                else {
+                    this.checked_at = this.comments.length;
+                    console.log("user doesn't exists.");
+                }
+            }
+        )
+
         /* -------- Get Votes data -------- */
 
         db.collection('domains').doc(domain).collection('votes')
