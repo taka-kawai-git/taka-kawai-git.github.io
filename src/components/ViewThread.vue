@@ -27,7 +27,8 @@
 
     <div  id="checked_at" v-if="checked_at !== 0 && checked_at !== comments.length" class="center grey lighten-4 p-y-3">
         <div class="center b-color-theme">
-            <i class="far fa-check-circle fs-3 blue-text m-r-1"></i><span class="fs-1">以下が新規コメントです。</span>
+            <i class="far fa-check-circle fs-3 blue-text m-r-1 v-middle"></i>
+            <span class="fs-1 fw-b v-middle">新規コメントは以下です。</span>
         </div>
     </div>
     
