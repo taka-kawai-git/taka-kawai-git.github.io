@@ -16,7 +16,11 @@
             <li v-for="thread in threads_latest" v-bind:key="thread.id"
             class="collection-item p-x-0 bg-none b-color-theme l-h-2-5">
                 <router-link class="black-text"
-                v-bind:to="{ name:'view-thread', params: { thread_id: thread.thread_id } }">
+                v-bind:to="{
+                    name:'view-thread',
+                    params: { thread_id: thread.thread_id },
+                    hash: '#checked_at'
+                }">
                 <div class="container-sub">{{ thread.title }}
                 <span v-if="thread.num_new_comments != 0" class="badge fs-0-8 rounded-30 blue white-text">
                     {{thread.num_new_comments}}</span></div>
