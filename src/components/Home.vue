@@ -22,7 +22,7 @@
                     hash: '#checked_at'
                 }">
                 <div class="container-sub">{{ thread.title }}
-                <span v-if="thread.num_new_comments != 0" class="badge fs-0-8 rounded-30 blue white-text">
+                <span v-if="thread.num_new_comments != 0" class="p-badge fs-0-8 rounded-30 blue white-text">
                     {{thread.num_new_comments}}</span></div>
                 </router-link>
             </li>
