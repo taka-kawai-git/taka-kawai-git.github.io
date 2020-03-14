@@ -2,6 +2,9 @@
 <div id="menu" class="container">
     <ul class="collection border-0 m-y-1-125 fs-1-2">
         <li class="collection-item p-x-0 bg-none w-100 b-color-theme l-h-2-5">
+            <img class="p-r-1 v-align-m" src="../assets/image/at-sign.svg"/>{{domain}}
+        </li>
+        <li class="collection-item p-x-0 bg-none w-100 b-color-theme l-h-2-5">
             <router-link to="/" class="black-font"><div class="black-text">
                 <img class="p-r-1 v-align-m" src="../assets/image/home.svg"/>TOP</div>
             </router-link>
@@ -25,6 +28,11 @@ export default {
     name : 'menu',
     data() {
         return {
+        }
+    },
+    computed: {
+        domain: function() {
+            return firebase.auth().currentUser.email.split('@')[1];
         }
     },
     methods: {
