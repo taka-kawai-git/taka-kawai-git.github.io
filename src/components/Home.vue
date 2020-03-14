@@ -21,9 +21,10 @@
                     params: { thread_id: thread.thread_id },
                     hash: '#checked_at'
                 }">
-                <div class="container-sub">{{ thread.title }}
-                <span v-if="thread.num_new_comments != 0" class="fs-0-8 p-badge rounded-30 blue white-text">
-                    {{thread.num_new_comments}}</span></div>
+                <div class="container-sub">
+                <span class="v-middle">{{ thread.title }}</span>
+                <span v-if="thread.num_unreads != 0" class="fs-0-8 p-badge rounded-30 blue white-text v-middle">
+                    {{thread.num_unreads}}</span></div>
                 </router-link>
             </li>
         </ul>
@@ -133,7 +134,7 @@ export default {
                     'title' : doc.data().title,
                     'thread_id' : doc.data().thread_id,
                     'num_comments': doc.data().comments.length,
-                    'num_new_comments': doc.data().comments.length
+                    'num_unreads': doc.data().comments.length
                 }
                 this.threads_latest.push(data);
                 this.threads_popular.push(data);
@@ -184,7 +185,7 @@ export default {
                         'title' : thread.title,
                         'thread_id' : thread.thread_id,
                         'num_comments': thread.num_comments,
-                        'num_new_comments': thread.num_comments - this.checked_at[thread.id]
+                        'num_unreads': thread.num_comments - this.checked_at[thread.id]
                     })
                 }
             })
