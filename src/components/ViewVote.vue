@@ -3,8 +3,12 @@
 
     <!-------- Title -------->
 
+    <div class="fs-1-3 fw-b p-y-3 grey lighten-4"><div class="blue-text center">{{ title }}</div></div>
+
+    <!-------- Description -------->
+
     <div class="border-b">
-    <div class="fs-1-3 fw-b container-sub m-y-3 blue-text center">{{ title }}</div>
+    <div class="fs-1 container-sub m-y-1-125">{{ desc }}</div>
     </div>
 
     <!-------- Votes nunmber and Time Limit -------->
@@ -13,12 +17,6 @@
     <div class="fs-1-2 fw-b container-sub m-y-1-125 center">
         <span class="m-r-1">投票数</span><span class="blue-text">{{ this.deno }}</span>
     </div>
-    </div>
-
-    <!-------- Description -------->
-
-    <div class="border-b">
-    <div class="fs-1 container-sub m-y-1-125">{{ desc }}</div>
     </div>
 
     <!-------- Votes -------->
@@ -115,7 +113,7 @@ export default {
         ratios: function() {
             var ratios = [];
             this.votes.forEach(vote => {
-                ratios.push(vote/this.deno * 100);
+                ratios.push(Math.round((vote/this.deno * 100) * 10)/10);
             })
             return ratios;
         },
