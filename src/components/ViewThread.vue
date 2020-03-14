@@ -90,6 +90,7 @@
 import db from './firebaseInit'
 import firebase from 'firebase';
 import M from 'materialize-css'
+import VueScrollTo from 'vue-scrollto'
 
 export default {
     name : 'view-thread',
@@ -158,8 +159,7 @@ export default {
         this.$nextTick(() => {
             var element = document.querySelector('#checked_at');
             if(element == null) return;
-            var top = element.offsetTop;
-            window.scrollTo(0, top);
+            VueScrollTo.scrollTo(element, 300, {});
         });
     },
     watch: {

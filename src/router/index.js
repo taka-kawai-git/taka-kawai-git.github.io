@@ -14,9 +14,12 @@ import VerifyEmail from '@/components/VerifyEmail';
 import Register from '@/components/Register';
 import firebase from 'firebase';
 import UUID from 'vue-uuid';
+import VueScrollTo from 'vue-scrollto';
+
  
 Vue.use(Router);
 Vue.use(UUID);
+Vue.use(VueScrollTo);
 
 let router = new Router({
     routes: [
