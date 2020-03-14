@@ -39,7 +39,9 @@
                 <router-link class="black-text"
                 v-bind:to="{ name:'view-thread', params: { thread_id: thread.thread_id } }">
                 <div class="container-sub">
-                    <span class="m-r-1 text-theme fw-b">{{ index + 1 }}.</span>{{ thread.title }}
+                    <span v-if="index < 3" class="m-r-1 text-theme fw-b">{{ index + 1 }}.</span>
+                    <span v-else class="m-r-1 text-theme">{{ index + 1 }}.</span>
+                    {{ thread.title }}
                 </div>
                 </router-link>
             </li>
