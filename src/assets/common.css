@@ -126,6 +126,14 @@
     height: 100% !important;
 }
 
+.t-fixed {
+    table-layout: fixed;
+}
+
+.w-10p {
+    width: 35px;
+}
+
 /******************** Override Materialize ********************/
 
 div, span, button, input, optgroup, select, textarea {
@@ -293,6 +301,10 @@ input[type=text], textarea {
 
 .v-middle {
     vertical-align: middle;
+}
+
+.p-0 {
+    padding: 0px;
 }
 
 /******************** Materialize Tabs Override ********************/
