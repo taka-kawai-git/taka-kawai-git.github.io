@@ -130,10 +130,6 @@
     table-layout: fixed;
 }
 
-.w-10p {
-    width: 35px;
-}
-
 /******************** Override Materialize ********************/
 
 div, span, button, input, optgroup, select, textarea {
@@ -266,10 +262,6 @@ input[type=text], textarea {
     margin-right: 0.5rem;
 }
 
-.m-l-1-5 {
-    margin-left: 1.5rem;
-}
-
 .m-y-3 {
     margin-top: 3rem;
     margin-bottom: 3rem;
@@ -282,6 +274,14 @@ input[type=text], textarea {
 
 .fs-3 {
     font-size: 3rem;
+}
+
+.v-align-t {
+    vertical-align: top !important;
+}
+
+.w-30p {
+    width: 30px;
 }
 
 /*############################## Home.vue ##############################*/
@@ -305,6 +305,10 @@ input[type=text], textarea {
 
 .p-0 {
     padding: 0px;
+}
+
+.w-35p {
+    width: 35px;
 }
 
 /******************** Materialize Tabs Override ********************/

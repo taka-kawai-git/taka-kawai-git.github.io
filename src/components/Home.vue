@@ -41,7 +41,7 @@
                 <div class="container-sub">
                     <table class="t-fixed">
                         <tr class="border-0">
-                            <td class="p-0 w-10p center">
+                            <td class="p-0 w-35p center">
                                 <span v-if="index < 3" class="m-r-1 text-theme fw-b">{{ index + 1 }}.</span>
                                 <span v-else class="m-r-1 text-theme">{{ index + 1 }}.</span>
                             </td>

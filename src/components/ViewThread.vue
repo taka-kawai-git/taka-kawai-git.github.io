@@ -10,15 +10,26 @@
     <ul v-if="checked_at !== 0" class="collection border-x-0 b-color-theme m-y-0">
         <li class="collection-item bg-none b-color-theme p-x-0" v-for="(comment, index) in oldComments">
             <div class="container-sub">
-                <div v-bind:id="index+1" class="fs-0-8 m-b-1 grey-text text-lighten-2">
-                    <span class="m-r-0-5"><span class="blue-text fw-b">{{ index+1 }}.</span>　名無しさん</span>
-                    <span class="m-r-0-5">通報</span>
-                    <span class="m-r-1" v-if="comment.now_added">now</span>
-                    <span class="m-r-1" v-if="!comment.now_added">{{ comment.posted_at.toDate().toDateString() }}</span>
-                    <span class="" v-if="!likes.includes(index)"
-                    @click="updateLike(index)"><i class="far fa-heart"></i></span>
-                </div>
-                <div class="fs-1-1 m-b-2 m-l-1-5">{{ comment.comment }}</div>
+                <table class="t-fixed">
+                    <tr class="border-0">
+                        <td class="p-0 w-30p center v-align-t p-r-1">
+                            <div v-bind:id="index+1" class="fs-0-8 blue-text fw-b">
+                                <span>{{ index+1 }}.</span>
+                            </div>
+                        </td>
+                        <td class="p-0 v-align-t">
+                            <div class="fs-0-8 m-b-1 grey-text text-lighten-2">
+                                <span class="m-r-0-5">名無しさん</span>
+                                <span class="m-r-0-5">通報</span>
+                                <span class="m-r-1" v-if="comment.now_added">now</span>
+                                <span class="m-r-1" v-if="!comment.now_added">{{ comment.posted_at.toDate().toDateString() }}</span>
+                                <span class="" v-if="!likes.includes(index)"
+                                @click="updateLike(index)"><i class="far fa-heart"></i></span>
+                            </div>
+                            <div class="fs-1-1 m-b-2">{{ comment.comment }}</div>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </li>
     </ul>
@@ -37,15 +48,26 @@
     <ul class="collection border-x-0 b-color-theme m-y-0">
         <li class="collection-item bg-none b-color-theme p-x-0" v-for="(comment, index) in newComments">
             <div class="container-sub">
-                <div v-bind:id="index+1+checked_at" class="fs-0-8 m-b-1 grey-text text-lighten-2">
-                    <span class="m-r-0-5"><span class="blue-text fw-b">{{ index+1+checked_at }}.</span>　名無しさん</span>
-                    <span class="m-r-0-5">通報</span>
-                    <span class="m-r-1" v-if="comment.now_added">now</span>
-                    <span class="m-r-1" v-if="!comment.now_added">{{ comment.posted_at.toDate().toDateString() }}</span>
-                    <span class="" v-if="!likes.includes(index)"
-                    @click="updateLike(index)"><i class="far fa-heart"></i></span>
-                </div>
-                <div class="fs-1-1 m-b-2 m-l-1-5">{{ comment.comment }}</div>
+                <table class="t-fixed">
+                    <tr class="border-0">
+                        <td class="p-0 w-30p center v-align-t p-r-1">
+                            <div v-bind:id="index+1" class="fs-0-8 blue-text fw-b">
+                                <span>{{ index+1+checked_at }}.</span>
+                            </div>
+                        </td>
+                        <td class="p-0 v-align-t">
+                            <div class="fs-0-8 m-b-1 grey-text text-lighten-2">
+                                <span class="m-r-0-5">名無しさん</span>
+                                <span class="m-r-0-5">通報</span>
+                                <span class="m-r-1" v-if="comment.now_added">now</span>
+                                <span class="m-r-1" v-if="!comment.now_added">{{ comment.posted_at.toDate().toDateString() }}</span>
+                                <span class="" v-if="!likes.includes(index)"
+                                @click="updateLike(index)"><i class="far fa-heart"></i></span>
+                            </div>
+                            <div class="fs-1-1 m-b-2">{{ comment.comment }}</div>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </li>
     </ul>
