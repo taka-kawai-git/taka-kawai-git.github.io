@@ -2,8 +2,8 @@
     <div class="">
         <div id="verify-email" class="container">
             <div class="fs-1-5 fw-b m-y-1-125">メールを送信しました！</div>
-            <div class="m-b-1">Mavorのご利用にはメールアドレスのアクティベートが必要です。メールに記載されたURLをクリックしてアクティベートを行ってください。</div>
-            <button v-on:click="reload" class="btn btn-large rounded-10 w-100 bg-theme-grad">画面再読み込み</button>
+            <div class="m-b-1">Companyのご利用にはメールアドレスのアクティベートが必要です。<br>メールに記載されたURLをクリックしてアクティベートを行ってください。</div>
+            <button v-on:click="reload" class="btn waves-effect waves-light rounded-10 w-100 bg-theme z-depth-0 m-y-1 h-3">画面再読み込み</button>
             </div>
         </div>
     </div>
