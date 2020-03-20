@@ -34,7 +34,7 @@
 }
 
 .m-t-1 {
-    margin-top: 1rem;
+    margin-top: 1rem !important;
 }
 
 .m-y-2 {
@@ -280,8 +280,8 @@ input[type=text], textarea {
     vertical-align: top !important;
 }
 
-.w-30p {
-    width: 30px;
+.w-2-5 {
+    width: 2.5rem;
 }
 
 /*############################## Home.vue ##############################*/

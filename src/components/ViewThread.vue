@@ -9,17 +9,18 @@
 
     <ul v-if="checked_at !== 0" class="collection border-x-0 b-color-theme m-y-0">
         <li class="collection-item bg-none b-color-theme p-x-0" v-for="(comment, index) in oldComments">
-            <div class="container-sub">
+            <div class="container-sub m-t-1">
                 <table class="t-fixed">
                     <tr class="border-0">
-                        <td class="p-0 w-30p center v-align-t p-r-1">
+                        <td class="p-0 w-2-5 center v-align-t p-r-1">
                             <div v-bind:id="index+1" class="fs-0-8 blue-text fw-b">
-                                <span>{{ index+1 }}.</span>
+                                <i class="fas fa-user-circle fs-1-5 blue-grey-text text-lighten-4"
+                                ></i>
                             </div>
                         </td>
                         <td class="p-0 v-align-t">
                             <div class="fs-0-8 m-b-1 grey-text text-lighten-2">
-                                <span class="m-r-0-5">名無しさん</span>
+                                <span class="m-r-0-5">{{ index+1 }}. 名無しさん</span>
                                 <span class="m-r-0-5">通報</span>
                                 <span class="m-r-1" v-if="comment.now_added">now</span>
                                 <span class="m-r-1" v-if="!comment.now_added">{{ comment.posted_at.toDate().toDateString() }}</span>
@@ -47,17 +48,17 @@
     
     <ul class="collection border-x-0 b-color-theme m-y-0">
         <li class="collection-item bg-none b-color-theme p-x-0" v-for="(comment, index) in newComments">
-            <div class="container-sub">
+            <div class="container-sub m-t-1">
                 <table class="t-fixed">
                     <tr class="border-0">
-                        <td class="p-0 w-30p center v-align-t p-r-1">
+                        <td class="p-0 w-2-5 center v-align-t p-r-1">
                             <div v-bind:id="index+1" class="fs-0-8 blue-text fw-b">
-                                <span>{{ index+1+checked_at }}.</span>
+                                <i class="fas fa-user-circle fs-1-5 blue-grey-text text-lighten-4"></i>
                             </div>
                         </td>
                         <td class="p-0 v-align-t">
                             <div class="fs-0-8 m-b-1 grey-text text-lighten-2">
-                                <span class="m-r-0-5">名無しさん</span>
+                                <span class="m-r-0-5">{{ index+1 }}. 名無しさん</span>
                                 <span class="m-r-0-5">通報</span>
                                 <span class="m-r-1" v-if="comment.now_added">now</span>
                                 <span class="m-r-1" v-if="!comment.now_added">{{ comment.posted_at.toDate().toDateString() }}</span>
@@ -260,7 +261,16 @@ export default {
         },
         newComments: function() {
             return this.comments.slice(this.checked_at, this.comments.length);
-        }
+        },
+        // colorObject: function(random_num) {
+        //     var color = ['red', 'pink', 'purple', 'deep-purple', 'indigo', 'blue', 'light-blue', 'cyan',
+        //     'teal', 'green', 'light-green', 'orange', 'deep-orange', 'brown',
+        //     'blue-grey'];
+        //     // grey, yellow, lime, amber
+        //     return function (random_num) {
+        //         return color[Math.floor(random_num * color.length)] + '-text';
+        //     };
+        // }
     }
 }
 </script>
