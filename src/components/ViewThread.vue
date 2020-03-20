@@ -27,7 +27,7 @@
                                 <span class="" v-if="!likes.includes(index)"
                                 @click="updateLike(index)"><i class="far fa-heart"></i></span>
                             </div>
-                            <div class="fs-1-1 m-b-2 ws-pw">{{ comment.comment }}</div>
+                            <div v-html="autoLink(comment.comment)" class="fs-1-1 m-b-2 ws-pw"></div>
                         </td>
                     </tr>
                 </table>
@@ -65,7 +65,7 @@
                                 <span class="" v-if="!likes.includes(index)"
                                 @click="updateLike(index)"><i class="far fa-heart"></i></span>
                             </div>
-                            <div class="fs-1-1 m-b-2 ws-pw">{{ comment.comment }}</div>
+                            <div v-html="autoLink(comment.comment)" class="fs-1-1 m-b-2 ws-pw"></div>
                         </td>
                     </tr>
                 </table>
@@ -252,6 +252,13 @@ export default {
             });
             var elem = document.querySelector('.modal');
             M.Modal.getInstance(elem).close();
+        },
+        autoLink(str) {
+            var regexp_url = /((h?)(ttps?:\/\/[a-zA-Z0-9.\-_@:/~?%&;=+#',()*!]+))/g; // ']))/;
+            var regexp_makeLink = function(all, url, h, href) {
+                return '<a href="h' + href + '">' + url + '</a>';
+            }
+            return str.replace(regexp_url, regexp_makeLink);
         }
     },
     computed: {
