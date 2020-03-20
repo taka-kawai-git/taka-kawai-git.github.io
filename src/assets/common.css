@@ -284,6 +284,10 @@ input[type=text], textarea {
     width: 2.5rem;
 }
 
+.ws-pw {
+    white-space: pre-wrap;
+}
+
 /*############################## Home.vue ##############################*/
 
 .fs-1 {

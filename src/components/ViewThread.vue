@@ -27,7 +27,7 @@
                                 <span class="" v-if="!likes.includes(index)"
                                 @click="updateLike(index)"><i class="far fa-heart"></i></span>
                             </div>
-                            <div class="fs-1-1 m-b-2">{{ comment.comment }}</div>
+                            <div class="fs-1-1 m-b-2 ws-pw">{{ comment.comment }}</div>
                         </td>
                     </tr>
                 </table>
@@ -65,7 +65,7 @@
                                 <span class="" v-if="!likes.includes(index)"
                                 @click="updateLike(index)"><i class="far fa-heart"></i></span>
                             </div>
-                            <div class="fs-1-1 m-b-2">{{ comment.comment }}</div>
+                            <div class="fs-1-1 m-b-2 ws-pw">{{ comment.comment }}</div>
                         </td>
                     </tr>
                 </table>
