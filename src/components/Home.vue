@@ -74,13 +74,13 @@
         <div class="row">
             <div class="col s4 m3 l2 center p-y-2">
                 <router-link to="/score">
-                    <i class="fas fa-medal fs-2-5 blue-text text-lighten-2 m-b-1"></i>
+                    <i class="fas fa-medal fs-2-5 blue-text m-b-1"></i>
                     <div class="fs-0-8 blue-text text-lighten-2">スコア</div>
                 </router-link>
             </div>
             <div class="col s4 m3 l2 center p-y-2">
                 <router-link to="/view-score">
-                    <i class="fas fa-lightbulb fs-2-5 blue-text text-lighten-2 m-b-1"></i>
+                    <i class="fas fa-lightbulb fs-2-5 blue-text m-b-1"></i>
                     <div class="fs-0-8 blue-text text-lighten-2">新規事業</div>
                 </router-link>
             </div>
