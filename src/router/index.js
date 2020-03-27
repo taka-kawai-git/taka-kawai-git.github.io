@@ -8,6 +8,7 @@ import ViewThread from '@/components/ViewThread';
 import NewComment from '@/components/NewComment';
 import NewVote from '@/components/NewVote';
 import ViewVote from '@/components/ViewVote';
+import ViewScore from '@/components/ViewScore';
 import Login from '@/components/Login';
 import EmailVerified from '@/components/EmailVerified';
 import VerifyEmail from '@/components/VerifyEmail';
@@ -115,6 +116,14 @@ let router = new Router({
             path: '/vote/:vote_id',
             name: 'view-vote',
             component: ViewVote,
+            meta: {
+                requiresEmailVerified: true
+            }
+        },
+        {
+            path: '/score',
+            name: 'view-score',
+            component: ViewScore,
             meta: {
                 requiresEmailVerified: true
             }

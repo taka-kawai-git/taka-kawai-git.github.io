@@ -52,13 +52,13 @@
                 <table class="t-fixed">
                     <tr class="border-0">
                         <td class="p-0 w-2-5 center v-align-t p-r-1">
-                            <div v-bind:id="index+1" class="fs-0-8 blue-text fw-b">
+                            <div v-bind:id="index+checked_at+1" class="fs-0-8 blue-text fw-b">
                                 <i class="fas fa-user-circle fs-1-5 blue-grey-text text-lighten-4"></i>
                             </div>
                         </td>
                         <td class="p-0 v-align-t">
                             <div class="fs-0-8 m-b-1 grey-text text-lighten-2">
-                                <span class="m-r-0-5">{{ index+1 }}. 名無しさん</span>
+                                <span class="m-r-0-5">{{ index+checked_at+1 }}. 名無しさん</span>
                                 <span class="m-r-0-5">通報</span>
                                 <span class="m-r-1" v-if="comment.now_added">now</span>
                                 <span class="m-r-1" v-if="!comment.now_added">{{ comment.posted_at.toDate().toDateString() }}</span>
