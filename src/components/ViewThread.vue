@@ -3,7 +3,7 @@
 
     <!-------- Title -------->
 
-    <div class="fs-1-3 fw-b p-y-3 grey lighten-4"><div class="center"><span>{{ title }}</span></div></div>
+    <div class="fs-1-3 fw-b p-y-3 grey lighten-4"><div class="center"><span class="border-title">{{ title }}</span></div></div>
 
     <!-------- Old Comments -------->
 
@@ -14,7 +14,7 @@
                     <tr class="border-0">
                         <td class="p-0 w-2-5 center v-align-t p-r-1">
                             <div v-bind:id="index+1" class="fs-0-8 blue-text fw-b">
-                                <i class="fas fa-user-circle fs-1-5 blue-grey-text text-lighten-4"
+                                <i class="fas fa-user-circle fs-1-7 blue-grey-text text-lighten-4"
                                 ></i>
                             </div>
                         </td>

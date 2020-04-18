@@ -239,6 +239,10 @@ input[type=text], textarea {
     font-size: 1.3rem;
 }
 
+.fs-1-7 {
+    font-size: 1.7rem;
+}
+
 .m-t-1-125 {
     margin-top: 1.125rem;
 }
@@ -298,6 +302,10 @@ input[type=text], textarea {
 
 .ws-pw {
     white-space: pre-wrap;
+}
+
+.border-title {
+    border-bottom: solid 3px #2196f3;
 }
 
 /*############################## Home.vue ##############################*/
