@@ -1,27 +1,30 @@
 <template>
-<div id="view-score" class="container-100">
+<div id="view-score" class="container-100 m-b-2">
     
     <!-------- Title -------->
 
-    <div class="fs-1-3 fw-b p-y-3 grey lighten-4"><div class="blue-text center">スコア</div></div>
+    <!--<div class="fs-1-3 fw-b p-y-3 grey lighten-4"><div class="blue-text center">スコア</div></div>-->
 
     <!-------- Radar Chart -------->
 
-    <div class="container p-y-2 border-b">
+    <div class="container p-y-2 border-b center">
+        <div class="m-b-2"><span class="fw-b fs-1-3 m-b-2 border-title">全体平均</span></div>
         <radar :chartdata="chartdata" :options="options"></radar>
     </div>
 
     <!-------- MyScore -------->
 
-    <div class="container p-y-2">
+    <div class="container p-y-2 center">
+        <div class="m-b-2"><span class="fw-b fs-1-3 border-title">マイスコア</span></div>
+        <div class="m-b-2"><span class="fs-1 grey-text">改善の必要があると思われる項目には低いスコアを付けて下さい。全体平均として可視化されます。</span></div>
         <form @submit.prevent="saveScore">
             <table>
                 <tr v-for="score in myscores" class="border-0">
-                    <td class="p-y-0-5"><span class="chip blue-text fw-b blue lighten-5">{{ score.name }}</span></td>
+                    <td class="p-y-0-5"><span class="fw-b">{{ score.name }}</span></td>
                     <td class="p-y-0-5"><span class="range-field">
                         <input v-model="score.value" type="range" min="0" max="100" />
                     </span></td>
-                    <td class="p-y-0-5"><span class="blue-text fw-b m-l-1">{{ score.value }}</span></td>
+                    <td class="p-y-0-5"><span class="fw-b m-l-1">{{ score.value }}</span></td>
                 </tr>
             </table>
             <button type="submit" class="btn waves-effect waves-light h-3 rounded-10 w-50 m-y-1
