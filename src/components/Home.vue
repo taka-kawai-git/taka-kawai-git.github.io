@@ -7,13 +7,22 @@
         <li class="tab col s3"><a class="active" href="#tab-swipe-1">最新</a></li>
         <li class="tab col s3"><a href="#tab-swipe-2">話題</a></li>
         <li class="tab col s3"><a href="#tab-swipe-3" id="tab-vote">投票</a></li>
-        <li class="tab col s3"><a href="#tab-swipe-4" id="tab-vote">その他</a></li>
+        <li class="tab col s3"><a href="#tab-swipe-4">機能</a></li>
     </ul>
 
     <!-------- Latest -------->
 
     <div id="tab-swipe-1" class="col s12">
         <ul class="collection border-x-0 b-color-theme fs-1-1 m-y-0">
+            <li class="collection-item p-x-0 bg-none b-color-theme l-h-2-5">
+                <router-link class="black-text"
+                v-bind:to="{
+                    name:'view-thread',
+                    params: { thread_id: 'tweet' }
+                }">
+                <div class="container-sub"><span>つぶやき</span><span class="new badge white float-n grey-text border-badge">固定</span></div>
+                </router-link>
+            </li>
             <li v-for="thread in threads_latest" v-bind:key="thread.id"
             class="collection-item p-x-0 bg-none b-color-theme l-h-2-5">
                 <router-link class="black-text"
@@ -23,8 +32,8 @@
                     hash: '#checked_at'
                 }">
                 <div class="container-sub">
-                <span class="v-middle">{{ thread.title }}</span>
-                <span v-if="thread.num_unreads != 0" class="fs-0-8 p-badge rounded-30 blue white-text v-middle">
+                <span class="">{{ thread.title }}</span>
+                <span v-if="thread.num_unreads != 0" class="new badge blue float-n rounded-30">
                     {{thread.num_unreads}}</span></div>
                 </router-link>
             </li>
@@ -157,6 +166,7 @@ export default {
         db.collection('domains').doc(domain).collection('threads')
         .orderBy('created_at').get().then(querySnapshot => {
             querySnapshot.forEach(doc => {
+                if(doc.data().thread_id == 'tweet') return true;
                 const data = {
                     'id' : doc.id,
                     'title' : doc.data().title,

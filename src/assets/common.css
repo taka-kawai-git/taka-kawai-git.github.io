@@ -5,7 +5,7 @@
 }
 
 .rounded-30 {
-    border-radius: 30px;
+    border-radius: 30px !important;
 }
 
 .fs-0-8 {
@@ -130,7 +130,7 @@
     table-layout: fixed;
 }
 
-/******************** Override Materialize ********************/
+/******************** Override Materialize inputs ********************/
 
 div, span, button, input, optgroup, select, textarea {
     font-family: "Hiragino Kaku Gothic ProN", 'Noto Sans JP', sans-serif !important;
@@ -148,7 +148,7 @@ input[type=text], textarea {
   font-size: 16px !important;
 }
 
-/******************** .container ********************/
+/******************** Override Materialize container ********************/
 
 .container {
     margin: 0 auto;
@@ -323,10 +323,6 @@ input[type=text], textarea {
     margin-top: 0px;
 }
 
-.p-badge {
-    padding: 1px 5px 1px 5px;
-}
-
 .v-middle {
     vertical-align: middle;
 }
@@ -342,6 +338,22 @@ input[type=text], textarea {
 
 .w-35p {
     width: 35px;
+}
+
+.border-badge {
+    border: solid 0.5px #9e9e9e;
+}
+
+
+
+/******************** Override Materialize new badge ********************/
+
+.float-n {
+    float: none !important;
+}
+
+span.badge.new:after {
+    content: none;
 }
 
 /******************** Materialize Tabs Override ********************/
