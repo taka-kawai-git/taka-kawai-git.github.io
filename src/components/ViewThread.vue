@@ -3,7 +3,7 @@
 
     <!-------- Title -------->
 
-    <div class="fs-1-3 fw-b p-y-3 grey lighten-4"><div class="blue-text center">{{ title }}</div></div>
+    <div class="fs-1-3 fw-b p-y-3 grey lighten-4"><div class="center"><span>{{ title }}</span></div></div>
 
     <!-------- Old Comments -------->
 

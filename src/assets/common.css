@@ -182,9 +182,21 @@ input[type=text], textarea {
   }
 }
 
-@media only screen and (min-width: 993px) {
+/*@media only screen and (min-width: 993px) {*/
+/*  .container-100 {*/
+/*    width: 70%;*/
+/*  }*/
+/*}*/
+
+@media only screen and (min-width: 801px) {
   .container-100 {
-    width: 70%;
+    width: 65%;
+  }
+}
+
+@media only screen and (min-width: 1001px) {
+  .container-100 {
+    width: 45%;
   }
 }
 
