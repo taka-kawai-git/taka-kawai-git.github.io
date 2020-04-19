@@ -207,11 +207,11 @@ input[type=text], textarea {
     margin: 0 auto;
 }
 
-@media only screen and (min-width: 601px) {
-  .container-sub {
-    width: 100%;
-  }
-}
+/*@media only screen and (min-width: 601px) {*/
+/*  .container-sub {*/
+/*    width: 100%;*/
+/*  }*/
+/*}*/
 
 
 /*############################## Navbar.vue ##############################*/
@@ -348,8 +348,6 @@ input[type=text], textarea {
     padding-top: 0.5px;
     padding-bottom: 0.5px;
 }
-
-
 
 /******************** Override Materialize new badge ********************/
 

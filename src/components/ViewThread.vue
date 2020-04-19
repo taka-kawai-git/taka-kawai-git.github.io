@@ -20,12 +20,13 @@
                         </td>
                         <td class="p-0 v-align-t">
                             <div class="fs-0-8 m-b-1 grey-text text-lighten-2">
-                                <span class="m-r-0-5">{{ index+1 }}. 名無しさん</span>
+                                <span class="m-r-0-5">匿名</span>
                                 <span class="m-r-0-5">通報</span>
                                 <span class="m-r-1" v-if="comment.now_added">now</span>
                                 <span class="m-r-1" v-if="!comment.now_added">{{ comment.posted_at.toDate().toDateString() }}</span>
                                 <span class="" v-if="!likes.includes(index)"
                                 @click="updateLike(index)"><i class="far fa-heart"></i></span>
+                                <span class="" v-else><i class="far fa-heart red-text"></i></span>
                             </div>
                             <div v-html="autoLink(comment.comment)" class="fs-1-1 m-b-2 ws-pw"></div>
                         </td>
@@ -64,6 +65,7 @@
                                 <span class="m-r-1" v-if="!comment.now_added">{{ comment.posted_at.toDate().toDateString() }}</span>
                                 <span class="" v-if="!likes.includes(index)"
                                 @click="updateLike(index)"><i class="far fa-heart"></i></span>
+                                <span class="" v-else><i class="far fa-heart red-text"></i></span>
                             </div>
                             <div v-html="autoLink(comment.comment)" class="fs-1-1 m-b-2 ws-pw"></div>
                         </td>
