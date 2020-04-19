@@ -7,7 +7,7 @@
 
     <!-------- Old Comments -------->
 
-    <ul v-if="checked_at !== 0" class="collection border-x-0 b-color-theme m-y-0">
+    <ul v-if="checked_at !== 0" class="collection border-x-0 border-b-0 b-color-theme m-y-0">
         <li class="collection-item bg-none b-color-theme p-x-0" v-for="(comment, index) in oldComments">
             <div class="container-sub m-t-1">
                 <table class="t-fixed">
@@ -47,7 +47,7 @@
     
     <!-------- New Comments -------->
     
-    <ul class="collection border-x-0 b-color-theme m-y-0">
+    <ul class="collection border-x-0 border-b-0 b-color-theme m-y-0">
         <li class="collection-item bg-none b-color-theme p-x-0" v-for="(comment, index) in newComments">
             <div class="container-sub m-t-1">
                 <table class="t-fixed">

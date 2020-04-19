@@ -304,8 +304,8 @@ input[type=text], textarea {
     white-space: pre-wrap;
 }
 
-.border-title {
-    border-bottom: solid 3px #2196f3;
+.border-b-0 {
+    border-bottom-width: 0px !important;
 }
 
 /*############################## Home.vue ##############################*/
@@ -347,6 +347,10 @@ input[type=text], textarea {
 .p-y-0-5-p {
     padding-top: 0.5px;
     padding-bottom: 0.5px;
+}
+
+.h-home-wa {
+    height: 130% !important;
 }
 
 /******************** Override Materialize new badge ********************/
@@ -476,4 +480,8 @@ input[type="range"]::-webkit-slider-thumb {
 .p-y-0-5 {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+}
+
+.border-title {
+    border-bottom: solid 3px #2196f3;
 }

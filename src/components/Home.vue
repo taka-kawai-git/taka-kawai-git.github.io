@@ -1,5 +1,5 @@
 <template>
-<div id="home" class="container-100 h-100">
+<div id="home" class="container-100 h-home-wa">
 
     <!-------- Tabs -------->
 
@@ -164,7 +164,7 @@ export default {
         /* -------- Get Threads data -------- */
 
         db.collection('domains').doc(domain).collection('threads')
-        .orderBy('created_at').get().then(querySnapshot => {
+        .orderBy('created_at', 'desc').get().then(querySnapshot => {
             querySnapshot.forEach(doc => {
                 if(doc.data().thread_id == 'tweet') return true;
                 const data = {
