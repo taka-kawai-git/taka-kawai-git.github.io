@@ -13,7 +13,7 @@
                 <table class="t-fixed">
                     <tr class="border-0">
                         <td class="p-0 w-2-5 center v-align-t p-r-1">
-                            <div v-bind:id="index+1" class="fs-0-8 blue-text fw-b">
+                            <div v-bind:id="index+1" class="">
                                 <i class="fas fa-user-circle fs-1-7 blue-grey-text text-lighten-4"
                                 ></i>
                             </div>
@@ -52,8 +52,8 @@
                 <table class="t-fixed">
                     <tr class="border-0">
                         <td class="p-0 w-2-5 center v-align-t p-r-1">
-                            <div v-bind:id="index+checked_at+1" class="fs-0-8 blue-text fw-b">
-                                <i class="fas fa-user-circle fs-1-5 blue-grey-text text-lighten-4"></i>
+                            <div v-bind:id="index+checked_at+1" class="">
+                                <i class="fas fa-user-circle fs-1-7 blue-grey-text text-lighten-4"></i>
                             </div>
                         </td>
                         <td class="p-0 v-align-t">

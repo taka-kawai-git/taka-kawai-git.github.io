@@ -33,7 +33,7 @@
                 }">
                 <div class="container-sub">
                 <span class="">{{ thread.title }}</span>
-                <span v-if="thread.num_unreads != 0" class="new badge blue float-n rounded-30">
+                <span v-if="thread.num_unreads != 0" class="new badge blue float-n rounded-30 p-y-0-5-p">
                     {{thread.num_unreads}}</span></div>
                 </router-link>
             </li>

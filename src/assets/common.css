@@ -344,6 +344,11 @@ input[type=text], textarea {
     border: solid 0.5px #9e9e9e;
 }
 
+.p-y-0-5-p {
+    padding-top: 0.5px;
+    padding-bottom: 0.5px;
+}
+
 
 
 /******************** Override Materialize new badge ********************/
