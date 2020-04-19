@@ -3,11 +3,11 @@
 
     <!-------- Title -------->
 
-    <div class="fs-1-3 fw-b p-y-3 grey lighten-4"><div class="center"><span class="blue-text"># </span>{{ title }}</div></div>
+    <div class="fs-1-3 fw-b p-y-3"><div class="center"><span class="blue-text"># </span>{{ title }}</div></div>
 
     <!-------- Old Comments -------->
 
-    <ul v-if="checked_at !== 0" class="collection border-0 b-color-theme m-y-0">
+    <ul v-if="checked_at !== 0" class="collection border-x-0 b-color-theme m-y-0">
         <li class="collection-item bg-none b-color-theme p-x-0" v-for="(comment, index) in oldComments">
             <div class="container-sub m-t-1">
                 <table class="t-fixed">
