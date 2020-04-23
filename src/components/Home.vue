@@ -7,7 +7,7 @@
         <li class="tab col s3"><a class="active" href="#tab-swipe-1">最新</a></li>
         <li class="tab col s3"><a href="#tab-swipe-2">話題</a></li>
         <li class="tab col s3"><a href="#tab-swipe-3" id="tab-vote">投票</a></li>
-        <li class="tab col s3"><a href="#tab-swipe-4">機能</a></li>
+        <li v-if="isEnvDev" class="tab col s3"><a href="#tab-swipe-4">機能</a></li>
     </ul>
 
     <!-------- Latest -------->
@@ -79,7 +79,7 @@
 
     <!-------- Others -------->
 
-    <div id="tab-swipe-4" class="col s12">
+    <div v-if="isEnvDev" id="tab-swipe-4" class="col s12">
         <div class="row">
             <div class="col s4 m3 l2 center p-y-2">
                 <router-link to="/score">
@@ -227,6 +227,9 @@ export default {
                     })
                 }
             })
+        },
+        isEnvDev : function() {
+            return process.env.NODE_ENV == 'development';
         }
     }
 }

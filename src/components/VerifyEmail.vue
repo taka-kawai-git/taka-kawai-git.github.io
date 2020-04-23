@@ -24,7 +24,7 @@ export default {
             var returnUrl = null;
             if(process.env.NODE_ENV == "development") {
                 returnUrl = 'https://b09a6b5ec4304472868077c701c72171.vfs.cloud9.ap-northeast-1.amazonaws.com/email-verified'
-            }else if(process.env.NODE_ENV == "production") {
+            } else if(process.env.NODE_ENV == "production") {
                 returnUrl = 'https://taka-kawai-git.github.io/index.html#/'
             }
             
