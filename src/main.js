@@ -7,6 +7,7 @@ import firebase from 'firebase';
 import './components/firebaseInit';
 
 Vue.config.productionTip = false
+Vue.config.devtools = true;
 
 let app;
 firebase.auth().onAuthStateChanged(user => {

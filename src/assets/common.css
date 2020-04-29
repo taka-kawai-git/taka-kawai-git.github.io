@@ -308,6 +308,13 @@ input[type=text], textarea {
     border-bottom-width: 0px !important;
 }
 
+div >>> .comment-ref {
+    border: solid 0.5px #c5c4c4;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
 /*############################## Home.vue ##############################*/
 
 .fs-1 {

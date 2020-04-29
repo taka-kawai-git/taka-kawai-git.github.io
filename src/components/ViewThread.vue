@@ -8,14 +8,16 @@
     <!-------- Old Comments -------->
 
     <ul v-if="checked_at !== 0" class="collection border-x-0 border-b-0 b-color-theme m-y-0">
-        <li class="collection-item bg-none b-color-theme p-x-0" v-for="(comment, index) in oldComments">
-            <div class="container-sub m-t-1">
+        <li v-bind:id="'comment_' + index" class="collection-item bg-none b-color-theme p-x-0"
+        v-for="(comment, index) in oldComments">
+            <div class="container-sub m-t-1 m-b-2">
                 <table class="t-fixed">
                     <tr class="border-0">
                         <td class="p-0 w-2-5 center v-align-t p-r-1">
-                            <div v-bind:id="index+1" class="">
-                                <i class="fas fa-user-circle fs-1-7 blue-grey-text text-lighten-4"
-                                ></i>
+                            <div class="">
+                                <a href="#new-comment" v-on:click="addReferenceToTextarea(index)" class="modal-trigger">
+                                    <i class="fas fa-user-circle fs-1-7 blue-grey-text text-lighten-4"></i>
+                                </a>
                             </div>
                         </td>
                         <td class="p-0 v-align-t">
@@ -28,7 +30,10 @@
                                 @click="updateLike(index)"><i class="far fa-heart"></i></span>
                                 <span class="" v-else><i class="far fa-heart red-text"></i></span>
                             </div>
-                            <div v-html="autoLink(comment.comment)" class="fs-1-1 m-b-2 ws-pw"></div>
+                            <div v-html="getCommentWithoutReference(comment.comment)" class="fs-1-1 ws-pw black-text"></div>
+                            <div v-html="getReferencePreview(comment.comment)" v-if="haveReference(comment.comment)"
+                                class='comment-ref' @click="moveToComment('#comment_' + getReferenceIndex(comment.comment))">
+                            </div>
                         </td>
                     </tr>
                 </table>
@@ -53,13 +58,15 @@
                 <table class="t-fixed">
                     <tr class="border-0">
                         <td class="p-0 w-2-5 center v-align-t p-r-1">
-                            <div v-bind:id="index+checked_at+1" class="">
-                                <i class="fas fa-user-circle fs-1-7 blue-grey-text text-lighten-4"></i>
+                            <div v-bind:id="'comment' + index + checked_at" class="">
+                                <a href="#new-comment" v-on:click="addReferenceToTextarea(index+checked_at)" class="modal-trigger">
+                                    <i class="fas fa-user-circle fs-1-7 blue-grey-text text-lighten-4"></i>
+                                </a>
                             </div>
                         </td>
                         <td class="p-0 v-align-t">
                             <div class="fs-0-8 m-b-1 grey-text text-lighten-2">
-                                <span class="m-r-0-5">{{ index+checked_at+1 }}. 名無しさん</span>
+                                <span class="m-r-0-5">匿名</span>
                                 <span class="m-r-0-5">通報</span>
                                 <span class="m-r-1" v-if="comment.now_added">now</span>
                                 <span class="m-r-1" v-if="!comment.now_added">{{ comment.posted_at.toDate().toDateString() }}</span>
@@ -67,7 +74,10 @@
                                 @click="updateLike(index)"><i class="far fa-heart"></i></span>
                                 <span class="" v-else><i class="far fa-heart red-text"></i></span>
                             </div>
-                            <div v-html="autoLink(comment.comment)" class="fs-1-1 m-b-2 ws-pw"></div>
+                            <div v-html="getCommentWithoutReference(comment.comment)" class="fs-1-1 ws-pw black-text"></div>
+                            <div v-html="getReferencePreview(comment.comment)" v-if="haveReference(comment.comment)"
+                                class='comment-ref' @click="moveToComment('#comment_' + getReferenceIndex(comment.comment))">
+                            </div>
                         </td>
                     </tr>
                 </table>
@@ -101,7 +111,7 @@
     <div id="new-comment" class="modal bottom-sheet rounded-10-top">
         <div class="container-100 row modal-content">
             <form @submit.prevent="saveComment" class="col p-1 s12 p-x-0 fs-1-1">
-                <textarea class="grey lighten-3 border-0 rounded-10 h-10 p-1"
+                <textarea id="modalInput" class="grey lighten-3 border-0 rounded-10 h-10 p-1"
                 placeholder="コメント" v-model="comment" required></textarea>
                 <button type="submit" class="btn waves-effect waves-light h-3 rounded-10 w-50 m-y-1
                 bg-theme z-depth-0 right">コメントする</button>
@@ -181,11 +191,7 @@ export default {
         M.Modal.init(elems, {});
     },
     updated () {
-        this.$nextTick(() => {
-            var element = document.querySelector('#checked_at');
-            if(element == null) return;
-            VueScrollTo.scrollTo(element, 300, {});
-        });
+        this.moveToComment('#checked_at');
     },
     watch: {
         '$route' : 'fetchData'
@@ -255,12 +261,52 @@ export default {
             var elem = document.querySelector('.modal');
             M.Modal.getInstance(elem).close();
         },
+        moveToComment(selecter) {
+            this.$nextTick(() => {
+                var element = document.querySelector(selecter);
+                if(element == null) return;
+                VueScrollTo.scrollTo(element, 300, {});
+            });  
+        },
         autoLink(str) {
             var regexp_url = /((h?)(ttps?:\/\/[a-zA-Z0-9.\-_@:/~?%&;=+#',()*!]+))/g; // ']))/;
             var regexp_makeLink = function(all, url, h, href) {
                 return '<a href="h' + href + '">' + url + '</a>';
             }
             return str.replace(regexp_url, regexp_makeLink);
+        },
+        getCommentWithoutReference(str) {
+            return this.autoLink(str.replace(/>>([1-9][0-9]*|0)/, '').trim());
+        },
+        getReferencePreview(str) {
+            if(!str.match(/>>([1-9][0-9]*|0)/)) {
+                return '';
+            }
+            var index = this.getReferenceIndex(str);
+            // console.log(index);
+
+            // console.log(str.replace(/>>([1-9][0-9]*|0)/, this.comments[index].comment));
+
+            return this.autoLink(this.comments[index].comment.replace(/>>([1-9][0-9]*|0)/, '').trim());
+        },
+        haveReference(str) {
+            if(str.match(/>>([1-9][0-9]*|0)/g) == null) {
+                return false;
+            } else {
+                return true;
+            }
+        },
+        getReferenceIndex(str) {
+            var ref = str.match(/>>([1-9][0-9]*|0)/g);
+            if(ref != null) {
+                return parseInt(ref[0].replace(/[^0-9]/g, ''), 10);
+            }
+            return null;
+        },
+        addReferenceToTextarea(index) {
+            var modalInput = document.getElementById("modalInput");
+            modalInput.value = ">>" + index;
+            return true;
         }
     },
     computed: {
