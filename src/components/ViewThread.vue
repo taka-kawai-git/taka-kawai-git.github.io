@@ -54,7 +54,7 @@
     
     <ul class="collection border-x-0 border-b-0 b-color-theme m-y-0">
         <li class="collection-item bg-none b-color-theme p-x-0" v-for="(comment, index) in newComments">
-            <div class="container-sub m-t-1">
+            <div class="container-sub m-t-1 m-b-2">
                 <table class="t-fixed">
                     <tr class="border-0">
                         <td class="p-0 w-2-5 center v-align-t p-r-1">
@@ -191,6 +191,7 @@ export default {
         M.Modal.init(elems, {});
     },
     updated () {
+        console.log("updated");
         this.moveToComment('#checked_at');
     },
     watch: {

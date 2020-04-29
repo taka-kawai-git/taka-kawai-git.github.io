@@ -13,7 +13,7 @@
     <!-------- Latest -------->
 
     <div id="tab-swipe-1" class="col s12">
-        <ul class="collection border-x-0 b-color-theme fs-1-1 m-y-0">
+        <ul id="tab-swipe-1-ul" class="collection border-x-0 b-color-theme fs-1-1 m-y-0">
             <li class="collection-item p-x-0 bg-none b-color-theme l-h-2-5">
                 <router-link class="black-text"
                 v-bind:to="{
@@ -134,7 +134,7 @@ export default {
 
         var el = document.querySelector('.tabs');
         var instance = M.Tabs.init(el, {
-            swipeable: false,
+            swipeable: true,
         });
 
         /* -------- Watch active tab  -------- */
@@ -209,6 +209,12 @@ export default {
                 this.votes.push(data);;
             })
         })
+    },
+    updated() {
+        this.$nextTick(() => {
+            document.querySelector(".tabs-content").setAttribute('style', 'height:'
+            + document.getElementById("tab-swipe-1-ul").offsetHeight + 'px');
+        });
     },
     methods: {
         updateNumOfUnread: function() {
