@@ -1,5 +1,5 @@
 <template>
-<div id="home" class="container-100 h-home-wa">
+<div id="home" class="container-100 h-100">
 
     <!-------- Tabs -------->
 
@@ -7,7 +7,7 @@
         <li class="tab col s3"><a class="active" href="#tab-swipe-1">最新</a></li>
         <li class="tab col s3"><a href="#tab-swipe-2">話題</a></li>
         <li class="tab col s3"><a href="#tab-swipe-3" id="tab-vote">投票</a></li>
-        <li v-if="isEnvDev" class="tab col s3"><a href="#tab-swipe-4">機能</a></li>
+        <li v-if="isEnvDev()" class="tab col s3"><a href="#tab-swipe-4">機能</a></li>
     </ul>
 
     <!-------- Latest -------->
@@ -79,7 +79,7 @@
 
     <!-------- Others -------->
 
-    <div v-if="isEnvDev" id="tab-swipe-4" class="col s12">
+    <div v-if="isEnvDev()" id="tab-swipe-4" class="col s12">
         <div class="row">
             <div class="col s4 m3 l2 center p-y-2">
                 <router-link to="/score">
@@ -134,7 +134,7 @@ export default {
 
         var el = document.querySelector('.tabs');
         var instance = M.Tabs.init(el, {
-            swipeable: true,
+            swipeable: false,
         });
 
         /* -------- Watch active tab  -------- */
@@ -142,7 +142,6 @@ export default {
         const target = document.getElementById('tab-vote')
         const observer = new MutationObserver(mutations => {
             mutations.forEach((mutation) => {
-                console.log(mutation.target);
                 if(mutation.target.className == "active") this.isVoteActive = true;
                 else this.isVoteActive = false;
             })

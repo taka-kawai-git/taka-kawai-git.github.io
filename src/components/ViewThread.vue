@@ -266,7 +266,7 @@ export default {
                 var element = document.querySelector(selecter);
                 if(element == null) return;
                 VueScrollTo.scrollTo(element, 300, {});
-            });  
+            });
         },
         autoLink(str) {
             var regexp_url = /((h?)(ttps?:\/\/[a-zA-Z0-9.\-_@:/~?%&;=+#',()*!]+))/g; // ']))/;
@@ -283,10 +283,6 @@ export default {
                 return '';
             }
             var index = this.getReferenceIndex(str);
-            // console.log(index);
-
-            // console.log(str.replace(/>>([1-9][0-9]*|0)/, this.comments[index].comment));
-
             return this.autoLink(this.comments[index].comment.replace(/>>([1-9][0-9]*|0)/, '').trim());
         },
         haveReference(str) {
