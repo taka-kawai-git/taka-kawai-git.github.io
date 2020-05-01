@@ -3,7 +3,8 @@
 
     <!-------- Title -------->
 
-    <div class="fs-1-3 fw-b p-y-3"><div class="center"><span class="blue-text"># </span>{{ title }}</div></div>
+    <div class="fs-1-3 fw-b p-y-4"><div class="center"><span class="text-theme-grad">
+    <i class="fas fa-hashtag"></i></span> {{ title }}</div></div>
 
     <!-------- Old Comments -------->
 
@@ -45,7 +46,7 @@
 
     <div  id="checked_at" v-if="checked_at !== 0 && checked_at !== comments.length" class="center grey lighten-4 p-y-3">
         <div class="center b-color-theme">
-            <i class="far fa-check-circle fs-3 blue-text m-r-1 v-middle"></i>
+            <i class="far fa-check-circle fs-3 text-theme-grad m-r-1 v-middle"></i>
             <span class="fs-1 fw-b v-middle">ここから未読</span>
         </div>
     </div>
@@ -91,10 +92,10 @@
 
     <div class="fixed-action-btn grey lighten-4 rounded-30 p-0-5 hide-on-small-only">
         <a href="#new-comment" class="btn-floating bg-none lighten-5 z-depth-0 modal-trigger m-x-0-5">
-            <i class="fas fa-comment text-theme"></i>
+            <i class="fas fa-comment text-theme-grad"></i>
         </a>
         <router-link to="/" class="btn-floating bg-none lighten-5 z-depth-0 modal-trigger m-x-0-5">
-            <i class="fas fa-home text-theme"></i>
+            <i class="fas fa-home text-theme-grad"></i>
         </router-link>
     </div>
 
@@ -102,7 +103,7 @@
 
     <div class="fixed-action-btn p-0-5 hide-on-med-and-up">
         <a href="#new-comment" class="btn-floating bg-none lighten-5 z-depth-0 modal-trigger">
-            <i class="fas fa-comment text-theme"></i>
+            <i class="fas fa-comment text-theme-grad"></i>
         </a>
     </div>
 
@@ -111,7 +112,7 @@
     <div id="new-comment" class="modal bottom-sheet rounded-10-top">
         <div class="container-100 row modal-content">
             <form @submit.prevent="saveComment" class="col p-1 s12 p-x-0 fs-1-1">
-                <textarea id="modalInput" class="grey lighten-3 border-0 rounded-10 h-10 p-1"
+                <textarea id="modalInput" class="border-0 rounded-5 h-10 p-1"
                 placeholder="コメント" v-model="comment" required></textarea>
                 <button type="submit" class="btn waves-effect waves-light h-3 rounded-10 w-50 m-y-1
                 bg-theme z-depth-0 right">コメントする</button>
@@ -193,6 +194,9 @@ export default {
     updated () {
         console.log("updated");
         this.moveToComment('#checked_at');
+    },
+    scrollBehavior (to, from, savedPosition) {
+        return { x: 0, y: 0 }
     },
     watch: {
         '$route' : 'fetchData'

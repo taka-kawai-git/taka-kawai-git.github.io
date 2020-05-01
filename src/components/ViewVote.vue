@@ -3,7 +3,8 @@
 
     <!-------- Title -------->
 
-    <div class="fs-1-3 fw-b p-y-3 grey lighten-4"><div class="blue-text center">{{ title }}</div></div>
+    <div class="fs-1-3 fw-b p-y-4"><div class="center"><span class="text-theme-grad">
+    <i class="fas fa-hashtag"></i></span> {{ title }}</div></div>
 
     <!-------- Description -------->
 
@@ -45,7 +46,7 @@
                 <div class="p-absolute fw-b fs-1 h-2-5 valign-wrapper">
                     <span class="m-l-1 m-r-0-5">{{ ratio }}% </span><span class="">{{ candidates[index] }}</span>
                 </div>
-                <div v-bind:id="index+1" class="blue h-2-5 rounded-10 border-0" v-bind:style="{width: ratio + '%'}">
+                <div v-bind:id="index+1" class="bg-theme-grad h-2-5 rounded-10 border-0" v-bind:style="{width: ratio + '%'}">
                 </div>
             </div>
         </li>
@@ -105,6 +106,9 @@ export default {
                 self.isFetched = true;
             }
         )
+    },
+    scrollBehavior (to, from, savedPosition) {
+        return { x: 0, y: 0 }
     },
     watch: {
         '$route' : 'fetchData'

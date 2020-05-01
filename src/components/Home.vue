@@ -101,12 +101,12 @@
 
     <div v-if="!isVoteActive" class="fixed-action-btn">
         <router-link to="/new-thread" class="btn-floating btn-large bg-none z-depth-0">
-            <i class="fa fa-plus text-theme"></i>
+            <i class="fa fa-plus text-theme-grad"></i>
         </router-link>
     </div>
     <div v-if="isVoteActive" class="fixed-action-btn">
         <router-link to="/new-vote" class="btn-floating btn-large bg-none z-depth-0">
-            <i class="fas fa-chart-bar text-theme"></i>
+            <i class="fas fa-chart-bar text-theme-grad"></i>
         </router-link>
     </div>
 </div>
@@ -215,6 +215,13 @@ export default {
             document.querySelector(".tabs-content").setAttribute('style', 'height:'
             + document.getElementById("tab-swipe-1-ul").offsetHeight + 'px');
         });
+    },
+    scrollBehavior (to, from, savedPosition) {
+        if (savedPosition) {
+            return savedPosition
+        } else {
+            return { x: 0, y: 0 }
+        }
     },
     methods: {
         updateNumOfUnread: function() {

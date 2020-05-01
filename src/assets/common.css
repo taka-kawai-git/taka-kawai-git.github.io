@@ -93,6 +93,13 @@
 ;
 }
 
+.text-theme-grad {
+    background: linear-gradient(111.41488250868701deg, rgba(128, 216, 255,1) 1.986328125%,rgba(127, 215, 254,1) 1.986328125%,rgba(0, 145, 234,1) 100.18945312499999%)
+;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 .bg-theme {
     /* cyan-accent-3.8 */
     /*background-color: #00c8d4;*/
@@ -264,9 +271,9 @@ input[type=text], textarea {
     padding-bottom: 1rem;
 }
 
-.p-y-3 {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+.p-y-4 {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
 }
 
 .m-x-0-5 {
