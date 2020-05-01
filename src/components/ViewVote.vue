@@ -117,7 +117,11 @@ export default {
         ratios: function() {
             var ratios = [];
             this.votes.forEach(vote => {
-                ratios.push(Math.round((vote/this.deno * 100) * 10)/10);
+                if(this.deno == 0) {
+                    ratios.push(0);
+                } else {
+                    ratios.push(Math.round((vote/this.deno * 100) * 10)/10);
+                }
             })
             return ratios;
         },
