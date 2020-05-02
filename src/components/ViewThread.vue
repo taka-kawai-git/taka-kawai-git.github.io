@@ -44,7 +44,7 @@
 
     <!-------- Already read until here -------->
 
-    <div  id="checked_at" v-if="checked_at !== 0 && checked_at !== comments.length" class="center grey lighten-4 p-y-3">
+    <div  id="checked_at" v-if="checked_at !== 0 && checked_at !== comments.length" class="center grey lighten-4 p-y-4">
         <div class="center b-color-theme">
             <i class="far fa-check-circle fs-3 text-theme-grad m-r-1 v-middle"></i>
             <span class="fs-1 fw-b v-middle">ここから未読</span>
@@ -196,6 +196,7 @@ export default {
         this.moveToComment('#checked_at');
     },
     scrollBehavior (to, from, savedPosition) {
+        console.log("scrollBehavior");
         return { x: 0, y: 0 }
     },
     watch: {

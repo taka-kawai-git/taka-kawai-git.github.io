@@ -390,13 +390,19 @@ span.badge.new:after {
 }
 
 .tabs >>> .tab a.active {
-    background-color: transparent;
-    color: #2196f3;
+    /*background-color: transparent;*/
+    /*color: #2196f3;*/
+    background: linear-gradient(111.41488250868701deg, rgba(128, 216, 255,1) 1.986328125%,rgba(127, 215, 254,1) 1.986328125%,rgba(0, 145, 234,1) 100.18945312499999%)
+;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .tabs >>> .indicator {
     /*background-color: #000;*/
-    background: linear-gradient(90deg, #ffffff 0%, #ffffff 40%, #2196f3 40%, #2196f3 60%, #ffffff 60%,#ffffff 100%);
+    /*background: linear-gradient(90deg, #ffffff 0%, #ffffff 40%, #2196f3 40%, #2196f3 60%, #ffffff 60%,#ffffff 100%);*/
+    background: linear-gradient(111.41488250868701deg, #ffffff 0%, #ffffff 40%, rgba(128, 216, 255,1) 40%,rgba(127, 215, 254,1) 40%,rgba(0, 145, 234,1) 60%, #ffffff 60%,#ffffff 100%)
+;
 }
 
 .tabs >>> .tab a:focus {
