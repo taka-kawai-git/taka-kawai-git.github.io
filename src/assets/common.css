@@ -367,6 +367,12 @@ div >>> .comment-ref {
     height: 130% !important;
 }
 
+.sticky {
+    position: sticky;
+    z-index: 1;
+    top: 0px;
+}
+
 /******************** Override Materialize new badge ********************/
 
 .float-n {
@@ -389,7 +395,7 @@ span.badge.new:after {
     /*color: #000;*/
 }
 
-.tabs >>> .tab a.active {
+.tabs >>> .tab a.active span {
     /*background-color: transparent;*/
     /*color: #2196f3;*/
     background: linear-gradient(111.41488250868701deg, rgba(128, 216, 255,1) 1.986328125%,rgba(127, 215, 254,1) 1.986328125%,rgba(0, 145, 234,1) 100.18945312499999%)
@@ -481,6 +487,10 @@ input::-ms-input-placeholder {
 
 .p-b-0 {
     padding-bottom: 0px;
+}
+
+.border-t {
+    border-top: solid 1px #f5f5f5;
 }
 
 /*############################## ViewScore.vue ##############################*/

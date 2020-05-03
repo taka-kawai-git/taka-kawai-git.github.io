@@ -8,7 +8,7 @@
 
     <!-------- Description -------->
 
-    <div class="border-b">
+    <div class="border-b border-t">
     <div class="fs-1 container-sub m-y-1-125">{{ desc }}</div>
     </div>
 

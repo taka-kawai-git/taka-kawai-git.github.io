@@ -3,11 +3,11 @@
 
     <!-------- Tabs -------->
 
-    <ul id="tabs-swipe-ul" class="tabs bg-none">
-        <li class="tab col s3"><a class="active" href="#tab-swipe-1">最新</a></li>
-        <li class="tab col s3"><a href="#tab-swipe-2">話題</a></li>
-        <li class="tab col s3"><a href="#tab-swipe-3" id="tab-vote">投票</a></li>
-        <li v-if="isEnvDev()" class="tab col s3"><a href="#tab-swipe-4">機能</a></li>
+    <ul id="tabs-swipe-ul" class="tabs white sticky">
+        <li class="tab col s3"><a class="active" href="#tab-swipe-1"><span>最新</span></a></li>
+        <li class="tab col s3"><a href="#tab-swipe-2"><span>話題</span></a></li>
+        <li class="tab col s3"><a href="#tab-swipe-3" id="tab-vote"><span>投票</span></a></li>
+        <li v-if="isEnvDev()" class="tab col s3"><a href="#tab-swipe-4"><span>機能</span></a></li>
     </ul>
 
     <!-------- Latest -------->

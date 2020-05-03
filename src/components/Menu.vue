@@ -6,7 +6,7 @@
         </li>
         <li class="collection-item p-x-0 bg-none w-100 b-color-theme l-h-2-5">
             <router-link to="/" class="black-font"><div class="black-text">
-                <img class="p-r-1 v-align-m" src="../assets/image/home.svg"/>TOP</div>
+                <img class="p-r-1 v-align-m" src="../assets/image/home.svg"/>トップ</div>
             </router-link>
         </li>
         <li class="collection-item p-x-0 bg-none w-100 b-color-theme l-h-2-5">
