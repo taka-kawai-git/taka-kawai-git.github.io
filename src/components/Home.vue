@@ -99,13 +99,13 @@
 
     <!-------- Add-Thread button -------->
 
-    <div v-if="!isVoteActive" class="fixed-action-btn">
-        <router-link to="/new-thread" class="btn-floating btn-large bg-none z-depth-0">
+    <div v-if="!isVoteActive" class="fixed-action-btn p-0-5">
+        <router-link to="/new-thread" class="btn-floating bg-none z-depth-0">
             <i class="fa fa-plus text-theme-grad"></i>
         </router-link>
     </div>
-    <div v-if="isVoteActive" class="fixed-action-btn">
-        <router-link to="/new-vote" class="btn-floating btn-large bg-none z-depth-0">
+    <div v-if="isVoteActive" class="fixed-action-btn p-0-5">
+        <router-link to="/new-vote" class="btn-floating bg-none z-depth-0">
             <i class="fas fa-chart-bar text-theme-grad"></i>
         </router-link>
     </div>

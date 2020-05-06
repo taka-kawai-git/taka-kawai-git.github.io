@@ -142,7 +142,6 @@ export default {
         threadData: function(newData, oldData) {
             this.docId = newData.docId;
             this.comments = newData.comments;
-            console.log(this.comments);
         },
         userData: function(newData, oldData) {
             if(typeof newData.likes[this.docId] !== "undefined") {
