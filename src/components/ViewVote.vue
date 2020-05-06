@@ -4,19 +4,14 @@
     <!-------- Title -------->
 
     <div class="fs-1-3 fw-b p-y-4"><div class="center"><span class="text-theme-grad">
-    <i class="fas fa-hashtag"></i></span> {{ title }}</div></div>
+    <i class="fas fa-hashtag"></i></span> {{ thread_data.title }}</div></div>
 
-    <!-------- Description -------->
-
-    <div class="border-b border-t">
-    <div class="fs-1 container-sub m-y-1-125">{{ desc }}</div>
-    </div>
 
     <!-------- Votes nunmber and Time Limit -------->
 
     <div class="border-b">
     <div class="fs-1-2 fw-b container-sub m-y-1-125 center">
-        <span class="m-r-1">投票数</span><span class="blue-text">{{ this.deno }}</span>
+        <span class="m-r-1">投票数</span><span class="blue-text">{{ deno }}</span>
     </div>
     </div>
 
@@ -26,7 +21,7 @@
 
         <!-------- Not voted yet, show vote -------->
 
-        <div v-if="isFetched && !isVoted">
+        <div v-if="isUserDataFetched && !isVoted">
         <li class="collection-item bg-none b-color-theme p-x-0" v-for="(candidate, index) in candidates">
             <div class="container-sub">
                 <div v-bind:id="index+1" class="fs-1-1 m-b-1">
@@ -40,7 +35,7 @@
         
         <!-------- Already voted, show the result -------->
         
-        <div v-if="isFetched && isVoted" class="m-y-1-125">
+        <div v-if="isUserDataFetched && isVoted" class="m-y-1-125">
         <li class="collection-item bg-none border-0 p-x-0 p-b-0" v-for="(ratio, index) in ratios">
             <div class="container-sub">
                 <div class="p-absolute fw-b fs-1 h-2-5 valign-wrapper">
@@ -51,67 +46,48 @@
             </div>
         </li>
         </div>
-        
     </ul>
+
+    <!-------- Thread -------->
+
+    <Thread v-bind:thread-data="thread_data"
+            v-bind:user-data="user_data">
+    </Thread>
 </div>
 </template>
 
 <script>
+import { getThreadinfoMixin } from '../mixins/getThreadinfoMixin'
+import Thread from './Thread'
 import db from './firebaseInit'
 import firebase from 'firebase';
 
 export default {
     name : 'view-vote',
+    mixins: [getThreadinfoMixin],
+    components: {
+        Thread
+    },
     data() {
         return {
-            doc_id: null,
-            vote_id: null,
-            title: null,
-            desc: null,
-            candidates: [],
             votes: [],
+            candidates: [],
             isVoted: false,
-            isFetched: false,
         }
-    },
-    beforeRouteEnter(to, from, next) {
-        var domain = firebase.auth().currentUser.email.split('@')[1];
-        db.collection('domains').doc(domain).collection('votes')
-        .where('vote_id', '==', to.params.vote_id).get()
-        .then(querySnapshot => {
-            querySnapshot.forEach(doc => {
-                next(vm => {
-                    vm.doc_id = doc.id
-                    vm.vote_id = doc.data().vote_id
-                    vm.title = doc.data().title
-                    vm.desc = doc.data().desc
-                    vm.votes = doc.data().votes
-                    vm.candidates = doc.data().candidates
-                })
-            })
-        });
-    },
-    created() {
-        const self = this;
-        db.collection('users').doc(firebase.auth().currentUser.email)
-        .get().then(
-            doc => {
-                if(doc.exists) {
-                    const votes = doc.get("votes." + self.doc_id);
-                    if(typeof votes !== "undefined") {
-                        self.isVoted = true;
-                    }
-                }
-                else console.log("user doesn't exists.");
-                self.isFetched = true;
-            }
-        )
     },
     scrollBehavior (to, from, savedPosition) {
         return { x: 0, y: 0 }
     },
     watch: {
-        '$route' : 'fetchData'
+        isThreadDataFetched: function() {
+            this.votes = this.thread_data.votes;
+            this.candidates = this.thread_data.candidates;
+        },
+        isUserDataFetched: function() {
+            if(typeof this.user_data.votes[this.thread_data.docId] !== "undefined") {
+                this.isVoted = true;
+            }
+        }
     },
     computed: {
         ratios: function() {
@@ -134,31 +110,17 @@ export default {
         }
     },
     methods: {
-        fetchData() {
-            var domain = firebase.auth().currentUser.email.split('@')[1];
-            db.collection('domains').doc(domain).collection('votes')
-            .where('vote_id', '==', this.$route.params.vote_id)
-            .get().then(querySnapshot => {
-                querySnapshot.forEach(doc => {
-                    this.doc_id = doc.id
-                    this.vote_id = doc.data().vote_id
-                    this.title = doc.data().title
-                    this.desc = doc.data().desc
-                    this.candidates = doc.data().candidates
-                })
-            })
-        },
         updateVote(index) {
             const self = this;
             const domain = firebase.auth().currentUser.email.split('@')[1];
             const shard_id = Math.floor(Math.random() * process.env.VUE_APP_NUM_SHARD).toString();
 
-            db.collection('domains').doc(domain).collection('votes')
-            .where('vote_id', '==', this.$route.params.vote_id).limit(1)
+            db.collection('domains').doc(domain).collection('threads')
+            .where('thread_id', '==', this.$route.params.thread_id).limit(1)
             .get().then(querySnapshot => {
                 querySnapshot.forEach(doc => {
-                    db.collection('domains').doc(domain).collection("votes").doc(doc.id)
-                    .collection('shards').doc(shard_id).update({
+                    db.collection('domains').doc(domain).collection("threads").doc(doc.id)
+                    .collection('votes_shards').doc(shard_id).update({
                         votes: firebase.firestore.FieldValue.arrayUnion(index)
                     });
                     self.addVote(doc.id, index);

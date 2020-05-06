@@ -113,7 +113,7 @@ let router = new Router({
             }
         },
         {
-            path: '/vote/:vote_id',
+            path: '/vote/:thread_id',
             name: 'view-vote',
             component: ViewVote,
             meta: {

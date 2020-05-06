@@ -67,11 +67,11 @@
 
     <div id="tab-swipe-3" class="col s12">
         <ul class="collection border-x-0 b-color-theme fs-1-1 m-y-0">
-            <li v-for="vote in votes" v-bind:key="vote.id"
+            <li v-for="thread in threads_vote" v-bind:key="thread.id"
             class="collection-item p-x-0 bg-none b-color-theme l-h-2-5">
                 <router-link class="black-text"
-                v-bind:to="{ name:'view-vote', params: { vote_id: vote.vote_id } }">
-                <div class="container-sub">{{ vote.title }}</div>
+                v-bind:to="{ name:'view-vote', params: { thread_id: thread.thread_id } }">
+                <div class="container-sub">{{ thread.title }}</div>
                 </router-link>
             </li>
         </ul>
@@ -123,7 +123,7 @@ export default {
         return {
             threads_latest: [],
             threads_popular: [],
-            votes: [],
+            threads_vote: [],
             isVoteActive: false,
             checked_at: {}
         }
@@ -173,10 +173,13 @@ export default {
                     'num_comments': doc.data().comments.length,
                     'num_unreads': doc.data().comments.length
                 }
-                this.threads_latest.push(data);
-                this.threads_popular.push(data);
-                this.threads_popular.sort(
-                    (a, b) => b.num_comments - a.num_comments);
+                if(doc.data().type == ('normal')) {
+                    this.threads_latest.push(data);
+                    this.threads_popular.push(data);
+                    this.threads_popular.sort((a, b) => b.num_comments - a.num_comments);
+                } else if(doc.data().type == 'vote') {
+                    this.threads_vote.push(data);
+                }
             })
         })
 
@@ -195,20 +198,6 @@ export default {
                 }
             }
         )
-
-        /* -------- Get Votes data -------- */
-
-        db.collection('domains').doc(domain).collection('votes')
-        .orderBy('created_at').get().then(querySnapshot => {
-            querySnapshot.forEach(doc => {
-                const data = {
-                    'id' : doc.id,
-                    'title' : doc.data().title,
-                    'vote_id' : doc.data().vote_id,
-                }
-                this.votes.push(data);;
-            })
-        })
     },
     updated() {
         this.$nextTick(() => {
