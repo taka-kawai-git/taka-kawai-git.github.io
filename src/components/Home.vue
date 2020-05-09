@@ -3,7 +3,7 @@
 
     <!-------- Tabs -------->
 
-    <ul id="tabs-swipe-ul" class="tabs white sticky">
+    <ul id="tabs-swipe-ul" class="tabs white sticky border-b border-theme">
         <li class="tab col s3"><a class="active" href="#tab-swipe-1"><span>最新</span></a></li>
         <li class="tab col s3"><a href="#tab-swipe-2"><span>話題</span></a></li>
         <li class="tab col s3"><a href="#tab-swipe-3" id="tab-vote"><span>投票</span></a></li>
@@ -13,7 +13,7 @@
     <!-------- Latest -------->
 
     <div id="tab-swipe-1" class="col s12">
-        <ul id="tab-swipe-1-ul" class="collection border-x-0 border-theme fs-1-1 m-y-0">
+        <ul id="tab-swipe-1-ul" class="collection border-0 fs-1-1 m-y-0">
             <li class="collection-item p-x-0 bg-none border-theme l-h-2-5">
                 <router-link class="black-text"
                 v-bind:to="{
@@ -43,7 +43,7 @@
     <!-------- Popular -------->
 
     <div id="tab-swipe-2" class="col s12">
-        <ul class="collection border-x-0 border-theme fs-1-1 m-y-0">
+        <ul class="collection border-0 fs-1-1 m-y-0">
             <li v-for="(thread, index) in threads_popular" v-bind:key="thread.id"
             class="collection-item p-x-0 bg-none border-theme l-h-2-5">
                 <router-link class="black-text"
@@ -66,7 +66,7 @@
     <!-------- Questionnaire -------->
 
     <div id="tab-swipe-3" class="col s12">
-        <ul class="collection border-x-0 border-theme fs-1-1 m-y-0">
+        <ul class="collection border-0 fs-1-1 m-y-0">
             <li v-for="thread in threads_vote" v-bind:key="thread.id"
             class="collection-item p-x-0 bg-none border-theme l-h-2-5">
                 <router-link class="black-text"
