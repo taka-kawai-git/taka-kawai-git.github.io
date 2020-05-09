@@ -24,7 +24,7 @@
                 </router-link>
             </li>
             <li v-for="thread in threads_latest" v-bind:key="thread.id"
-            class="collection-item p-x-0 bg-none border-theme l-h-2-5">
+            class="collection-item p-x-0 border-theme l-h-2-5 thread-item">
                 <router-link class="black-text"
                 v-bind:to="{
                     name:'view-thread',
