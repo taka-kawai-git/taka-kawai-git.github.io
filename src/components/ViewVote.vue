@@ -22,7 +22,7 @@
         <!-------- Not voted yet, show vote -------->
 
         <div v-if="isUserDataFetched && !isVoted">
-        <li class="collection-item bg-none b-color-theme p-x-0" v-for="(candidate, index) in candidates">
+        <li class="collection-item bg-none border-theme p-x-0" v-for="(candidate, index) in candidates">
             <div class="container-sub">
                 <div v-bind:id="index+1" class="fs-1-1 m-b-1">
                     <span class="m-r-0-5 fw-b blue-text align-middle">{{ index+1 }}.</span>

@@ -1,7 +1,7 @@
 <template>
     <div id="navbar">
         <nav class="z-depth-0 bg-none">
-            <div class="nav-wrapper border-b-grey-l3">
+            <div class="nav-wrapper">
                 <div class="container">
                     <router-link to="/" class="black-text exo-800 fs-1-5">Company</router-link>
                     <ul v-if="!isLogggedIn && !isEmailVerified" class="right">

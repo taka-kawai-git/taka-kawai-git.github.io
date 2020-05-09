@@ -3,8 +3,8 @@
 
     <!-------- Old Comments -------->
 
-    <ul v-if="checkedAt !== 0" class="collection border-x-0 border-b-0 b-color-theme m-y-0">
-        <li v-bind:id="'comment_' + index" class="collection-item bg-none b-color-theme p-x-0"
+    <ul v-if="checkedAt !== 0" class="collection border-x-0 border-b-0 border-theme m-y-0">
+        <li v-bind:id="'comment_' + index" class="collection-item bg-none border-theme p-x-0"
         v-for="(comment, index) in oldComments">
             <div class="container-sub m-t-1 m-b-2">
                 <table class="t-fixed">
@@ -40,7 +40,7 @@
     <!-------- Already read until here -------->
 
     <div  id="checked_at" v-if="checkedAt !== 0 && checkedAt !== comments.length" class="center grey lighten-4 p-y-4">
-        <div class="center b-color-theme">
+        <div class="center border-theme">
             <i class="far fa-check-circle fs-3 text-theme-grad m-r-1 v-middle"></i>
             <span class="fs-1 fw-b v-middle">ここから未読</span>
         </div>
@@ -48,8 +48,8 @@
     
     <!-------- New Comments -------->
     
-    <ul class="collection border-x-0 border-b-0 b-color-theme m-y-0">
-        <li v-bind:id="'comment' + (index + checkedAt)" class="collection-item bg-none b-color-theme p-x-0"
+    <ul class="collection border-x-0 border-b-0 border-theme m-y-0">
+        <li v-bind:id="'comment' + (index + checkedAt)" class="collection-item bg-none border-theme p-x-0"
         v-for="(comment, index) in newComments">
             <div class="container-sub m-t-1 m-b-2">
                 <table class="t-fixed">
