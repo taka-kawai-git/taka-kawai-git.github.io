@@ -7,7 +7,7 @@
 
     <!-------- Radar Chart -------->
 
-    <div class="container p-y-2 border-b center">
+    <div class="container p-y-2 border-b border-theme center">
         <div class="m-b-2"><span class="fw-b fs-1-3 m-b-2 border-title">全体平均</span></div>
         <radar :chartdata="chartdata" :options="options"></radar>
     </div>

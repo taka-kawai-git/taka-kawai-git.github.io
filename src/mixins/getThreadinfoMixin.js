@@ -35,6 +35,7 @@ export const getThreadinfoMixin = {
                     vm.thread_data = doc.data();
                     vm.thread_data.docId = doc.id;
                     vm.isThreadDataFetched = true;
+                    console.log(doc.id);
                 })
             })
         })

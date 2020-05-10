@@ -14,7 +14,7 @@
 
     <div id="tab-swipe-1" class="col s12">
         <ul id="tab-swipe-1-ul" class="collection border-0 fs-1-1 m-y-0">
-            <li class="collection-item p-x-0 bg-none border-0 l-h-2-5">
+            <li class="collection-item p-x-0 bg-none border-0 l-h-2-5 thread-item">
                 <router-link class="black-text"
                 v-bind:to="{
                     name:'view-thread',
@@ -45,7 +45,7 @@
     <div id="tab-swipe-2" class="col s12">
         <ul class="collection border-0 fs-1-1 m-y-0">
             <li v-for="(thread, index) in threads_popular" v-bind:key="thread.id"
-            class="collection-item p-x-0 bg-none border-0 l-h-2-5">
+            class="collection-item p-x-0 bg-none border-0 l-h-2-5 thread-item">
                 <router-link class="black-text"
                 v-bind:to="{ name:'view-thread', params: { thread_id: thread.thread_id } }">
                 <div class="container-sub">
@@ -68,7 +68,7 @@
     <div id="tab-swipe-3" class="col s12">
         <ul class="collection border-0 fs-1-1 m-y-0">
             <li v-for="thread in threads_vote" v-bind:key="thread.id"
-            class="collection-item p-x-0 bg-none border-0 l-h-2-5">
+            class="collection-item p-x-0 bg-none border-0 l-h-2-5 thread-item">
                 <router-link class="black-text"
                 v-bind:to="{ name:'view-vote', params: { thread_id: thread.thread_id } }">
                 <div class="container-sub">{{ thread.title }}</div>
