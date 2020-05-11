@@ -243,8 +243,8 @@ input[type=text], textarea {
     font-size: 1.3rem;
 }
 
-.fs-1-7 {
-    font-size: 1.7rem;
+.fs-1-8 {
+    font-size: 1.8rem;
 }
 
 .m-t-1-125 {
@@ -300,8 +300,8 @@ input[type=text], textarea {
     vertical-align: top !important;
 }
 
-.w-2-5 {
-    width: 2.5rem;
+.w-3 {
+    width: 3rem;
 }
 
 .ws-pw {
@@ -317,6 +317,10 @@ div >>> .comment-ref {
     border-radius: 10px;
     padding: 1rem;
     margin-top: 1rem;
+}
+
+.m-b-0-5 {
+    margin-bottom: 0.5rem !important;
 }
 
 /*############################## Home.vue ##############################*/
