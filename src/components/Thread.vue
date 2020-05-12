@@ -12,7 +12,7 @@
                         <td class="p-0 w-3 center v-align-t p-r-1">
                             <div class="">
                                 <a href="#new-comment" v-on:click="addReferenceToTextarea(index)" class="modal-trigger">
-                                    <i class="fas fa-user-circle fs-1-8 grey-text text-lighten-2"></i>
+                                    <i class="fas fa-user-circle fs-1-8 grey-text text-lighten-1"></i>
                                 </a>
                             </div>
                         </td>
@@ -57,7 +57,7 @@
                         <td class="p-0 w-3 center v-align-t p-r-1">
                             <div class="">
                                 <a href="#new-comment" v-on:click="addReferenceToTextarea(index + checkedAt)" class="modal-trigger">
-                                    <i class="fas fa-user-circle fs-1-8 grey-text text-lighten-2"></i>
+                                    <i class="fas fa-user-circle fs-1-8 grey-text text-lighten-1"></i>
                                 </a>
                             </div>
                         </td>
@@ -110,7 +110,7 @@
             <form @submit.prevent="saveComment" class="col p-1 s12 p-x-0 fs-1-1">
                 <textarea id="modalInput" class="border-0 rounded-5 h-10 p-1"
                 placeholder="コメント" v-model="comment" required></textarea>
-                <button type="submit" class="btn waves-effect waves-light h-3 rounded-10 w-50 m-y-1
+                <button type="submit" class="btn waves-effect waves-light rounded-5 w-50 m-y-1
                 bg-theme z-depth-0 right">コメントする</button>
             </form>
         </div>
