@@ -12,13 +12,13 @@
                         <td class="p-0 w-3 center v-align-t p-r-1">
                             <div class="">
                                 <a href="#new-comment" v-on:click="addReferenceToTextarea(index)" class="modal-trigger">
-                                    <i class="fas fa-user-circle fs-1-8 grey-text text-lighten-1"></i>
+                                    <i class="fas fa-user-circle fs-1-8 grey-text text-lighten-2"></i>
                                 </a>
                             </div>
                         </td>
                         <td class="p-0 v-align-t">
                             <div class="fs-0-8 m-b-0-5 grey-text text-lighten-2">
-                                <span class="m-r-0-5 fw-b black-text">匿名</span>
+                                <span class="m-r-0-5">匿名</span>
                                 <span class="m-r-0-5">通報</span>
                                 <span class="m-r-1" v-if="comment.now_added">now</span>
                                 <span class="m-r-1" v-if="!comment.now_added">{{ comment.posted_at.toDate().toDateString() }}</span>
@@ -57,13 +57,13 @@
                         <td class="p-0 w-3 center v-align-t p-r-1">
                             <div class="">
                                 <a href="#new-comment" v-on:click="addReferenceToTextarea(index + checkedAt)" class="modal-trigger">
-                                    <i class="fas fa-user-circle fs-1-8 grey-text text-lighten-1"></i>
+                                    <i class="fas fa-user-circle fs-1-8 grey-text text-lighten-2"></i>
                                 </a>
                             </div>
                         </td>
                         <td class="p-0 v-align-t">
                             <div class="fs-0-8 m-b-0-5 grey-text text-lighten-2">
-                                <span class="m-r-0-5 fw-b black-text">匿名</span>
+                                <span class="m-r-0-5">匿名</span>
                                 <span class="m-r-0-5">通報</span>
                                 <span class="m-r-1" v-if="comment.now_added">now</span>
                                 <span class="m-r-1" v-if="!comment.now_added">{{ comment.posted_at.toDate().toDateString() }}</span>
