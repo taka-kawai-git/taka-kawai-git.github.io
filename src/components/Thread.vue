@@ -9,16 +9,17 @@
             <div class="container-sub m-t-1 m-b-2">
                 <table class="t-fixed">
                     <tr class="border-0">
-                        <td class="p-0 w-3 center v-align-t p-r-1">
+                        <td class="p-0 w-3-5 v-align-t p-r-1 center">
                             <div class="">
                                 <a href="#new-comment" v-on:click="addReferenceToTextarea(index)" class="modal-trigger">
-                                    <i class="fas fa-user-circle fs-1-8 grey-text text-lighten-1"></i>
+                                    <div class="fs-1 white-text rounded-30 blue icon v-middle">
+                                        {{ comment.user_id.slice(0, 2).toLowerCase() }}</div>
                                 </a>
                             </div>
                         </td>
                         <td class="p-0 v-align-t">
                             <div class="fs-0-8 m-b-0-5 grey-text text-lighten-1">
-                                <span class="m-r-0-5">匿名</span>
+                                <span class="m-r-0-5 black-text fw-b"> {{ comment.user_id.slice(0, 4).toLowerCase() }}</span>
                                 <span class="m-r-0-5">通報</span>
                                 <span class="m-r-1" v-if="comment.now_added">now</span>
                                 <span class="m-r-1" v-if="!comment.now_added">{{ comment.posted_at.toDate().toDateString() }}</span>
@@ -26,7 +27,7 @@
                                 @click="updateLike(index)"><i class="far fa-heart"></i></span>
                                 <span class="" v-else><i class="far fa-heart red-text"></i></span>
                             </div>
-                            <div v-html="getCommentWithoutReference(comment.comment)" class="fs-1 ws-pw black-text"></div>
+                            <div v-html="getCommentWithoutReference(comment.comment)" class="fs-0-9 ws-pw black-text"></div>
                             <div v-html="getReferencePreview(comment.comment)" v-if="haveReference(comment.comment)"
                                 class='comment-ref' @click="moveToComment('#comment_' + getReferenceIndex(comment.comment))">
                             </div>
@@ -54,16 +55,17 @@
             <div class="container-sub m-t-1 m-b-2">
                 <table class="t-fixed">
                     <tr class="border-0">
-                        <td class="p-0 w-3 center v-align-t p-r-1">
+                        <td class="p-0 w-3-5 center v-align-t p-r-1">
                             <div class="">
                                 <a href="#new-comment" v-on:click="addReferenceToTextarea(index + checkedAt)" class="modal-trigger">
-                                    <i class="fas fa-user-circle fs-1-8 grey-text text-lighten-1"></i>
+                                    <div class="fs-1 white-text rounded-30 blue icon v-middle">
+                                        {{ comment.user_id.slice(0, 2).toLowerCase() }}</div>
                                 </a>
                             </div>
                         </td>
                         <td class="p-0 v-align-t">
-                            <div class="fs-0-8 m-b-0-5 grey-text text-lighten-2">
-                                <span class="m-r-0-5">匿名</span>
+                            <div class="fs-0-8 m-b-0-5 grey-text text-lighten-1">
+                                <span class="m-r-0-5 black-text fw-b"> {{ comment.user_id.slice(0, 4).toLowerCase() }}</span>
                                 <span class="m-r-0-5">通報</span>
                                 <span class="m-r-1" v-if="comment.now_added">now</span>
                                 <span class="m-r-1" v-if="!comment.now_added">{{ comment.posted_at.toDate().toDateString() }}</span>
@@ -71,7 +73,7 @@
                                 @click="updateLike(index)"><i class="far fa-heart"></i></span>
                                 <span class="" v-else><i class="far fa-heart red-text"></i></span>
                             </div>
-                            <div v-html="getCommentWithoutReference(comment.comment)" class="fs-1 ws-pw black-text"></div>
+                            <div v-html="getCommentWithoutReference(comment.comment)" class="fs-0-9 ws-pw black-text"></div>
                             <div v-html="getReferencePreview(comment.comment)" v-if="haveReference(comment.comment)"
                                 class='comment-ref' @click="moveToComment('#comment_' + getReferenceIndex(comment.comment))">
                             </div>

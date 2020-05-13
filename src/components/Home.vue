@@ -52,7 +52,7 @@
                     <table class="t-fixed">
                         <tr class="border-0">
                             <td class="p-0 w-35p center">
-                                <span class="m-r-1 text-theme fw-b">{{ index + 1 }}.</span>
+                                <span class="m-r-1 text-theme fw-b">{{ index + 1 }}</span>
                             </td>
                             <td class="p-0">{{ thread.title }}</td>
                         </tr>
