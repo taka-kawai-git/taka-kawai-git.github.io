@@ -101,12 +101,12 @@
 
     <div v-if="!isVoteActive" class="fixed-action-btn p-0-5">
         <router-link to="/new-thread" class="btn-floating bg-none z-depth-0">
-            <i class="fa fa-plus text-theme-grad"></i>
+            <i class="fa fa-plus text-theme"></i>
         </router-link>
     </div>
     <div v-if="isVoteActive" class="fixed-action-btn p-0-5">
         <router-link to="/new-vote" class="btn-floating bg-none z-depth-0">
-            <i class="fas fa-chart-bar text-theme-grad"></i>
+            <i class="fas fa-chart-bar text-theme"></i>
         </router-link>
     </div>
 </div>

@@ -42,7 +42,7 @@
 
     <div  id="checked_at" v-if="checkedAt !== 0 && checkedAt !== comments.length" class="center grey lighten-4 p-y-4">
         <div class="center border-0">
-            <i class="far fa-check-circle fs-3 text-theme-grad m-r-1 v-middle"></i>
+            <i class="far fa-check-circle fs-3 text-theme m-r-1 v-middle"></i>
             <span class="fs-1 fw-b v-middle">ここから未読</span>
         </div>
     </div>
@@ -90,10 +90,10 @@
 
     <div class="fixed-action-btn grey lighten-4 rounded-30 p-0-5 hide-on-small-only">
         <a href="#new-comment" class="btn-floating bg-none lighten-5 z-depth-0 modal-trigger m-x-0-5">
-            <i class="fas fa-comment text-theme-grad"></i>
+            <i class="fas fa-comment text-theme"></i>
         </a>
         <router-link to="/" class="btn-floating bg-none lighten-5 z-depth-0 modal-trigger m-x-0-5">
-            <i class="fas fa-home text-theme-grad"></i>
+            <i class="fas fa-home text-theme"></i>
         </router-link>
     </div>
 
@@ -101,7 +101,7 @@
 
     <div class="fixed-action-btn p-0-5 hide-on-med-and-up">
         <a href="#new-comment" class="btn-floating bg-none lighten-5 z-depth-0 modal-trigger">
-            <i class="fas fa-comment text-theme-grad"></i>
+            <i class="fas fa-comment text-theme"></i>
         </a>
     </div>
 

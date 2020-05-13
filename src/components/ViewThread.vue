@@ -4,7 +4,7 @@
     <!-------- Title -------->
 
     <div class="fs-1-3 fw-b p-y-4 grey lighten-4"><div class="center">
-    <i class="fas fa-hashtag text-theme-grad v-middle"></i>
+    <i class="fas fa-hashtag text-theme v-middle"></i>
     <span class="v-middle"> {{ thread_data.title }}</span></div></div>
 
     <!-------- Thread -------->
