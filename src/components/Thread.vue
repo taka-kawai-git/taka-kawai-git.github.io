@@ -17,7 +17,7 @@
                             </div>
                         </td>
                         <td class="p-0 v-align-t">
-                            <div class="fs-0-8 m-b-0-5 grey-text text-lighten-2">
+                            <div class="fs-0-8 m-b-0-5 grey-text text-lighten-1">
                                 <span class="m-r-0-5">匿名</span>
                                 <span class="m-r-0-5">通報</span>
                                 <span class="m-r-1" v-if="comment.now_added">now</span>
