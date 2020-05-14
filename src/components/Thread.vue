@@ -27,7 +27,7 @@
                                 @click="updateLike(index)"><i class="far fa-heart"></i></span>
                                 <span class="" v-else><i class="far fa-heart red-text"></i></span>
                             </div>
-                            <div v-html="getCommentWithoutReference(comment.comment)" class="fs-0-9 ws-pw black-text"></div>
+                            <div v-html="getCommentWithoutReference(comment.comment)" class="fs-1 ws-pw black-text"></div>
                             <div v-html="getReferencePreview(comment.comment)" v-if="haveReference(comment.comment)"
                                 class='comment-ref' @click="moveToComment('#comment_' + getReferenceIndex(comment.comment))">
                             </div>
@@ -73,7 +73,7 @@
                                 @click="updateLike(index)"><i class="far fa-heart"></i></span>
                                 <span class="" v-else><i class="far fa-heart red-text"></i></span>
                             </div>
-                            <div v-html="getCommentWithoutReference(comment.comment)" class="fs-0-9 ws-pw black-text"></div>
+                            <div v-html="getCommentWithoutReference(comment.comment)" class="fs-1 ws-pw black-text"></div>
                             <div v-html="getReferencePreview(comment.comment)" v-if="haveReference(comment.comment)"
                                 class='comment-ref' @click="moveToComment('#comment_' + getReferenceIndex(comment.comment))">
                             </div>
