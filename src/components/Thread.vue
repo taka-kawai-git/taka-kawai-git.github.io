@@ -12,8 +12,8 @@
                         <td class="p-0 w-3-5 v-align-t p-r-1 center">
                             <div class="">
                                 <a href="#new-comment" v-on:click="addReferenceToTextarea(index)" class="modal-trigger">
-                                    <div class="fs-1 white-text rounded-30 blue icon v-middle">
-                                        {{ comment.user_id.slice(0, 2).toLowerCase() }}</div>
+                                    <div class="fs-1 blue-text rounded-30 blue lighten-5 icon v-middle">
+                                        {{ comment.user_id.slice(0, 1).toLowerCase() }}</div>
                                 </a>
                             </div>
                         </td>
@@ -58,8 +58,8 @@
                         <td class="p-0 w-3-5 center v-align-t p-r-1">
                             <div class="">
                                 <a href="#new-comment" v-on:click="addReferenceToTextarea(index + checkedAt)" class="modal-trigger">
-                                    <div class="fs-1 white-text rounded-30 blue icon v-middle">
-                                        {{ comment.user_id.slice(0, 2).toLowerCase() }}</div>
+                                    <div class="fs-1 blue-text rounded-30 blue lighten-5 icon v-middle">
+                                        {{ comment.user_id.slice(0, 1).toLowerCase() }}</div>
                                 </a>
                             </div>
                         </td>
