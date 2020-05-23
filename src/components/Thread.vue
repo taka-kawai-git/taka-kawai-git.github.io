@@ -12,7 +12,8 @@
                         <td class="p-0 w-3-5 v-align-t p-r-1 center">
                             <div class="">
                                 <a href="#new-comment" v-on:click="addReferenceToTextarea(index)" class="modal-trigger">
-                                    <div class="fs-1 blue-text rounded-30 blue lighten-5 icon v-middle">
+                                    <div class="fs-1 rounded-10 lighten-5 icon v-middle fw-b"
+                                    v-bind:class="colorObg(comment.user_id)">
                                         {{ comment.user_id.slice(0, 1).toLowerCase() }}</div>
                                 </a>
                             </div>
@@ -58,7 +59,7 @@
                         <td class="p-0 w-3-5 center v-align-t p-r-1">
                             <div class="">
                                 <a href="#new-comment" v-on:click="addReferenceToTextarea(index + checkedAt)" class="modal-trigger">
-                                    <div class="fs-1 blue-text rounded-30 blue lighten-5 icon v-middle">
+                                    <div class="fs-1 green-text rounded-10 green lighten-5 icon v-middle">
                                         {{ comment.user_id.slice(0, 1).toLowerCase() }}</div>
                                 </a>
                             </div>
@@ -121,6 +122,7 @@
 </template>
 
 <script>
+import { getHashedColor } from '../mixins/getHashedColor'
 import db from '../components/firebaseInit'
 import firebase from 'firebase';
 import M from 'materialize-css'
@@ -128,6 +130,7 @@ import VueScrollTo from 'vue-scrollto'
 
 export default {
     name : 'thread',
+    mixins: [getHashedColor],
     props: {
         threadData : {
             type: Object,
