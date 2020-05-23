@@ -553,3 +553,13 @@ input[type="range"]::-webkit-slider-thumb {
 .border-title {
     border-bottom: solid 3px #2196f3;
 }
+
+/*############################## ResetPassword.vue ##############################*/
+
+.border {
+    border: solid thin;
+}
+
+.m-t-5 {
+    margin-top: 5rem;
+}

@@ -1,5 +1,5 @@
 <template>
-    <div class="">
+    <div id="login">
         <div class="container">
             <div class="row">
                 <div class="col s12 m8 offset-m2">
@@ -14,6 +14,9 @@
                             rounded-10 w-100 bg-theme z-depth-0 m-y-1 h-3">ログイン</button>
                         </form>
                     </div>
+                    <router-link to="/reset-password" class="right">
+                        パスワードを忘れた場合
+                    </router-link>
                 </div>
             </div>
         </div>

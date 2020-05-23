@@ -1,9 +1,9 @@
 <template>
-    <div class="">
+    <div id="register">
         <div class="container">
             <div class="row">
                 <div class="col s12 m8 offset-m2">
-                    <div class="center">
+                    <div v-if="!haveSuccessed" class="center">
                         <div class="fs-1-5 fw-b m-y-2 font-bold">新規登録</div>
                         <form>
                             <input type="text" class="grey lighten-3 border-0 rounded-10" id="email"
@@ -13,6 +13,10 @@
                             <button v-on:click="register" class="btn waves-effect waves-light
                             rounded-10 w-100 bg-theme z-depth-0 m-y-1 h-3">登録</button>
                         </form>
+                    </div>
+                    <div v-else class="center m-t-5">
+                        <i class="far fa-check-circle fs-3 green-text text-lighten-1 m-b-2"></i>
+                        <div class="fw-b p-1 fs-1-5">アドレス確認用のメールが<br>送信されました。</div>
                     </div>
                 </div>
             </div>
@@ -29,7 +33,9 @@ export default {
     data: function() {
         return {
             email: '',
-            password: ''
+            password: '',
+            haveError: false,
+            haveSuccessed: false,
         };
     },
     methods: {
@@ -39,6 +45,7 @@ export default {
                 user => {
                     console.log('Logged in as ' + user.user.email);
                     this.registerUser(user);
+                    this.haveSuccessed = true;
                 },
                 err => {
                     alert(err.message);
@@ -75,7 +82,6 @@ export default {
                     console.log("No such document!");
                     self.registerDomain(domainRef, domain);
                 }
-                self.$router.go({path: self.$router.path});
             }).catch(function(error) {
                 console.log("Error getting document:", error);
             });

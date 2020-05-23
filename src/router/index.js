@@ -10,8 +10,9 @@ import NewVote from '@/components/NewVote';
 import ViewVote from '@/components/ViewVote';
 import ViewScore from '@/components/ViewScore';
 import Login from '@/components/Login';
+import ResetPassword from '@/components/ResetPassword';
 import EmailVerified from '@/components/EmailVerified';
-import VerifyEmail from '@/components/VerifyEmail';
+import ActivateEmail from '@/components/ActivateEmail';
 import Register from '@/components/Register';
 import firebase from 'firebase';
 import UUID from 'vue-uuid';
@@ -57,6 +58,14 @@ let router = new Router({
             }
         },
         {
+            path: '/reset-password',
+            name: 'reset-password',
+            component: ResetPassword,
+            meta: {
+                requiresGuest: true
+            }
+        },
+        {
             path: '/register',
             name: 'register',
             component: Register,
@@ -73,9 +82,9 @@ let router = new Router({
             // }
         },
         {
-            path: '/verify-email',
-            name: 'verify-email',
-            component: VerifyEmail,
+            path: '/activate-email',
+            name: 'activate-email',
+            component: ActivateEmail,
             meta: {
                 requiresAuth: true
             }
@@ -167,7 +176,7 @@ router.beforeEach((to, from, next) => {
         // ログインしてて　かつ　メール確認がまだだったらメール送信画面へ
         }else if(!firebase.auth().currentUser.emailVerified){
             next({
-                path: '/verify-email',
+                path: '/activate-email',
                 query: {
                     redirect: to.fullpath
                 }
