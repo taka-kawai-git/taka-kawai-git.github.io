@@ -14,7 +14,7 @@
 
     <div id="tab-swipe-1" class="col s12">
         <ul id="tab-swipe-1-ul" class="collection border-0 fs-1-1 m-y-0">
-            <li class="collection-item p-x-0 bg-none border-0 l-h-2-5 thread-item">
+            <li class="collection-item p-x-0 border-0 l-h-2-5 thread-item">
                 <router-link class="black-text"
                 v-bind:to="{
                     name:'view-thread',
@@ -32,9 +32,10 @@
                     hash: '#checked_at'
                 }">
                 <div class="container-sub">
-                <span class="">{{ thread.title }}</span>
-                <span v-if="thread.num_unreads != 0" class="new badge blue float-n rounded-30 p-y-0-5-p">
-                    {{thread.num_unreads}}</span></div>
+                    <span class="">{{ thread.title }}</span>
+                    <span v-if="thread.num_unreads != 0" class="new badge blue float-n rounded-30 p-y-0-5-p">
+                        {{thread.num_unreads}}</span>
+                </div>
                 </router-link>
             </li>
         </ul>
@@ -45,7 +46,7 @@
     <div id="tab-swipe-2" class="col s12">
         <ul class="collection border-0 fs-1-1 m-y-0">
             <li v-for="(thread, index) in threads_popular" v-bind:key="thread.id"
-            class="collection-item p-x-0 bg-none border-0 l-h-2-5 thread-item">
+            class="collection-item p-x-0 border-0 l-h-2-5 thread-item">
                 <router-link class="black-text"
                 v-bind:to="{ name:'view-thread', params: { thread_id: thread.thread_id } }">
                 <div class="container-sub">
@@ -68,7 +69,7 @@
     <div id="tab-swipe-3" class="col s12">
         <ul class="collection border-0 fs-1-1 m-y-0">
             <li v-for="thread in threads_vote" v-bind:key="thread.id"
-            class="collection-item p-x-0 bg-none border-0 l-h-2-5 thread-item">
+            class="collection-item p-x-0 border-0 l-h-2-5 thread-item">
                 <router-link class="black-text"
                 v-bind:to="{ name:'view-vote', params: { thread_id: thread.thread_id } }">
                 <div class="container-sub">{{ thread.title }}</div>
@@ -171,7 +172,7 @@ export default {
                     'title' : doc.data().title,
                     'thread_id' : doc.data().thread_id,
                     'num_comments': doc.data().comments.length,
-                    'num_unreads': doc.data().comments.length
+                    'num_unreads': 0
                 }
                 if(doc.data().type == ('normal')) {
                     this.threads_latest.push(data);

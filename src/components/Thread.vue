@@ -59,7 +59,8 @@
                         <td class="p-0 w-3-5 center v-align-t p-r-1">
                             <div class="">
                                 <a href="#new-comment" v-on:click="addReferenceToTextarea(index + checkedAt)" class="modal-trigger">
-                                    <div class="fs-1 green-text rounded-10 green lighten-5 icon v-middle">
+                                    <div class="fs-1 rounded-10 lighten-5 icon v-middle fw-b"
+                                    v-bind:class="colorObg(comment.user_id)">
                                         {{ comment.user_id.slice(0, 1).toLowerCase() }}</div>
                                 </a>
                             </div>
