@@ -3,7 +3,7 @@
 
     <!-------- Title -------->
 
-    <div class="fs-1-3 fw-b p-y-4 grey lighten-4"><div class="center">
+    <div class="fs-1-3 fw-b p-y-4 border-theme border-b"><div class="center">
     <i class="fas fa-hashtag text-theme"></i> {{ thread_data.title }}</div></div>
 
     <!-------- Votes -------->
