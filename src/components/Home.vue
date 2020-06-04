@@ -20,7 +20,9 @@
                     name:'view-thread',
                     params: { thread_id: 'tweet' }
                 }">
-                <div class="container-sub"><span>つぶやき</span><span class="new badge white float-n grey-text border-badge">固定</span></div>
+                <div class="container-sub">
+                    <span class="m-0 rounded-5 new badge float-n white lighten-4 orange-text">D</span>
+                    <span>　つぶやき</span><span class="new badge white float-n grey-text border-badge">固定</span></div>
                 </router-link>
             </li>
             <li v-for="thread in threads_latest" v-bind:key="thread.id"
@@ -32,7 +34,9 @@
                     hash: '#checked_at'
                 }">
                 <div class="container-sub">
-                    <span class="">{{ thread.title }}</span>
+                    <span v-if="Math.random() > 0.6" class="m-0 rounded-5 new badge float-n white lighten-4 pink-text">P</span>
+                    <span v-else class="m-0 rounded-5 new badge float-n white lighten-4 blue-text">K</span>
+                    <span class="">　{{ thread.title }}</span>
                     <span v-if="thread.num_unreads != 0" class="new badge blue float-n rounded-30 p-y-0-5-p">
                         {{thread.num_unreads}}</span>
                 </div>
