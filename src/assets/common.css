@@ -327,10 +327,13 @@ div >>> .comment-ref {
     margin-bottom: 0.5rem !important;
 }
 
-.icon {
-    height: 28px;
-    width: 28px;
+.t-cell {
     display: table-cell;
+}
+
+.icon {
+    height: 20px;
+    width: 20px;
 }
 
 /*############################## Home.vue ##############################*/
