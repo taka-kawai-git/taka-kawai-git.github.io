@@ -3,7 +3,7 @@
         <nav class="z-depth-0 bg-none">
             <div class="nav-wrapper">
                 <div class="container">
-                    <router-link to="/" class="black-text exo-800 fs-1-5">Company</router-link>
+                    <router-link to="/" class="black-text ff-exo fs-800 fs-1-5">Company</router-link>
                     <ul v-if="!isLogggedIn && !isEmailVerified" class="right">
                         <li><router-link to="/login" class="black-text fw-b">ログイン</router-link></li>
                         <li><router-link to="/register" class="black-text fw-b">新規登録</router-link></li>

@@ -92,7 +92,7 @@
 
     <!-------- PC -------->
 
-    <div class="fixed-action-btn grey lighten-4 rounded-30 p-0-5 hide-on-small-only">
+    <div class="fixed-action-btn p-0-5 hide-on-small-only shadow rounded-30 white">
         <a href="#new-comment" class="btn-floating bg-none lighten-5 z-depth-0 modal-trigger m-x-0-5">
             <i class="fas fa-comment text-theme"></i>
         </a>
@@ -103,7 +103,7 @@
 
     <!-------- Mobile -------->
 
-    <div class="fixed-action-btn p-0-5 hide-on-med-and-up">
+    <div class="fixed-action-btn p-0-5 hide-on-med-and-up shadow rounded-30 white">
         <a href="#new-comment" class="btn-floating bg-none lighten-5 z-depth-0 modal-trigger">
             <i class="fas fa-comment text-theme"></i>
         </a>
