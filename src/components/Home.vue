@@ -23,7 +23,7 @@
                     hash: '#checked_at'
                 }">
                 <div class="container-sub">
-                    <span class="m-r-1 p-0-5 rounded-5 float-n white lighten-4 pink-text ff-exo fs-0-9"
+                    <span class="m-r-1 p-0-5 rounded-5 float-n white lighten-4 ff-exo fs-0-9"
                         v-bind:class="typeColor(thread.type)">{{ thread.type }}</span>
                     <span class="">{{ thread.title }}</span>
                     <span v-if="thread.num_unreads != 0" class="new badge blue float-n rounded-30 p-y-0-5-p">
@@ -209,7 +209,7 @@ export default {
                     'num_comments': doc.data().comments.length,
                     'num_unreads': 0
                 }
-                if(doc.data().type == ('Discussion')) {
+                if(doc.data().type == 'Discussion') {
                     this.threads_discussion.push(data);
                     // this.threads_popular.push(data);
                     // this.threads_popular.sort((a, b) => b.num_comments - a.num_comments);
@@ -261,6 +261,7 @@ export default {
                         'id' : thread.id,
                         'title' : thread.title,
                         'thread_id' : thread.thread_id,
+                        'type' : thread.type.slice(0, 1),
                         'num_comments': thread.num_comments,
                         'num_unreads': thread.num_comments - this.checked_at[thread.id]
                     })

@@ -339,6 +339,20 @@ div >>> .comment-ref {
     width: 20px;
 }
 
+/*############################## NewThread.vue ##############################*/
+
+input[type=radio] {
+    display: none;
+}
+
+.label {
+    background: none;
+}
+
+input[type="radio"]:checked + label {
+    color: white !important;
+}
+
 /*############################## Home.vue ##############################*/
 
 .fs-1 {
