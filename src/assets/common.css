@@ -126,8 +126,8 @@
     padding: 0px;
 }
 
-.l-h-2-5 {
-    line-height: 2.5rem !important;
+.l-h-2 {
+    line-height: 2rem !important;
 }
 
 .h-3 {
@@ -347,6 +347,7 @@ input[type=radio] {
 
 .label {
     background: none;
+    display: inline-block;
 }
 
 input[type="radio"]:checked + label {

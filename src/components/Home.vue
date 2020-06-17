@@ -4,23 +4,33 @@
     <!-------- Tabs -------->
 
     <ul id="tabs-swipe-ul" class="tabs white sticky border-b border-theme">
-        <li class="tab col s3"><a class="active" href="#tab-swipe-1"><span>KPT</span></a></li>
-        <li class="tab col s3"><a href="#tab-swipe-2"><span>議論</span></a></li>
-        <li class="tab col s3"><a href="#tab-swipe-3" id="tab-vote"><span>投票</span></a></li>
-        <li v-if="isEnvDev()" class="tab col s3"><a href="#tab-swipe-4"><span>機能</span></a></li>
+        <li class="tab col s3"><a class="active" href="#tab-swipe-1"><span>議論</span></a></li>
+        <li class="tab col s3"><a href="#tab-swipe-2"><span>KPT</span></a></li>
+        <!--<li class="tab col s3"><a href="#tab-swipe-3" id="tab-vote"><span>投票</span></a></li>-->
+        <li v-if="isEnvDev()" class="tab col s3"><a href="#tab-swipe-3"><span>機能</span></a></li>
     </ul>
 
-    <!-------- KPT -------->
+    <!-------- Discussion -------->
 
     <div id="tab-swipe-1" class="col s12">
         <ul id="tab-swipe-1-ul" class="collection border-0 fs-1-1 m-y-0">
-            <li v-for="thread in threads_kpt" v-bind:key="thread.id"
-            class="collection-item p-x-0 border-0 l-h-2-5 thread-item">
+            <li class="collection-item p-x-0 border-0 l-h-2 thread-item">
                 <router-link class="black-text"
                 v-bind:to="{
                     name:'view-thread',
-                    params: { thread_id: thread.thread_id },
-                    hash: '#checked_at'
+                    params: { thread_id: 'tweet' }
+                }">
+                <div class="container-sub">
+                    <span class="m-r-1 p-0-5 rounded-5 float-n white lighten-4 amber-text ff-exo fs-0-9">D</span>
+                    <span>つぶやき</span><span class="new badge white float-n grey-text border-badge">固定</span></div>
+                </router-link>
+            </li>
+            <li v-for="thread in threads_discussion" v-bind:key="thread.id"
+            class="collection-item p-x-0 border-0 l-h-2 thread-item">
+                <router-link class="black-text"
+                v-bind:to="{
+                    name: typeRoute(thread.type),
+                    params: { thread_id: thread.thread_id }
                 }">
                 <div class="container-sub">
                     <span class="m-r-1 p-0-5 rounded-5 float-n white lighten-4 ff-exo fs-0-9"
@@ -34,23 +44,12 @@
         </ul>
     </div>
 
-    <!-------- Discussion -------->
+    <!-------- KPT -------->
 
     <div id="tab-swipe-2" class="col s12">
         <ul id="tab-swipe-2-ul" class="collection border-0 fs-1-1 m-y-0">
-            <li class="collection-item p-x-0 border-0 l-h-2-5 thread-item">
-                <router-link class="black-text"
-                v-bind:to="{
-                    name:'view-thread',
-                    params: { thread_id: 'tweet' }
-                }">
-                <div class="container-sub">
-                    <span class="m-r-1 p-0-5 rounded-5 float-n white lighten-4 orange-text ff-exo fs-0-9">D</span>
-                    <span>つぶやき</span><span class="new badge white float-n grey-text border-badge">固定</span></div>
-                </router-link>
-            </li>
-            <li v-for="thread in threads_discussion" v-bind:key="thread.id"
-            class="collection-item p-x-0 border-0 l-h-2-5 thread-item">
+            <li v-for="thread in threads_kpt" v-bind:key="thread.id"
+            class="collection-item p-x-0 border-0 l-h-2 thread-item">
                 <router-link class="black-text"
                 v-bind:to="{
                     name:'view-thread',
@@ -74,7 +73,7 @@
     <!--<div id="tab-swipe-2" class="col s12">-->
     <!--    <ul class="collection border-0 fs-1-1 m-y-0">-->
     <!--        <li v-for="(thread, index) in threads_discussion" v-bind:key="thread.id"-->
-    <!--        class="collection-item p-x-0 border-0 l-h-2-5 thread-item">-->
+    <!--        class="collection-item p-x-0 border-0 l-h-2 thread-item">-->
     <!--            <router-link class="black-text"-->
     <!--            v-bind:to="{ name:'view-thread', params: { thread_id: thread.thread_id } }">-->
     <!--            <div class="container-sub">-->
@@ -94,27 +93,27 @@
 
     <!-------- Questionnaire -------->
 
-    <div id="tab-swipe-3" class="col s12">
-        <ul class="collection border-0 fs-1-1 m-y-0">
-            <li v-for="thread in threads_vote" v-bind:key="thread.id"
-            class="collection-item p-x-0 border-0 l-h-2-5 thread-item">
-                <router-link class="black-text"
-                v-bind:to="{ name:'view-vote', params: { thread_id: thread.thread_id } }">
-                <div class="container-sub">
-                    <span class="m-r-1 p-0-5 rounded-5 float-n white lighten-4 ff-exo fs-0-9"
-                        v-bind:class="typeColor(thread.type)">{{ thread.type }}</span>
-                    <span class="">{{ thread.title }}</span>
-                    <span v-if="thread.num_unreads != 0" class="new badge blue float-n rounded-30 p-y-0-5-p">
-                        {{thread.num_unreads}}</span>
-                </div>
-                </router-link>
-            </li>
-        </ul>
-    </div>
+    <!--<div id="tab-swipe-3" class="col s12">-->
+    <!--    <ul class="collection border-0 fs-1-1 m-y-0">-->
+    <!--        <li v-for="thread in threads_vote" v-bind:key="thread.id"-->
+    <!--        class="collection-item p-x-0 border-0 l-h-2 thread-item">-->
+    <!--            <router-link class="black-text"-->
+    <!--            v-bind:to="{ name:'view-vote', params: { thread_id: thread.thread_id } }">-->
+    <!--            <div class="container-sub">-->
+    <!--                <span class="m-r-1 p-0-5 rounded-5 float-n white lighten-4 ff-exo fs-0-9"-->
+    <!--                    v-bind:class="typeColor(thread.type)">{{ thread.type }}</span>-->
+    <!--                <span class="">{{ thread.title }}</span>-->
+    <!--                <span v-if="thread.num_unreads != 0" class="new badge blue float-n rounded-30 p-y-0-5-p">-->
+    <!--                    {{thread.num_unreads}}</span>-->
+    <!--            </div>-->
+    <!--            </router-link>-->
+    <!--        </li>-->
+    <!--    </ul>-->
+    <!--</div>-->
 
     <!-------- Others -------->
 
-    <div v-if="isEnvDev()" id="tab-swipe-4" class="col s12">
+    <div v-if="isEnvDev()" id="tab-swipe-3" class="col s12">
         <div class="row">
             <div class="col s4 m3 l2 center p-y-2">
                 <router-link to="/score">
@@ -158,7 +157,7 @@ export default {
         return {
             threads_kpt: [],
             threads_discussion: [],
-            threads_vote: [],
+            // threads_vote: [],
             isVoteActive: false,
             checked_at: {}
         }
@@ -209,14 +208,18 @@ export default {
                     'num_comments': doc.data().comments.length,
                     'num_unreads': 0
                 }
-                if(doc.data().type == 'Discussion') {
-                    this.threads_discussion.push(data);
-                    // this.threads_popular.push(data);
-                    // this.threads_popular.sort((a, b) => b.num_comments - a.num_comments);
-                } else if(doc.data().type == 'Vote') {
-                    this.threads_vote.push(data);
-                } else {
-                    this.threads_kpt.push(data);
+                switch (doc.data().type) {
+                    case 'Discussion':
+                    case 'Vote':
+                        this.threads_discussion.push(data);
+                        break;
+                    case 'Keep':
+                    case 'Problem':
+                    case 'Try':
+                        this.threads_kpt.push(data);
+                        break;
+                    default:
+                        console.log('Thread type is invalid');
                 }
             })
         })
@@ -275,13 +278,19 @@ export default {
     computed: {
         typeColor: function(type) {
             return function (type) {
-                if(type == "D") return "orange-text"
-                else if(type == "K") return "blue-text"
+                if(type == "D") return "amber-text"
+                else if(type == "K") return "green-text"
                 else if(type == "P") return "pink-text"
-                else if(type == "T") return "green-text"
+                else if(type == "T") return "light-blue-text"
                 else if(type == "V") return "purple-text"
             };
-        }
+        },
+        typeRoute: function(type) {
+            return function (type) {
+                if(type == "D") return "view-thread"
+                else if(type == "V") return "view-vote"
+            };
+        },
     }
 }
 </script>
