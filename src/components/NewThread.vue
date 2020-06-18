@@ -5,34 +5,32 @@
 
             <!-------- Type -------->
 
-            <div class="m-b-0-5">
+            <div class="m-b-1">
                 <input type="radio" v-model="type" value="Discussion" id="discussion"/>
-                <label for="discussion" class="label amber-text border rounded-30 p-1 fs-1 m-r-0-5 fw-b"
+                <label for="discussion" class="label amber-text border rounded-30 p-0-5 fs-1 m-r-0-5 fw-b"
                     v-bind:class="typeColor('Discussion')">Discussion</label>
                 <input type="radio" v-model="type" value="Vote" id="vote"/>
-                <label for="vote" class="label purple-text border rounded-30 p-1 fs-1 m-r-0-5 fw-b"
+                <label for="vote" class="label purple-text border rounded-30 p-0-5 fs-1 m-r-0-5 fw-b"
                     v-bind:class="typeColor('Vote')">Vote</label>
-            </div>
-            <div class="m-b-0-5">
                 <input type="radio" v-model="type" value="Keep" id="keep"/>
-                <label for="keep" class="label light-blue-text border rounded-30 p-1 fs-1 m-r-0-5 fw-b"
+                <label for="keep" class="label light-blue-text border rounded-30 p-0-5 fs-1 m-r-0-5 fw-b"
                     v-bind:class="typeColor('Keep')">Keep</label>
                 <input type="radio" v-model="type" value="Problem" id="problem"/>
-                <label for="problem" class="label pink-text border rounded-30 p-1 fs-1 m-r-0-5 fw-b"
+                <label for="problem" class="label pink-text border rounded-30 p-0-5 fs-1 m-r-0-5 fw-b"
                     v-bind:class="typeColor('Problem')">Problem</label>
                 <input type="radio" v-model="type" value="Try" id="try"/>
-                <label for="try" class="label green-text border rounded-30 p-1 fs-1 m-r-0-5 fw-b"
+                <label for="try" class="label green-text border rounded-30 p-0-5 fs-1 m-r-0-5 fw-b"
                     v-bind:class="typeColor('Try')">Try</label>
             </div>
 
             <!-------- Title -------->
 
-            <input type="text" class="grey lighten-5 border-0 rounded-10"
+            <input type="text" class="grey lighten-4 border-0 rounded-10"
             placeholder="スレッドタイトル" v-model="title" required>
 
             <!-------- First Comment -------->
 
-            <textarea class="grey lighten-5 border-0 rounded-10 h-10 p-1"
+            <textarea class="grey lighten-4 border-0 rounded-10 h-10 p-1"
             placeholder="最初のコメント" v-model="comment" required></textarea>
 
             <!-------- Create button -------->
@@ -52,7 +50,7 @@ export default {
     name : 'new-thread',
     mixins: [createThreadMixin],
     created() {
-        this.type = 'Keep';
+        this.type = 'Discussion';
     },
     methods : {
         typeColor(type) {
