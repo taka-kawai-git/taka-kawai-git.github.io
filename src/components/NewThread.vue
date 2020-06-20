@@ -1,7 +1,7 @@
 <template>
 <div id="new-thread" class="container">
     <div class="row m-t-1">
-        <form @submit.prevent="saveThread(null, null)" class="col s12 p-x-0 fs-1-1">
+        <form @submit.prevent="save" class="col s12 p-x-0 fs-1-1">
 
             <!-------- Type -------->
 
@@ -25,18 +25,32 @@
 
             <!-------- Title -------->
 
-            <input type="text" class="grey lighten-4 border-0 rounded-10"
-            placeholder="スレッドタイトル" v-model="title" required>
+            <input type="text" class="grey lighten-5 border-0 rounded-10"
+            placeholder="投票タイトル" v-model="title" required>
 
             <!-------- First Comment -------->
 
-            <textarea class="grey lighten-4 border-0 rounded-10 h-10 p-1"
+            <textarea class="grey lighten-5 border-0 rounded-10 h-10 p-1 m-b-1"
             placeholder="最初のコメント" v-model="comment" required></textarea>
+
+            <!-------- Candidates -------->
+
+            <div v-if="type == 'Vote'">
+                <input type="text" class="blue lighten-5 border-0 rounded-10"
+                placeholder="候補" v-for="(candidate, index) in candidates"
+                v-model="candidate.desc" v-if="candidate.enabled">
+                
+                <span v-if="!candidates[4].enabled" @click="addCandidate"
+                class="blue lighten-5 border-0 rounded-10 h-3 valign-wrapper m-b-1">
+                    <i class="fa fa-plus text-theme center m-l-1"></i>
+                </span>
+            </div>
 
             <!-------- Create button -------->
 
-            <button type="submit" class="btn waves-effect waves-light rounded-5 w-50 m-y-1
-            bg-theme z-depth-0 right">作成する</button>
+            <button type="submit" class="btn waves-effect waves-light
+            rounded-5 w-50 m-y-1 bg-theme z-depth-0 right fs-1">作成する</button>
+            
             <router-link to="/" class="m-y-1 left fs-1">キャンセル</router-link>
         </form>
     </div>
@@ -44,15 +58,65 @@
 </template>
 
 <script>
+import db from './firebaseInit';
+import firebase from 'firebase';
+import {uuid} from 'vue-uuid';
 import { createThreadMixin } from '../mixins/createThreadMixin'
 
 export default {
     name : 'new-thread',
+    data() {
+        return {
+            candidates: [
+                {desc: null, enabled: true},
+                {desc: null, enabled: true},
+                {desc: null, enabled: false},
+                {desc: null, enabled: false},
+                {desc: null, enabled: false}
+            ]
+        }
+    },
     mixins: [createThreadMixin],
     created() {
         this.type = 'Discussion';
     },
-    methods : {
+    methods: {
+        save() {
+            if(this.type !== "Vote") {
+                this.saveThread(null, null);
+                return;
+            }
+
+            /* -------- Prepare Candidates -------- */
+
+            var candidates = [];
+            var votes = [];
+            for(let i = 0; i < 5; i++) {
+                if(this.candidates[i].enabled){
+                    candidates.push(this.candidates[i].desc);
+                    votes.push(0);
+                }
+            }
+
+            /* -------- Add vote info under domain/{domainId}/threads/ -------- */
+
+            this.saveThread({
+                candidates: candidates,
+                votes: votes
+            }, function(docRef) {
+                for (let i = 0; i < process.env.VUE_APP_NUM_SHARD; i++) {
+                    docRef.collection('votes_shards').doc(i.toString()).set({votes: []})
+                }
+            });
+        },
+        addCandidate() {
+            for(let i = 0; i < 5; i++) {
+                if(!this.candidates[i].enabled) {
+                    this.candidates[i].enabled = true;
+                    return;
+                }
+            }
+        },
         typeColor(type) {
             if(type !== this.type) return ""
             else if(type == "Keep") return "light-blue"

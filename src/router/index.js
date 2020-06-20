@@ -6,7 +6,7 @@ import Terms from '@/components/Terms';
 import NewThread from '@/components/NewThread';
 import ViewThread from '@/components/ViewThread';
 import NewComment from '@/components/NewComment';
-import NewVote from '@/components/NewVote';
+// import NewVote from '@/components/NewVote';
 import ViewVote from '@/components/ViewVote';
 import ViewScore from '@/components/ViewScore';
 import Login from '@/components/Login';
@@ -97,14 +97,14 @@ let router = new Router({
                 requiresEmailVerified: true
             }
         },
-        {
-            path: '/new-vote',
-            name: 'new-vote',
-            component: NewVote,
-            meta: {
-                requiresEmailVerified: true
-            }
-        },
+        // {
+        //     path: '/new-vote',
+        //     name: 'new-vote',
+        //     component: NewVote,
+        //     meta: {
+        //         requiresEmailVerified: true
+        //     }
+        // },
         {
             path: '/thread/:thread_id',
             name: 'view-thread',
