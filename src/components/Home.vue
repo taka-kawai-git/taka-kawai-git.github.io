@@ -21,8 +21,8 @@
                     params: { thread_id: 'tweet' }
                 }">
                 <div class="container-sub">
-                    <span class="m-r-1 p-0-5 rounded-5 float-n white lighten-4 amber-text ff-exo fs-0-9">D</span>
-                    <span>つぶやき</span><span class="new badge white float-n grey-text border-badge">固定</span></div>
+                    <span class="m-r-1 p-0-5 rounded-5 float-n bg-none lighten-4 amber-text ff-exo fs-0-9">D</span>
+                    <span>つぶやき</span><span class="new badge bg-none float-n grey-text border-badge">固定</span></div>
                 </router-link>
             </li>
             <li v-for="thread in threads_discussion" v-bind:key="thread.id"
@@ -33,7 +33,7 @@
                     params: { thread_id: thread.thread_id }
                 }">
                 <div class="container-sub">
-                    <span class="m-r-1 p-0-5 rounded-5 float-n white lighten-4 ff-exo fs-0-9"
+                    <span class="m-r-1 p-0-5 rounded-5 float-n bg-none lighten-4 ff-exo fs-0-9"
                         v-bind:class="typeColor(thread.type)">{{ thread.type }}</span>
                     <span class="">{{ thread.title }}</span>
                     <span v-if="thread.num_unreads != 0" class="new badge blue float-n rounded-30 p-y-0-5-p">
@@ -57,7 +57,7 @@
                     hash: '#checked_at'
                 }">
                 <div class="container-sub">
-                    <span class="m-r-1 p-0-5 rounded-5 float-n white lighten-4 ff-exo fs-0-9"
+                    <span class="m-r-1 p-0-5 rounded-5 float-n bg-none lighten-4 ff-exo fs-0-9"
                         v-bind:class="typeColor(thread.type)">{{ thread.type }}</span>
                     <span class="">{{ thread.title }}</span>
                     <span v-if="thread.num_unreads != 0" class="new badge blue float-n rounded-30 p-y-0-5-p">
@@ -100,7 +100,7 @@
     <!--            <router-link class="black-text"-->
     <!--            v-bind:to="{ name:'view-vote', params: { thread_id: thread.thread_id } }">-->
     <!--            <div class="container-sub">-->
-    <!--                <span class="m-r-1 p-0-5 rounded-5 float-n white lighten-4 ff-exo fs-0-9"-->
+    <!--                <span class="m-r-1 p-0-5 rounded-5 float-n bg-none lighten-4 ff-exo fs-0-9"-->
     <!--                    v-bind:class="typeColor(thread.type)">{{ thread.type }}</span>-->
     <!--                <span class="">{{ thread.title }}</span>-->
     <!--                <span v-if="thread.num_unreads != 0" class="new badge blue float-n rounded-30 p-y-0-5-p">-->

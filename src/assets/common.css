@@ -335,8 +335,8 @@ div >>> .comment-ref {
 }
 
 .icon {
-    height: 20px;
-    width: 20px;
+    height: 18px;
+    width: 18px;
 }
 
 /*############################## NewThread.vue ##############################*/
@@ -353,6 +353,16 @@ input[type=radio] {
 input[type="radio"]:checked + label {
     color: white !important;
 }
+
+.horizontal-scroll {
+    overflow-x: scroll;
+    white-space: nowrap;
+    -ms-overflow-style: none;
+}
+
+.horizontal-scroll::-webkit-scrollbar {
+        display:none;
+    }
 
 /*############################## Home.vue ##############################*/
 

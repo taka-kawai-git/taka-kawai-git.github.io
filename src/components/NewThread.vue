@@ -5,7 +5,7 @@
 
             <!-------- Type -------->
 
-            <div class="m-b-1">
+            <div class="m-b-1 horizontal-scroll">
                 <input type="radio" v-model="type" value="Discussion" id="discussion"/>
                 <label for="discussion" class="label amber-text border rounded-30 p-0-5 fs-1 m-r-0-5 fw-b"
                     v-bind:class="typeColor('Discussion')">Discussion</label>
