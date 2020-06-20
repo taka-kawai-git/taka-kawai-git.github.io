@@ -4,9 +4,12 @@
     <!-------- Title -------->
 
     <div class="fs-1-3 fw-b p-y-4 border-theme border-b"><div class="center">
-    <i class="fas fa-hashtag text-theme"></i> {{ thread_data.title }}</div></div>
+    <hash-icon size="1.1x" class="text-theme v-align-m"></hash-icon>
+    <span class="v-align-m"> {{ thread_data.title }}</span>
+    </div></div>
 
     <!-------- Votes -------->
+
     <div class="p-1 shadow rounded-10 container-sub m-y-2">
         <ul class="collection border-0 m-0">
 
@@ -55,12 +58,14 @@ import { getThreadinfoMixin } from '../mixins/getThreadinfoMixin'
 import Thread from './Thread'
 import db from './firebaseInit'
 import firebase from 'firebase';
+import { HashIcon } from 'vue-feather-icons';
 
 export default {
     name : 'view-vote',
     mixins: [getThreadinfoMixin],
     components: {
-        Thread
+        Thread,
+        HashIcon
     },
     data() {
         return {

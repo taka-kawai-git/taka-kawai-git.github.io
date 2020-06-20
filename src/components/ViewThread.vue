@@ -4,8 +4,8 @@
     <!-------- Title -------->
 
     <div class="fs-1-3 fw-b p-y-4 border-theme border-b"><div class="center">
-    <i class="fas fa-hashtag text-theme v-middle"></i>
-    <span class="v-middle"> {{ thread_data.title }}</span></div></div>
+    <hash-icon size="1.1x" class="text-theme v-align-m"></hash-icon>
+    <span class="v-align-m"> {{ thread_data.title }}</span></div></div>
 
     <!-------- Thread -------->
 
@@ -18,12 +18,14 @@
 <script>
 import { getThreadinfoMixin } from '../mixins/getThreadinfoMixin'
 import Thread from './Thread'
+import { HashIcon } from 'vue-feather-icons';
 
 export default {
     name : 'view-thread',
     mixins: [getThreadinfoMixin],
     components: {
-        Thread
+        Thread,
+        HashIcon
     }
 }
 </script>

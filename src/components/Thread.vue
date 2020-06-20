@@ -13,9 +13,8 @@
                             <div class="">
                                 <a href="#new-comment" v-on:click="addReferenceToTextarea(index)" class="modal-trigger">
                                     <div class="fs-1 t-cell v-middle fw-b white rounded-30">
-                                    <!--v-bind:class="colorObg(comment.user_id)">-->
-                                        <!--{{ comment.user_id.slice(0, 1).toLowerCase() }}</div>-->
-                                        <img class="icon" src="../assets/image/user.svg"/></div>
+                                        <user-icon size="1.5x" class="black-text"></user-icon>
+                                    </div>
                                 </a>
                             </div>
                         </td>
@@ -26,8 +25,8 @@
                                 <span class="m-r-1" v-if="comment.now_added">now</span>
                                 <span class="m-r-1" v-if="!comment.now_added">{{ comment.posted_at.toDate().toDateString() }}</span>
                                 <span class="" v-if="!likes.includes(index)"
-                                @click="updateLike(index)"><i class="far fa-heart"></i></span>
-                                <span class="" v-else><i class="far fa-heart red-text"></i></span>
+                                @click="updateLike(index)"><heart-icon size="1x"></heart-icon></span>
+                                <span class="" v-else><heart-icon size="1x" class="red-text"></heart-icon></span>
                             </div>
                             <div v-html="getCommentWithoutReference(comment.comment)" class="fs-1 ws-pw black-text"></div>
                             <div v-html="getReferencePreview(comment.comment)" v-if="haveReference(comment.comment)"
@@ -61,9 +60,8 @@
                             <div class="">
                                 <a href="#new-comment" v-on:click="addReferenceToTextarea(index + checkedAt)" class="modal-trigger">
                                     <div class="fs-1 t-cell v-middle fw-b white rounded-30">
-                                        <!--v-bind:class="colorObg(comment.user_id)">-->
-                                        <!--{{ comment.user_id.slice(0, 1).toLowerCase() }}</div>-->
-                                        <img class="icon" src="../assets/image/user.svg"/></div>
+                                        <user-icon size="1.5x" class="black-text"></user-icon>
+                                    </div>
                                 </a>
                             </div>
                         </td>
@@ -74,8 +72,8 @@
                                 <span class="m-r-1" v-if="comment.now_added">now</span>
                                 <span class="m-r-1" v-if="!comment.now_added">{{ comment.posted_at.toDate().toDateString() }}</span>
                                 <span class="" v-if="!likes.includes(index + checkedAt)"
-                                @click="updateLike(index)"><i class="far fa-heart"></i></span>
-                                <span class="" v-else><i class="far fa-heart red-text"></i></span>
+                                @click="updateLike(index)"><heart-icon size="1x"></heart-icon></span>
+                                <span class="" v-else><heart-icon size="1x" class="red-text"></heart-icon></span>
                             </div>
                             <div v-html="getCommentWithoutReference(comment.comment)" class="fs-1 ws-pw black-text"></div>
                             <div v-html="getReferencePreview(comment.comment)" v-if="haveReference(comment.comment)"
@@ -93,19 +91,21 @@
     <!-------- PC -------->
 
     <div class="fixed-action-btn p-0-5 hide-on-small-only shadow rounded-30 white">
-        <a href="#new-comment" class="btn-floating bg-none lighten-5 z-depth-0 modal-trigger m-x-0-5">
-            <i class="fas fa-comment text-theme"></i>
+        <div class="button-floating">
+        <a href="#new-comment" class="bg-none lighten-5 z-depth-0 modal-trigger m-x-0-5">
+            <message-circle-icon size="2x" class="text-theme v-middle"></message-circle-icon>
         </a>
-        <router-link to="/" class="btn-floating bg-none lighten-5 z-depth-0 modal-trigger m-x-0-5">
-            <i class="fas fa-home text-theme"></i>
+        <router-link to="/" class="bg-none lighten-5 z-depth-0 modal-trigger m-x-0-5">
+            <home-icon size="2x" class="text-theme v-middle"></home-icon>
         </router-link>
+        </div>
     </div>
 
     <!-------- Mobile -------->
 
-    <div class="fixed-action-btn p-0-5 hide-on-med-and-up shadow rounded-30 white">
+    <div class="fixed-action-btn p-0-5 hide-on-med-and-up shadow rounded-30 white center">
         <a href="#new-comment" class="btn-floating bg-none lighten-5 z-depth-0 modal-trigger">
-            <i class="fas fa-comment text-theme"></i>
+            <message-circle-icon class="text-theme v-middle"></message-circle-icon>
         </a>
     </div>
 
@@ -130,6 +130,7 @@ import db from '../components/firebaseInit'
 import firebase from 'firebase';
 import M from 'materialize-css'
 import VueScrollTo from 'vue-scrollto'
+import { MessageCircleIcon, UserIcon, HomeIcon, HeartIcon } from 'vue-feather-icons';
 
 export default {
     name : 'thread',
@@ -145,6 +146,12 @@ export default {
             default: {},
             required: true
         }
+    },
+    components: {
+        MessageCircleIcon,
+        UserIcon,
+        HomeIcon,
+        HeartIcon
     },
     watch: {
         threadData: function(newData, oldData) {

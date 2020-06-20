@@ -133,14 +133,9 @@
 
     <!-------- Add-Thread button -------->
 
-    <div v-if="!isVoteActive" class="fixed-action-btn p-0-5 shadow rounded-30 white">
+    <div class="fixed-action-btn p-0-5 shadow rounded-30 white center">
         <router-link to="/new-thread" class="btn-floating bg-none z-depth-0">
-            <i class="fa fa-plus text-theme"></i>
-        </router-link>
-    </div>
-    <div v-if="isVoteActive" class="fixed-action-btn p-0-5 shadow rounded-30 white">
-        <router-link to="/new-vote" class="btn-floating bg-none z-depth-0">
-            <i class="fas fa-chart-bar text-theme"></i>
+            <plus-icon class="text-theme v-middle"></plus-icon>
         </router-link>
     </div>
 </div>
@@ -149,7 +144,8 @@
 <script>
 import db from './firebaseInit'
 import firebase from 'firebase';
-import M from 'materialize-css'
+import M from 'materialize-css';
+import { PlusIcon } from 'vue-feather-icons'
 
 export default {
     name : 'home',
@@ -158,9 +154,11 @@ export default {
             threads_kpt: [],
             threads_discussion: [],
             // threads_vote: [],
-            isVoteActive: false,
             checked_at: {}
         }
+    },
+    components: {
+        PlusIcon,
     },
     mounted() {
 
@@ -173,18 +171,18 @@ export default {
 
         /* -------- Watch active tab  -------- */
 
-        const target = document.getElementById('tab-vote')
-        const observer = new MutationObserver(mutations => {
-            mutations.forEach((mutation) => {
-                if(mutation.target.className == "active") this.isVoteActive = true;
-                else this.isVoteActive = false;
-            })
-        })
+        // const target = document.getElementById('tab-vote')
+        // const observer = new MutationObserver(mutations => {
+        //     mutations.forEach((mutation) => {
+        //         if(mutation.target.className == "active") this.isVoteActive = true;
+        //         else this.isVoteActive = false;
+        //     })
+        // })
 
-        observer.observe(target, {
-            attributes: true,
-            attributeFilter: ['class']
-        })
+        // observer.observe(target, {
+        //     attributes: true,
+        //     attributeFilter: ['class']
+        // })
 
         document.querySelector(".tabs-content").setAttribute('style', 'height:100%;');
     },

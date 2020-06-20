@@ -9,7 +9,7 @@
                         <li><router-link to="/register" class="black-text fw-b">新規登録</router-link></li>
                     </ul>
                     <div v-if="isLogggedIn && isEmailVerified" class="right"><router-link to="/menu" class="black-text">
-                        <img class="v-align-m" src="../assets/image/menu.svg"/>
+                        <menu-icon class="v-middle"></menu-icon>
                     </router-link></div>
                     <div v-if="isLogggedIn && !isEmailVerified" class="right"><button v-on:click="logout" class="button-naked fw-b">ログアウト</button></div>
                     </ul>
@@ -21,6 +21,7 @@
 
 <script>
 import firebase from 'firebase';
+import { MenuIcon } from 'vue-feather-icons';
 
 export default {
     name: 'navbar',
@@ -30,6 +31,9 @@ export default {
             isEmailVerified: false,
             currentUser: false
         };
+    },
+    components: {
+        MenuIcon
     },
     created() {
         if(!firebase.auth().currentUser){

@@ -42,7 +42,7 @@
                 
                 <span v-if="!candidates[4].enabled" @click="addCandidate"
                 class="blue lighten-5 border-0 rounded-10 h-3 valign-wrapper m-b-1">
-                    <i class="fa fa-plus text-theme center m-l-1"></i>
+                    <sapn class="text-theme center m-l-1">＋</sapn>
                 </span>
             </div>
 
